@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvomiero <mvomiero@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 13:34:20 by mvomiero          #+#    #+#              #
-#    Updated: 2023/05/22 13:35:33 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/05/22 15:59:02 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= megaphone
 
-CC		= g++
+CC		= c++
 CFLAGS	= -Werror -Wextra -Wall -std=c++98
 
 SRC		= megaphone.cpp
