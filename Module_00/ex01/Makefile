@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 15:58:15 by mvomiero          #+#    #+#              #
-#    Updated: 2023/05/22 16:20:15 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/05/23 17:30:33 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ all: $(OBJ_PATH) $(NAME)
 
 # Objects compilation
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 # Project compilation
 $(NAME): $(OBJS)
