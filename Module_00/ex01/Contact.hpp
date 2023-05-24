@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:21:10 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/23 18:28:01 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:24:22 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CONTACT_HPP
 
 # include <iostream>
-// to comment out here down
 #include <iomanip>
+// to use std::setw
 
 class Contact
 {

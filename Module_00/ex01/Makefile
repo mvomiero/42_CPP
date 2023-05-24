@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 15:58:15 by mvomiero          #+#    #+#              #
-#    Updated: 2023/05/24 19:19:08 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/05/24 19:41:46 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ GRAY		=	\e[33;2;37m
 RESET		=	\e[0m
 
 # Program file name
-NAME	= MAPB
+NAME	= phonebook
 
 # Compiler and flags
 CC		= c++

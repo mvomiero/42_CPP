@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:21:25 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 19:21:42 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:40:59 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class PhoneBook
 {
 private:
 	Contact	_contacts[CONTACT_MAX];
-	int		_readInput(void) const;
+	int		_searchInput(void) const;
 
 public:
 	void	addContact(void);
