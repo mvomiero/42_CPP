@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:20:38 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/23 18:28:15 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:38:22 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ std::string	Contact::_getInput(std::string strMessage) const
 	{
 		std::cout << strMessage << std::endl;
 		//should you use std::cin.good() as well to check?
+		//std::cin.clear();
 		std::getline(std::cin, strInput);
 		if (!strInput.empty())
 			inputOK = true;
@@ -35,7 +36,7 @@ std::string	Contact::_getInput(std::string strMessage) const
 
 void	Contact::initContact(void) {
 	// to clear the buffer from any remaining characters, before using getline
-	std::cin.ignore();
+	//std::cin.ignore();
 	this->_firstName = this->_getInput("Please enter you first name: ");
 	this->_lastName = this->_getInput("Please enter your last name: ");
 	this->_nickName = this->_getInput("Please enter your nickname: ");

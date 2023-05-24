@@ -6,12 +6,13 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 15:58:15 by mvomiero          #+#    #+#              #
-#    Updated: 2023/05/23 17:30:33 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/05/24 12:02:26 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Colors
-YELLOW		=	\e[93;5;226m
+#YELLOW		=	\e[93;5;226m
+BLUE		=	\e[34;49;3;1m
 GRAY		=	\e[33;2;37m
 RESET		=	\e[0m
 
@@ -50,8 +51,8 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
 # Project compilation
 $(NAME): $(OBJS)
 	@echo "compiling Project"
-	$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC)
-	@echo "$(YELLOW)\n\tExecutable ready\n$(RESET)"
+	@$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC)
+	@echo "$(BLUE)\n\tExecutable ready\n$(RESET)"
 
 # Objects directory rule
 $(OBJ_PATH):
@@ -60,9 +61,11 @@ $(OBJ_PATH):
 
 # Clean up - Reset
 clean:
-	rm -rf $(OBJ_PATH)
+	@echo "removing object files"
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
+	@echo "removing executable"
 	rm -f $(NAME)
 
 re: fclean all
