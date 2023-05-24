@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:20:38 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 13:56:01 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:16:25 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	Contact::view(int index) const {
 	if (this->_firstName.empty() || this->_lastName.empty() || this->_nickName.empty())
 		return ;
 	// std::setw(10) sets the witdth of of the next input field
-	std::cout << "|" << std::setw(10) << index << std::flush;
+	std::cout << "|" << std::setw(10) << index + 1 << std::flush;
 	std::cout << "|" << std::setw(10) << this->_firstName << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printLen(this->_firstName) << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printLen(this->_lastName) << std::flush;
@@ -68,10 +68,12 @@ void	Contact::view(int index) const {
 }
 
 void	Contact::display(int index) const {
-	if (this->_firstName.empty() || this->_lastName.empty() || this->_nickName.empty())
+	if (this->_firstName.empty() || this->_lastName.empty() || this->_nickName.empty()) {
+		std::cout << "contact " << index + 1 << "not set!" << std::endl;
 		return ;
+	}
 	std::cout << std::endl;
-	std::cout << "------🙈 CONTACT #" << index << " 🙈------" << std::endl;
+	std::cout << "------🙈 CONTACT " << index + 1 << " 🙈------" << std::endl;
 	std::cout << "First Name:\t" << this->_firstName << std::endl;
 	std::cout << "Last Name:\t" << this->_lastName << std::endl;
 	std::cout << "Nickname:\t" << this->_nickName << std::endl;

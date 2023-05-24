@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:18:39 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 13:56:51 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:13:15 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ int	PhoneBook::_readInput() const {
 	int		input;
 	bool	inputOK = false;
 	
-	while (!inputOK) {
+/* 	while (!inputOK) {
 		std::cout << "Please enter the contact index: " << std::endl;
 		std::cin >> input;
-		if (input >= 0 && input <= 8)
+		std::cout << input << "this is the number index" << std::endl;
+		if (input >= 1 && input <= 8)
 			inputOK = true;
 		else {
 			std::cin.clear();
@@ -54,8 +55,26 @@ int	PhoneBook::_readInput() const {
 		}
 	}
 	std::cin.clear();
-	std::cin.ignore();
-	return (input);
+	std::cin.ignore();	
+	return (input - 1); */
+	std::string	strInput;
+	
+	while (!inputOK) {
+	std::cout << "Please enter the contact index: " << std::endl;
+	std::getline(std::cin, strInput);
+	//input = std::stoi(strInput);
+	input = std::atoi(strInput.c_str());
+	//std::cout << input << "this is the number index" << std::endl;
+	if (input >= 1 && input <= 8)
+			inputOK = true;
+		else {
+			std::cin.clear();
+			//std::cin.ignore();
+			std::cout << "Invalid index, try again!" << std::endl;
+		}
+	}
+	return (input - 1);
+
 }
 
 void	PhoneBook::search(void) const {
