@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:22:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 13:18:14 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:49:32 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	std::string input;
 	book.welcome();
 	while (input.compare("EXIT")) {
-		std::cout << "> " << std::flush;
+		std::cout << "🐒 " << std::flush;
 		std::getline(std::cin, input);
 		//std::cout << input << std::endl;
 		if (input.compare("ADD") == 0)

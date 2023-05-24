@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:20:38 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 12:38:22 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:56:01 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	Contact::display(int index) const {
 	if (this->_firstName.empty() || this->_lastName.empty() || this->_nickName.empty())
 		return ;
 	std::cout << std::endl;
-	std::cout << "---->> CONTACT #" << index << " <<----" << std::endl;
+	std::cout << "------🙈 CONTACT #" << index << " 🙈------" << std::endl;
 	std::cout << "First Name:\t" << this->_firstName << std::endl;
 	std::cout << "Last Name:\t" << this->_lastName << std::endl;
 	std::cout << "Nickname:\t" << this->_nickName << std::endl;

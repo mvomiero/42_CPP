@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:18:39 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 13:23:12 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:56:51 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	PhoneBook::welcome(void) const {
 	std::cout << std::endl;
-	std::cout << "Welcome to Your Awesome PhoneBook" << std::endl;
-	std::cout << std::endl;
-	std::cout << "--------------USAGE---------------" << std::endl;
+	std::cout << "🙊 Welcome to Your Awesome PhoneBook 🙉\n" << std::endl;
+	std::cout << "--------------🙈CONTACTS🙈-------------\n" << std::endl;
 	std::cout << "ADD\t: To add a contact." << std::endl;
 	std::cout << "SEARCH\t: To search for a contact." << std::endl;
-	std::cout << "EXIT\t: to quit the PhoneBook." << std::endl;
-	std::cout << "----------------------------------" << std::endl;
-	std::cout << std::endl;
+	std::cout << "EXIT\t: to quit the PhoneBook.\n" << std::endl;
+	std::cout << "--------🐒--------🐒--------🐒---------\n" << std::endl;
 };
 
 void	PhoneBook::addContact(void) {
@@ -33,7 +31,7 @@ void	PhoneBook::addContact(void) {
 }
 
 void	PhoneBook::printContacts(void) const {
-	std::cout << "------------- PHONBOOK CONTACTS -------------" << std::endl;
+	std::cout << "--------------🙈CONTACTS🙈-------------\n" << std::endl;
 	for (size_t i = 0; i < 8; i++) {
 		this->_contacts[i].view(i);
 	}
