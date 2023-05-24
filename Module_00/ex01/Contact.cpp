@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:20:38 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 18:16:25 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:07:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Contact::view(int index) const {
 
 void	Contact::display(int index) const {
 	if (this->_firstName.empty() || this->_lastName.empty() || this->_nickName.empty()) {
-		std::cout << "contact " << index + 1 << "not set!" << std::endl;
+		std::cout << "contact " << index + 1 << " not set! 🙈" << std::endl;
 		return ;
 	}
 	std::cout << std::endl;

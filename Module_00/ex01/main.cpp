@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:22:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 13:49:32 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:09:47 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main(void)
 			book.printContacts();
 			book.search();
 		}
+		else
+			std::cout << "Incorrect input! 🙈 " << std::endl;
 		//std::cin >> input;
 	}
 }
