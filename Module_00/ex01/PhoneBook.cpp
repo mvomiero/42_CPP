@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:18:39 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 18:13:15 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:14:21 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	PhoneBook::welcome(void) const {
 void	PhoneBook::addContact(void) {
 	static int	i;
 
-	this->_contacts[i % 8].initContact();
-	this->_contacts[i % 8].setIndex(i % 8);
+	this->_contacts[i % CONTACT_MAX].initContact();
+	this->_contacts[i % CONTACT_MAX].setIndex(i % CONTACT_MAX);
 	i++;
 }
 
 void	PhoneBook::printContacts(void) const {
 	std::cout << "--------------🙈CONTACTS🙈-------------\n" << std::endl;
-	for (size_t i = 0; i < 8; i++) {
+	for (size_t i = 0; i < CONTACT_MAX; i++) {
 		this->_contacts[i].view(i);
 	}
 	std::cout << std::endl;
@@ -46,7 +46,7 @@ int	PhoneBook::_readInput() const {
 		std::cout << "Please enter the contact index: " << std::endl;
 		std::cin >> input;
 		std::cout << input << "this is the number index" << std::endl;
-		if (input >= 1 && input <= 8)
+		if (input >= 1 && input <= CONTACT_MAX)
 			inputOK = true;
 		else {
 			std::cin.clear();
@@ -65,7 +65,7 @@ int	PhoneBook::_readInput() const {
 	//input = std::stoi(strInput);
 	input = std::atoi(strInput.c_str());
 	//std::cout << input << "this is the number index" << std::endl;
-	if (input >= 1 && input <= 8)
+	if (input >= 1 && input <= CONTACT_MAX)
 			inputOK = true;
 		else {
 			std::cin.clear();
