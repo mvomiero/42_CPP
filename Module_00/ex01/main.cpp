@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:22:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 19:42:48 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:16:53 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	std::cout << "hello world" << std::endl;
 	PhoneBook book;
 	std::string input;
-	book.welcome();
+	book.welcomeMessage();
 	while (input.compare("EXIT")) {
 		std::cout << "🐒 " << std::flush;
 		std::getline(std::cin, input);

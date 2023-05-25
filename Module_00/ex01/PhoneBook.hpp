@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:21:25 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 19:40:59 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:16:53 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	void	addContact(void);
 	void	printContacts(void) const;
 	void	search(void) const;
-	void	welcome(void) const;
+	void	welcomeMessage(void) const;
 };
 
 #endif

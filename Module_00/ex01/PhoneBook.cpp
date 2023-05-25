@@ -6,13 +6,14 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:18:39 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/24 19:40:59 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:31:28 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::welcome(void) const {
+/* Outputs the welcome message */
+void	PhoneBook::welcomeMessage(void) const {
 	std::cout << std::endl;
 	std::cout << "🙊 Welcome to Your Awesome PhoneBook 🙉\n" << std::endl;
 	std::cout << "--------------🙈COMMANDS🙈-------------\n" << std::endl;
@@ -22,6 +23,7 @@ void	PhoneBook::welcome(void) const {
 	std::cout << "--------🐒--------🐒--------🐒---------\n" << std::endl;
 };
 
+/* adds a contact by calling the two other functions of the Contact class*/
 void	PhoneBook::addContact(void) {
 	static int	i;
 
@@ -30,14 +32,19 @@ void	PhoneBook::addContact(void) {
 	i++;
 }
 
+/* prints the contacts using the .view() function of the contact class */
 void	PhoneBook::printContacts(void) const {
 	std::cout << "--------------🙈CONTACTS🙈-------------\n" << std::endl;
 	for (size_t i = 0; i < CONTACT_MAX; i++) {
-		this->_contacts[i].view(i);
+		this->_contacts[i].displayInline(i);
 	}
 	std::cout << std::endl;
 }
 
+/* returns the input, starting a loop until a correct input is found. 
+	Input are the index numbers, from 1 to 8. Input is stored in a string with 
+	getline and then converted to an integer with atoi. In this case some problems
+	are avoided compared to use std::cin << which converts the element automatically */
 int	PhoneBook::_searchInput() const {
 	int		input;
 	bool	inputOK = false;
@@ -57,6 +64,7 @@ int	PhoneBook::_searchInput() const {
 	return (input - 1);
 }
 
+/* gets the input and then calls the .display() function from the Contacts class */
 void	PhoneBook::search(void) const {
 	int i = this->_searchInput();
 	this->_contacts[i].display(i);
