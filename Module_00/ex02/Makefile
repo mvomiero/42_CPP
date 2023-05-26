@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 11:36:39 by mvomiero          #+#    #+#              #
-#    Updated: 2023/05/25 11:50:54 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/05/26 17:12:29 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,10 +78,11 @@ clean:
 fclean: clean
 	@echo "removing executable"
 	rm -f $(NAME)
+	rm -f bank.log
 
 re: fclean all
 
-output_check:
+test:
 	@echo "$(BLUE)\tdiff check:$(RESET)"
 	./$(NAME) > $(NAME).log
 # you cut until the space and select the field 2 to erase the timestamp

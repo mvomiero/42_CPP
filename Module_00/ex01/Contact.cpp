@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:20:38 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/25 12:32:30 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:04:44 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	Contact::displayInline(int index) const {
 	if (this->_firstName.empty())
 		return ;
 	std::cout << "|" << std::setw(10) << index + 1 << std::flush;
-	std::cout << "|" << std::setw(10) << this->_firstName << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printShort(this->_firstName) << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printShort(this->_lastName) << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printShort(this->_nickName) << std::flush;
@@ -75,5 +74,7 @@ void	Contact::display(int index) const {
 	std::cout << "First Name:\t" << this->_firstName << std::endl;
 	std::cout << "Last Name:\t" << this->_lastName << std::endl;
 	std::cout << "Nickname:\t" << this->_nickName << std::endl;
+	std::cout << "Phone number:\t" << this->_phoneNumber << std::endl;
+	std::cout << "Darkest secret:\t" << this->_darkestSecret << std::endl;
 	std::cout << std::endl;
 }

@@ -6,21 +6,19 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:22:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/25 12:16:53 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:00:28 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-//#include <limits>
 #include <iostream>
 
 int	main(void)
 {
-	std::cout << "hello world" << std::endl;
 	PhoneBook book;
 	std::string input;
 	book.welcomeMessage();
-	while (input.compare("EXIT")) {
+	while (1) {
 		std::cout << "🐒 " << std::flush;
 		std::getline(std::cin, input);
 		if (input.compare("ADD") == 0)
@@ -28,6 +26,9 @@ int	main(void)
 		else if (input.compare("SEARCH") == 0) {
 			book.printContacts();
 			book.search();
+		}
+		else if (input.compare("EXIT") == 0) {
+			return (0);
 		}
 		else
 			std::cout << "Incorrect input! 🙈 " << std::endl;
