@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:24:58 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/08 13:03:45 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:35:59 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ public:
 	int		toInt( void ) const;
 };
 
+	/* OPERATOR << OVERLOAD */
 std::ostream & operator<<( std::ostream & o, Fixed const & i );
 
 

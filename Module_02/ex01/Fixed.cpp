@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:24:37 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/08 13:04:28 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:34:12 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ int	Fixed::toInt( void ) const {
 	return this->_rawBits >> _fractionalBits;
 }
 
+/* so anytime we have the operator << followed by a Fixed object,
+	it will be expanded to << i.toFloat()
+ */
 std::ostream & operator<<( std::ostream & o, Fixed const & i ) {
 	o << i.toFloat();
 	return o;
