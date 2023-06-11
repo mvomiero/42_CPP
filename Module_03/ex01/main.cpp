@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:21:00 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 12:59:42 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:38:39 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 int	main(void) {
 	ClapTrap	Clappy(CLAPPY);
 	ClapTrap	Trappy(TRAPPY);
-	FragTrap	Serena(SERENA);
+	ScavTrap	Serena(SERENA);
 
 	Clappy.attack(TRAPPY);
 	Trappy.takeDamage(5);

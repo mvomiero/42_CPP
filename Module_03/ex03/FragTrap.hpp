@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:34:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:38:39 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:39:52 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap // just this syntax to inherit all the elements of the ClapTrap class
+class FragTrap : public ClapTrap // just this syntax to inherit all the elements of the ClapTrap class
 {
 private:
-	ScavTrap(); // like for ClapTrap, so I force the user to input a Name
+	FragTrap(); // like for ClapTrap, so I force the user to input a Name
 
 public:
-	ScavTrap( std::string name );
-	~ScavTrap();
+	FragTrap( std::string name );
+	~FragTrap();
 
-	void	attack(std::string const& target);
 	void	highFivesGuys();
 };
 
