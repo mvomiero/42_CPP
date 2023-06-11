@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   Fragtrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:33:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 12:59:42 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:19:02 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "Colors.h"
 
 FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
 	// Base class initialization happens in the member initialization list -- ClapTrap(name)
 	// Member variables can be after assigned values within the constructor body (the _variables)
 	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
-	std::cout << "ScavTrap " << _name << " has been created!" << std::endl;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
+	std::cout << PURPLE "FragTrap " << _name << " has been created 🍓" RESET << std::endl;
 }
 
 FragTrap::~FragTrap() {
-	std::cout << "ScavTrap " << this->_name << " destructor called" << std::endl;
-}
-
-void    FragTrap::attack( std::string const& target ) {
-	if ( this->_energyPoints <= 0 ) {
-		std::cout << "ScavTrap " << this->_name << " is out of energy!" << std::endl;
-		return;
-	}
-	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage !" << std::endl;
-	this->_energyPoints -= 1;
+	std::cout << PURPLE "FragTrap " << this->_name << " destructor called 🍓" RESET<< std::endl;
 }
 
 void    FragTrap::highFivesGuys() {
-	std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode" << std::endl;
+	std::cout << PURPLE "\t🍓 " << this->_name << " says: give me a high five guyyyys 🙌" RESET << std::endl;
 }

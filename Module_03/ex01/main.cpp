@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:21:00 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 12:23:57 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 12:59:42 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@
 int	main(void) {
 	ClapTrap	Clappy(CLAPPY);
 	ClapTrap	Trappy(TRAPPY);
-	ScavTrap	Serena(SERENA);
+	FragTrap	Serena(SERENA);
 
 	Clappy.attack(TRAPPY);
 	Trappy.takeDamage(5);
 	Trappy.beRepaired(5);
 	// until here from exercise before
-	Serena.guardGate(); // specific of ScavTrap
+	Serena.highFivesGuys(); // specific of ScavTrap
 	Serena.takeDamage(5); // from the base class but works for ScavTrap as well
 }

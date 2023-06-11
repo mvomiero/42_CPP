@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:34:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 12:59:42 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:00:03 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ public:
 	FragTrap( std::string name );
 	~FragTrap();
 
-	void	attack(std::string const& target);
 	void	highFivesGuys();
 };
 
