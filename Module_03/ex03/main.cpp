@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:21:00 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 16:58:54 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:19:10 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 		(the using keyword, see Diamond.hpp)
 	-- getting different member variables from different base classes 
 		(see the constructor in Diamond.cpp)
+	-- didn't have problems compiling with -Wshadow...should throw problems if there are
+		some conflicts like variables are different in different classes but didn't 
+		have them while compiling actually
  */
 
 #define DIAMOND "Diamond"
