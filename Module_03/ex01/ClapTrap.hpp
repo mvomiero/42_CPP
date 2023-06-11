@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:21:30 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/10 17:36:15 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 11:09:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 class ClapTrap
 {
-private:
+protected: // you need to set them as protected if you want to access them even in the subclass!!
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
+	ClapTrap(); // I set it private so the user has to input a name. I could as well not use it.
 
 public:
-	ClapTrap();
 	ClapTrap( std::string name );
 	ClapTrap(const ClapTrap &);
 	~ClapTrap();
