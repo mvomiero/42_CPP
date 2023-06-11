@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:21:00 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:38:39 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:50:54 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 		(see ScavTrap.hpp)
  */
 
-/* NB - COLORS_H:
+/* NB -:
 	added from here a header for the colors, it is practical to recognise some
 	elements and the corresponding actions.
  */
@@ -44,6 +44,6 @@ int	main(void) {
 	Trappy.takeDamage(5);
 	Trappy.beRepaired(5);
 	// until here from exercise before
-	Serena.highFivesGuys(); // specific of ScavTrap
+	Serena.guardGate(); // specific of ScavTrap
 	Serena.takeDamage(5); // from the base class but works for ScavTrap as well
 }

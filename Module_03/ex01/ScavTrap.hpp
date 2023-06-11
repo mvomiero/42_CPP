@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:34:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:38:39 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:51:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	~ScavTrap();
 
 	void	attack(std::string const& target);
-	void	highFivesGuys();
+	void	guardGate();
 };
 
 #endif

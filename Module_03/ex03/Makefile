@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/06/11 15:34:05 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/06/11 15:54:14 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC_PATH = ./
 #SRC_PATH = ./sources/
 SRC		=	main.cpp \
 			ClapTrap.cpp \
-			FragTrap.cpp
+			FragTrap.cpp \
+			DiamondTrap.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects

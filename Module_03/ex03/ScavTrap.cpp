@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:33:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:38:39 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:51:27 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void    ScavTrap::attack( std::string const& target ) {
 	this->_energyPoints -= 1;
 }
 
-void    ScavTrap::highFivesGuys() {
+void    ScavTrap::guardGate() {
 	std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode" << std::endl;
 }
