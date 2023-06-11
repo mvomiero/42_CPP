@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:21:00 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:49:27 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:58:54 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,32 @@
 #include "DiamondTrap.hpp"
 #include "Colors.h"
 /* ABSTRACT:
-	Really the same exact thing as ex01 (ScavTrup), just the contructor and destructor
-	have different messages and the values are a bit different and
-	the signature finction has another name and output (highFivesGuys instead of guardGate)
+	topic: DIAMOND INHERITANCE
+	   A
+	 /   \
+	B     C
+	 \   /
+	   D
+	The diamond inheritance problem arises when a class inherits from two or more classes 
+	that have a common base class. This results in a diamond-shaped inheritance diagram, 
+	where the derived class is at the top, and two or more intermediate classes branch out 
+	from it, eventually converging to a common base class.
+	The "virtual" keyword (see Frag - Scav .hpp) is used for the middle level classes
+	(B C) to avoid to have two copies of the base class A.
+	Exercise:
+	-- inheriting from Scav and Frag so setting both classes as virtual (see .hpp)
+	-- choosing which implementation of the same function to inheritate 
+		(the using keyword, see Diamond.hpp)
+	-- getting different member variables from different base classes 
+		(see the constructor in Diamond.cpp)
  */
 
 #define DIAMOND "Diamond"
-#define TRAPPY "Trappy"
-#define FRAGOLA "Fragola"
 
 int	main(void) {
 	DiamondTrap	Diamond(DIAMOND);
 
-	Diamond.whoAmI();
-	Diamond.highFivesGuys();
-	Diamond.attack("Giorgio");
+	Diamond.whoAmI(); // new function introduced in this exercise
+	Diamond.highFivesGuys(); // inherited from Frag
+	Diamond.attack("Giorgio"); // you'll see is inheritated from ScavTrap (see Diamond.hp) and not from Clap
 }

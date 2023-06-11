@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/06/11 15:54:14 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/06/11 17:03:45 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME	= diamondtrap
 
 # Compiler and flags
 CC		= c++
-CFLAGS	= -Werror -Wextra -Wall -std=c++98
+CFLAGS	= -Werror -Wextra -Wall -std=c++98 -Wshadow
 
 # Includes
 INC_PATH 	= ./
@@ -33,6 +33,7 @@ SRC_PATH = ./
 SRC		=	main.cpp \
 			ClapTrap.cpp \
 			FragTrap.cpp \
+			ScavTrap.cpp \
 			DiamondTrap.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 

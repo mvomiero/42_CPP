@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:34:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:51:17 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:24:49 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include "Colors.h"
 
-class ScavTrap : public ClapTrap // just this syntax to inherit all the elements of the ClapTrap class
+class ScavTrap : virtual public ClapTrap // just this syntax to inherit all the elements of the ClapTrap class
 {
 private:
 	ScavTrap(); // like for ClapTrap, so I force the user to input a Name

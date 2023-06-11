@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:34:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 15:39:52 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:01:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap // just this syntax to inherit all the elements of the ClapTrap class
+class FragTrap : virtual public ClapTrap // just this syntax to inherit all the elements of the ClapTrap class
 {
 private:
 	FragTrap(); // like for ClapTrap, so I force the user to input a Name
