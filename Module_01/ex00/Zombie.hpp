@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:15:30 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/25 15:35:55 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:52:37 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ private:
 public:
 	Zombie( std::string name ); // Constructor
 	~Zombie(); // Destructor
-	// The three functions asked from the assignment
 	void	announce( void ) const;
 };
 

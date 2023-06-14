@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:14:28 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/25 16:42:44 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:58:56 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 // Default constructor; it's needed if you are gonna create an array of objects of this class
 Zombie::Zombie( void ) {
 }
-
-// Constructor: saves the name given as a parameter
-/* Zombie::Zombie( std::string name ) {
-	this->_name = name;
-} */
 
 // Destructor: prints a message of the destruction of the Zombie
 Zombie::~Zombie() {

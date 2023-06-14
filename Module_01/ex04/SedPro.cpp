@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:52:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/26 13:42:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:05:26 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ SedPro::~SedPro ( void ) {
 }
 
 void	SedPro::replace( std::string toFind, std::string toReplace) {
-	std::ifstream   infs(this->_inFile.c_str());
+	std::ifstream	infs(this->_inFile.c_str());
 	if (infs.is_open()) {
 		std::string content;  // a string from input where we do all the operations
 		if (std::getline(infs, content, '\0')) {

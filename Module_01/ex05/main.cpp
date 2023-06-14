@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:59:35 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/05/26 14:11:37 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:12:40 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main( void ) {
 	Harl		harl;
 
 	while (input != "exit") {
-		std::cout << "Enter a level: ";
+		std::cout << "Enter a level (or <exit>): ";
 		std::cin >> input;
 		harl.complain(input);
 	}
