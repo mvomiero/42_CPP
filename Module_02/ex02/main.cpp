@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:31:54 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/09 15:06:23 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:38:20 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 /* ABSTRACT:
 	- comparison, arithmetic, increment/decrement operators
 	- public overloaded member functions min and max (static)
+
+	* call make test to have just the numeric output
  */
 
 /* NOTE rhs:
@@ -25,7 +27,7 @@
 
 int main ( void ) {
 	Fixed		a; // default constructor
-	Fixed const	b( Fixed( 5.05f ) * Fixed( 2 ) ); // arithmetic operator overload
+	Fixed const	b( Fixed( 5.05f ) * Fixed( 2 ) ); // arithmetic operator overload + copy constructor
 
 	std::cout << a << std::endl; // assigned to 0
 	std::cout << ++a << std::endl; // increment of 1 of the _rawBit variable.

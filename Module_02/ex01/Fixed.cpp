@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:24:37 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/09 11:34:12 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:31:35 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,21 @@ Fixed::Fixed( const int n ) : _rawBits( n << _fractionalBits ) {
 }
 
 /* constructor with float as input:
-	the formula "std::roundf(n * (1 << _fractionalBits))" explained: 
+	the formula "roundf(n * (1 << _fractionalBits))" explained: 
 	-> 1 << _fractionalBits --> scaling factor
 	-> multipies the scaling factor for the float value, getting a value you can assign to _rawBits
 	-> rounds the value
  */
-Fixed::Fixed( const float n ) : _rawBits( std::roundf(n * (1 << _fractionalBits)) ) {
+Fixed::Fixed( const float n ) : _rawBits( roundf(n * (1 << _fractionalBits)) ) {
 	std::cout << "Float constructor called" << std::endl;
 }
 
 /* copy constructor:
-	the current object is set equal to the src object passed as parameter */
+	the data is passed and a new object is created */
 Fixed::Fixed( const Fixed &src ) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	*this = src; // you can directly use the copy assignment operator
+	//this->setRawBits(src.getRawBits()); // another way of doing the copy
 }
 
 /* destructor */
@@ -54,10 +55,8 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-/* returns an object whose parameter _setPointValue is set equal to the address
-	to object src given as parameter
- */
-Fixed &	Fixed::operator=( Fixed const & src )
+/* copy assignment operator*/
+Fixed&	Fixed::operator=( Fixed const & src )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if ( this != &src )
@@ -90,6 +89,7 @@ int	Fixed::toInt( void ) const {
 
 /* so anytime we have the operator << followed by a Fixed object,
 	it will be expanded to << i.toFloat()
+	-- the operator << is actually stored in ostrem, not in cout(which is just pointing to the stream output)
  */
 std::ostream & operator<<( std::ostream & o, Fixed const & i ) {
 	o << i.toFloat();

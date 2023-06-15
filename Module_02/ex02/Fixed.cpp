@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:24:37 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/09 13:05:48 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:50:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Fixed::Fixed( const int n ) : _rawBits( n << _fractionalBits ) {
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed( const float n ) : _rawBits( std::roundf(n * (1 << _fractionalBits)) ) {
+Fixed::Fixed( const float n ) : _rawBits( roundf(n * (1 << _fractionalBits)) ) {
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -129,6 +129,7 @@ Fixed	Fixed::operator/( const Fixed &rhs ) const {
 	increments the value and returns a reference to the same element
 	POSTFIX:
 	increments the value but returns the copy of the original object (so the increment is done later)
+	The int parameter acts as a dummy parameter to differentiate it from the prefix increment operator.
  */
 
 // Prefix ++hello
