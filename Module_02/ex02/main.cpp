@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:31:54 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/15 15:38:20 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:06:01 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int main ( void ) {
 	std::cout << resultRef << std::endl;
 	const Fixed& constResultRef = Fixed::min(a, b);
 	std::cout << constResultRef << std::endl;
-
+	//actually doesent crush with /0
+	//Fixed const	d( Fixed( 5.05f ) / Fixed( 0 ) );
+	//std::cout << d << std::endl; 
 	return 0;
 }
