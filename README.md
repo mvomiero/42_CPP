@@ -22,11 +22,19 @@ references, switch statement
 
 ## Module 02
 Ad-hoc polymorphism *(function overloading)*, operator overloading
-and Orthodox Canonical class form *(default methods, see ex00), fixed-point numbers*
+and Orthodox Canonical class form *(default methods, see ex00)*, fixed-point numbers
 
 * ex00 > **My First Class in Orthodox Canonical Form** - *Fixed-point numbers (representation of real numbers in computing that have a fixed number of digits for the fractional part)*
 * ex01 > **Towards a more useful fixed-point number class** - *function overload, operator overload, conversion functions*
 * ex02 > **Now we’re talking** - *several types of operator overload*
 * ex03 > **BSP** - *use of the class created before for a pratctical application (calculating if a point is inside a triangle)*
 
+## Module 03
+Inheritance
+
+* ex00 > **Aaaaand... OPEN! (ClapTrap)** - 
+*implementing a class (ClapTrap) with variables and member functions*
+* ex01 > **Serena, my love! (ScavTrap)** - *inheritance (creation of a subclass), member functions overload*
+* ex02 > **Repetitive work (FragTrap)** - *same as the previous exercise, just different values*
+* ex03 > **Now it’s weird! (DiamondTrap)** - *diamond inheritance: inheritance from classes that have a common base class*
 
