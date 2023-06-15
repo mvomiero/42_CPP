@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:24:37 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/08 13:04:35 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:21:31 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ Fixed::Fixed() : _rawBits( 0 ) {	// setting the value to 0
 }
 
 /* copy constructor:
-	the current object is set equal to the src object passed as parameter */
+	the data is passed and a new object is created */
 Fixed::Fixed( const Fixed &src ) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	*this = src; // you can directly use the copy assignment operator
+	//this->setRawBits(src.getRawBits()); // another way of doing the copy
 }
 
 /* destructor */
@@ -29,10 +30,15 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-/* returns an object whose parameter _setPointValue is set equal to the address
-	to object src given as parameter
+/* returns an object with the same data as src. C++ knows is an operator overload
+	because the keyword operator followed by a valid operator (operator=) is given
+	as function name. 
+		Since it can be a bit confusing, the elemts of the function:
+		--> Fixed& -> return type (a reference to the modified object)
+		--> Fixed::operator= (name of the function and class)
+		--> ( Fixed const & src ) (parameter, another object constant reference)
  */
-Fixed &	Fixed::operator=( Fixed const & src )
+Fixed& Fixed::operator=( Fixed const & src )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if ( this != &src )
