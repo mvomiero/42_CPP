@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:31:54 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/10 14:34:08 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:02:18 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@
 	a fixed number of digits for the fractional part.
  */
 
+/* Ortodox Canonical class form:
+	has default methods (constructor, copy constructor, destructor, copy assignment operator)
+	ex:
+		class A
+		{
+		public:
+			A ();
+			A (const A &a);
+			~A ();
+			A & operator = (const A &a);
+		};
+ */
 int main( void )
 {
 	Fixed a;
