@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fragtrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 10:33:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/11 13:19:02 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:40:59 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ FragTrap::~FragTrap() {
 	std::cout << PURPLE "FragTrap " << this->_name << " destructor called 🍓" RESET<< std::endl;
 }
 
-void    FragTrap::highFivesGuys() {
+void	FragTrap::highFivesGuys() {
 	std::cout << PURPLE "\t🍓 " << this->_name << " says: give me a high five guyyyys 🙌" RESET << std::endl;
 }
