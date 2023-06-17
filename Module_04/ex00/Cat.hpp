@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/17 16:48:56 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/17 17:54:09 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	Cat( void );
 	~Cat( void );
 
-	void	makeSound( void ) const;
+	void	makeSound( void ) const; // you should normally use override, but that is c++11 (and not 98 that we are using)
 };
 
 #endif
