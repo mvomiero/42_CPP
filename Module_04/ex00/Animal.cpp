@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 16:21:08 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/16 18:00:18 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/17 17:23:40 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Animal&	Animal::operator=( const Animal& rhs) {
 }
 
 void	Animal::makeSound( void ) const {
-	std::cout << "Unknown sound" << std::endl;
+	std::cout << "Unknown sound 🦖" << std::endl;
 }
 
 std::string Animal::getType( void ) const {

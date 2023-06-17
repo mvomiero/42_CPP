@@ -6,13 +6,13 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:40 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/16 18:35:29 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:50:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat( void ) : Animal("Cat")
+Cat::Cat( void ) : Animal( BG_BRIGHT_CYAN "Cat" RESET)
 {
 	std::cout << this->_type << " constructor called" << std::endl;
 }

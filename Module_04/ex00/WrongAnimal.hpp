@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,25 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 
-class Animal {
+class WrongAnimal {
 protected:
 	std::string _type;
 
 public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( const Animal& src );
+	WrongAnimal( void );
+	WrongAnimal( std::string type );
+	WrongAnimal( const WrongAnimal& src );
 
-	virtual ~Animal( void );
+	~WrongAnimal( void );
 	
-	Animal& operator=( const Animal& rhs);
+	WrongAnimal& operator=( const WrongAnimal& rhs);
 
-	virtual void	makeSound( void ) const; // if it wouldnt be virtual the derived classes
+	void	makeSound( void ) const; // if it wouldnt be virtual the derived classes
 		// if not virtual dedived classes would use this one instead
 	std::string		getType( void ) const;
 };

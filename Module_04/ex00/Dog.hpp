@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 17:58:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/17 16:48:56 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/06/17 16:44:16 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/06/17 16:48:45 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
 #include "Animal.hpp"
 #include "Colors.h"
 
-class Cat : public Animal
+class Dog : public Animal
 {
 private:
 
 public:
-	Cat( void );
-	~Cat( void );
+	Dog( void );
+	~Dog( void );
 
 	void	makeSound( void ) const;
 };

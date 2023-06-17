@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/06/16 18:14:39 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/06/17 17:21:27 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,10 @@ SRC_PATH = ./
 #SRC_PATH = ./sources/
 SRC		=	main.cpp \
 			Animal.cpp \
-			Cat.cpp
+			Cat.cpp \
+			Dog.cpp \
+			WrongCat.cpp \
+			WrongAnimal.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects

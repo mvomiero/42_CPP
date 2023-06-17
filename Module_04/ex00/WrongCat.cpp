@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 17:58:48 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/17 16:48:56 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/06/16 17:58:40 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/06/17 16:50:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#include "WrongCat.hpp"
 
-#include "Animal.hpp"
-#include "Colors.h"
-
-class Cat : public Animal
+WrongCat::WrongCat( void ) : WrongAnimal( BG_BRIGHT_RED "WrongCat" RESET)
 {
-private:
+	std::cout << this->_type << " constructor called" << std::endl;
+}
 
-public:
-	Cat( void );
-	~Cat( void );
+void	WrongCat::makeSound( void ) const
+{
+	std::cout << "miaooooo 🐈" << std::endl;
+}
 
-	void	makeSound( void ) const;
-};
-
-#endif
+WrongCat::~WrongCat( void )
+{
+	std::cout << this->_type << " destructor called" << std::endl;
+}
