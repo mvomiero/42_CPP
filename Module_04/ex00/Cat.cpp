@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:40 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/17 16:50:30 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/18 11:12:07 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 Cat::Cat( void ) : Animal( BG_BRIGHT_CYAN "Cat" RESET)
 {
-	std::cout << this->_type << " constructor called" << std::endl;
+	std::cout << "🐈 " << this->_type << " constructor called" << std::endl;
 }
 
 void	Cat::makeSound( void ) const
 {
-	std::cout << "miaooooo 🐈" << std::endl;
+	std::cout << "🐈 " << "miaooooo 🐈" << std::endl;
 }
 
 Cat::~Cat( void )
 {
-	std::cout << this->_type << " destructor called" << std::endl;
+	std::cout << "🐈 " << this->_type << " destructor called" << std::endl;
 }

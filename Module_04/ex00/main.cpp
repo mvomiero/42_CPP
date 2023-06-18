@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:48:53 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/17 18:10:22 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/18 11:45:45 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,13 @@
 #include "WrongCat.hpp"
 #include "WrongAnimal.hpp"
 
-/* int main( void ) {
-	const Animal* prova = new Animal("Leone");
-	const Animal* gatto = new Cat();
-	//Cat gatto = Cat();
-
-	prova->makeSound();
-	gatto->makeSound();
-
-	delete prova;
-	delete gatto;
-} */
+/* ABSTRACT:
+	using dynamic polymorphism for subtypes. It is like the function overload (the function
+	is overloaded at compilation becuse the parameters are different), but here is done
+	at runtime by declaring base class elements virtual (so the subclass function overrides it).
+	Base class Animal with derived classes Cat and Dog and corresponding
+	Wrong classes, where the virtual keyword is not used (so no function override)
+ */
 
 /* POLYMORPHISM:
 	polymorphism = treat differently different objects derived from a class. It is 
@@ -53,10 +49,16 @@
 	Since one function is virtual, is good practice to declare the destructor virtual as
 	well, otherways there is a case where the destructor would't be called (see TEST
 	MARCO section).
+	So it works: at compilation time a table of virtual functions is set for every
+	class, then at a runtime the right function to execute is chosen in this table
+	(if a function is declared virtual of course).
 	
  */
 
 int	main( void ) {
+
+	/* TEST DEFAULT */
+	
 	std::cout << BLUE "\nTEST DEFAULT\n" RESET << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
@@ -65,16 +67,18 @@ int	main( void ) {
 	std::cout << "J Type: " << j->getType() << " " << std::endl;
 	std::cout << "I Type: " << i->getType() << " " << std::endl;
 	i->makeSound();
+	j->makeSound();
 	meta->makeSound();
 
 	delete meta;
 	delete j;
 	delete i;
 
-
+	/* TEST WRONG */
 
 	std::cout << BLUE "\nTEST WRONG\n" RESET << std::endl;
 	const WrongAnimal *wrong = new WrongAnimal();
+	//WrongAnimal *wrongCat = new WrongCat();
 	const WrongAnimal *wrongCat = new WrongCat();
 
 	std::cout << "Wrong Type: " << wrong->getType() << " " << std::endl;
@@ -87,7 +91,12 @@ int	main( void ) {
 	/* just the destructor of Wronganimal is called, and not the one of WrongCat !! 
 		that is because WrongAnimal destructor wasn't declared virtual */
 
+	/* TEST MARCO */
+
 	std::cout << BLUE "\nTEST MARCO\n" RESET << std::endl;
+	/* here is an example of why declaring a pointer of the base class pointing
+		to a subclass element: it's just practical because you can have the same 
+		behavior for different subclasses */
 	Animal* animalPtr;
 	Dog dog;
 	Cat cat;

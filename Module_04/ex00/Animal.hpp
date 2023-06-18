@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 16:21:18 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/17 16:29:50 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/18 11:10:58 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ public:
 	Animal( const Animal& src );
 
 	virtual ~Animal( void );
+		// destructor has to be virtual as well, to ensure the correct destruction 
+		// of derived class objects through base class pointers. (see TESTS WRONG in the main.cpp)
 	
 	Animal& operator=( const Animal& rhs);
 
-	virtual void	makeSound( void ) const; // if it wouldnt be virtual the derived classes
+	virtual void	makeSound( void ) const;
 		// if not virtual dedived classes would use this one instead
 	std::string		getType( void ) const;
 };

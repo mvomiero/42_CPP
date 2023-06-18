@@ -28,8 +28,7 @@ public:
 	
 	WrongAnimal& operator=( const WrongAnimal& rhs);
 
-	void	makeSound( void ) const; // if it wouldnt be virtual the derived classes
-		// if not virtual dedived classes would use this one instead
+	void	makeSound( void ) const; // here not virtual = WRONG!
 	std::string		getType( void ) const;
 };
 
