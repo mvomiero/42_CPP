@@ -21,7 +21,7 @@ class WrongCat : public WrongAnimal
 private:
 
 public:
-	WrongCat( void );
+	WrongCat( void ); 
 	~WrongCat( void );
 
 	void	makeSound( void ) const;
