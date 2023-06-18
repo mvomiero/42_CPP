@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:48:53 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/18 15:20:51 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:32:35 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 #include "Colors.h"
 
 /* ABSTRACT:
-	allocating a class pointer to array as private member of a class in the constructor
-	(and then deleting it in the destructor) : the Brain class, part of the Dog and Cat
-	classes see e.g. Cat.cpp.
-	Allocating in the main an array of objects and correspondingly freeing all its elements.
+	Abstract classes: base class that can't be instantiated.
+	In this exercise, the Animal class is set as abstract (by setting one of its 
+	functions = 0)
+ */
+
+/* ABSTRACT CLASS:
+	used as base classe, it can't be instantiated (instatiation = creation of an object of
+	a class) on its own.
+	You make a class abstract settinig one or more of its functions = 0; 
+	(see Animal.hpp, makeSound() function is = 0)
+	The purpose of an abstract class is to define a common base but at the same
+	time enfocing specific requirements of the derived class	
  */
 
 int main( void )
@@ -31,7 +39,10 @@ int main( void )
 	delete k;
 
 	/* TESTS MARCO */
-	// setting two elements Cat and Dog to assign an idea.
+
+	// !!!! This line wouldn't work!! Animal is an abstract class!
+	// Animal abstract = Animal("Abstract");
+	
 	Cat* frontman = new Cat;
 	frontman->setIdea( 0, BLUE "Welcome to our deep concert" RESET ); // to show they use their ideas (setting the idea)
 	
