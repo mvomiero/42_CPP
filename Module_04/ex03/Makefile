@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/06/20 13:17:30 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/06/20 16:24:39 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BLUE		=	\e[34;1m
 RESET		=	\e[0m
 
 # Program file name
-NAME	= hogwarts
+NAME	= finalfantasy
 
 # Compiler and flags
 CC		= c++

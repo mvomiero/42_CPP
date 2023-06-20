@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:24:42 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/20 12:22:53 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:25:06 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	MateriaSource::learnMateria( AMateria* m )
 			return;
 		}
 }
-
 
 AMateria*	MateriaSource::createMateria( std::string const& type )
 {

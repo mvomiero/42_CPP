@@ -44,4 +44,4 @@ Subtype polymorphism, abstract classes, interfaces
 * ex00 > **Polymorphism** - *Run-time Polymorphism (Dynamic Polymorphism, the choice
 of which overloaded function to choose im made at run time depending from the object calling it and not at compile time depending on the input parameters). Declaring 
 a function virtual and implementing its polymorphism in the subclasses*
-* ex01 > **
+* ex01 > **I don’t want to set the world on fire** - *memory leaks, allocation and free*

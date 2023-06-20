@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:40 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/18 13:52:20 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:18:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 Dog::Dog( void ) : Animal( BG_BLUE "Dog" RESET)
 {
 	std::cout << "🐕 " << this->_type << " constructor called" << std::endl;
-	try {
-		this->_brain = new Brain();
-	}
-	catch (const std::bad_alloc& e) {
-		std::cout << "Memory Allodogion is failed : " << e.what() << std::endl;
-	}
+	this->_brain = new Brain();
 }
 
 void	Dog::makeSound( void ) const

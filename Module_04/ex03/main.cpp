@@ -6,13 +6,11 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:28:44 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/20 15:34:57 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:24:14 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
-//#include "ICharacter.hpp"
-//#include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
