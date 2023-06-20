@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:48:53 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/18 11:45:45 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:51:59 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main( void ) {
 
 	/* TEST DEFAULT */
 	
-	std::cout << BLUE "\nTEST DEFAULT\n" RESET << std::endl;
+	std::cout << BLUE BOLD "\nTEST DEFAULT\n" RESET << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -76,7 +76,7 @@ int	main( void ) {
 
 	/* TEST WRONG */
 
-	std::cout << BLUE "\nTEST WRONG\n" RESET << std::endl;
+	std::cout << BLUE BOLD "\nTEST WRONG\n" RESET << std::endl;
 	const WrongAnimal *wrong = new WrongAnimal();
 	//WrongAnimal *wrongCat = new WrongCat();
 	const WrongAnimal *wrongCat = new WrongCat();
@@ -93,7 +93,7 @@ int	main( void ) {
 
 	/* TEST MARCO */
 
-	std::cout << BLUE "\nTEST MARCO\n" RESET << std::endl;
+	std::cout << BLUE BOLD "\nTEST MARCO\n" RESET << std::endl;
 	/* here is an example of why declaring a pointer of the base class pointing
 		to a subclass element: it's just practical because you can have the same 
 		behavior for different subclasses */

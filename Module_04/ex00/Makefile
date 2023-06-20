@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/06/17 17:21:27 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/06/20 15:47:40 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NAME	= zoo
 
 # Compiler and flags
 CC		= c++
-CFLAGS	= -Werror -Wextra -Wall -std=c++98 -Wshadow
+CFLAGS	= -Werror -Wextra -Wall -std=c++98
 
 # Includes
 INC_PATH 	= ./

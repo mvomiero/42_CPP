@@ -38,3 +38,10 @@ Inheritance
 * ex02 > **Repetitive work (FragTrap)** - *same as the previous exercise, just different values*
 * ex03 > **Now it’s weird! (DiamondTrap)** - *diamond inheritance: inheritance from classes that have a common base class*
 
+## Module 04
+Subtype polymorphism, abstract classes, interfaces
+
+* ex00 > **Polymorphism** - *Run-time Polymorphism (Dynamic Polymorphism, the choice
+of which overloaded function to choose im made at run time depending from the object calling it and not at compile time depending on the input parameters). Declaring 
+a function virtual and implementing its polymorphism in the subclasses*
+* ex01 > **

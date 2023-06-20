@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:48:53 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/18 15:20:51 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:08:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main( void )
 
 	/* TESTS MARCO */
 	// setting two elements Cat and Dog to assign an idea.
+	std::cout << BLUE BOLD "\nTEST MARCO \n" RESET << std::endl;
 	Cat* frontman = new Cat;
 	frontman->setIdea( 0, BLUE "Welcome to our deep concert" RESET ); // to show they use their ideas (setting the idea)
 	
