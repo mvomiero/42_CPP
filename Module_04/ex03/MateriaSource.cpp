@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:24:42 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/19 12:27:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:50:53 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,26 @@ void	MateriaSource::learnMateria( AMateria* m )
 		if (materias[i] == NULL)
 		{
 			materias[i] = m;
-			std::cout << "MateriaSource learned " << m->getType() << std::endl;
+			if (VERBOSE) {std:: cout << "learnMateria(): " << "Materiasource learned the Amateria " << m->getType() << std::endl; }
+			//std::cout << "MateriaSource learned " << m->getType() << std::endl;
 			return;
 		}
-	std::cout << "MateriaSource can't learn " << m->getType() << std::endl;
+	//std::cout << "MateriaSource can't learn " << m->getType() << std::endl;
 }
+
+/* void	MateriaSource::learnMateria( AMateria* m )
+{
+	for (int i = 0; i < 4; i++)
+		if (materias[i] == NULL)
+			materias[i] = m;
+	//std::cout << "MateriaSource can't learn " << m->getType() << std::endl;
+} */
 
 AMateria*	MateriaSource::createMateria( std::string const& type ) {
 	for ( int i = 0; i < 4; i++ )
-		if ( materias[i] && materias[i]->getType() == type )
+		if ( materias[i] && materias[i]->getType() == type ) {
+			if (VERBOSE) {std:: cout << "createMateria(): " << "Materiasource clones into its resources the Amateria " << type << std::endl; }
 			return materias[i]->clone();
+		}
 	return NULL;
 }
