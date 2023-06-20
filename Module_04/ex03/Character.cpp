@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:04:24 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/20 12:21:40 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:13:11 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ void	Character::equip( AMateria* m ) {
 			if (VERBOSE) { std::cout << "equip(): Character " << this->_name << " equipped with " << m->getType() << std::endl;}
 			return;
 		}
+	delete m;
 }
 
 void	Character::unequip( int idx ) {
 	if (idx >= 0 && idx < 4){
-		if (this->_inventory[idx])
+		if (this->_inventory[idx]) {
+			delete this->_inventory[idx];
+			this->_inventory[idx] = NULL;
 			std::cout << "Character " << this->_name << " unequipped" << std::endl;
+		}
 	}
 	else
 		std::cout << "Character " << this->_name << " can't unequip" << std::endl;
