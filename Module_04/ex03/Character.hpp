@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:01:38 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/19 12:03:43 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:22:05 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
-//#include "AMateria.hpp"
 
 class Character : public ICharacter
 {

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:04:24 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/20 11:54:50 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:21:40 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Character::Character( std::string const & name ) : _name(name)
 {
-	//std::cout << "Character " << this->_name << " created" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
@@ -22,7 +21,6 @@ Character::Character( std::string const & name ) : _name(name)
 
 Character::Character( Character const & src ) : _name(src._name)
 {
-	//std::cout << "Character " << this->_name << " created" << std::endl;
 	*this = src;
 }
 
@@ -38,7 +36,6 @@ Character& Character::operator=( Character const & rhs )
 
 Character::~Character()
 {
-	//std::cout << "Character " << this->_name << " destroyed" << std::endl;
 	for (int i = 0; i < 4; i++)
 		if (this->_inventory[i])
 			delete this->_inventory[i];
@@ -51,28 +48,26 @@ void	Character::equip( AMateria* m ) {
 			if (VERBOSE) { std::cout << "equip(): Character " << this->_name << " equipped with " << m->getType() << std::endl;}
 			return;
 		}
-	//std::cout << "Character " << this->_name << " can't equip " << m->getType() << std::endl;
 }
 
 void	Character::unequip( int idx ) {
-	if (this->_inventory[idx])
-	{
-		//delete this->_inventory[idx];
-		//this->_inventory[idx] = NULL;
-		std::cout << "Character " << this->_name << " unequipped" << std::endl;
+	if (idx >= 0 && idx < 4){
+		if (this->_inventory[idx])
+			std::cout << "Character " << this->_name << " unequipped" << std::endl;
 	}
 	else
 		std::cout << "Character " << this->_name << " can't unequip" << std::endl;
 }
 
 void	Character::use( int idx, ICharacter& target ) {
-	if (this->_inventory[idx])
+	if (idx >= 0 && idx < 4)
 	{
-		if (VERBOSE) { std::cout << "use(): Character " << this->_name << " uses " << this->_inventory[idx]->getType() << std::endl; }
-		this->_inventory[idx]->use(target);
+		if (this->_inventory[idx])
+		{
+			if (VERBOSE) { std::cout << "use(): Character " << this->_name << " uses " << this->_inventory[idx]->getType() << std::endl; }
+			this->_inventory[idx]->use(target);
+		}
 	}
-	//else
-		//std::cout << "Character " << this->_name << " can't use" << std::endl;
 }
 
 std::string const& Character::getName() const {
