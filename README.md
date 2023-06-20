@@ -45,3 +45,5 @@ Subtype polymorphism, abstract classes, interfaces
 of which overloaded function to choose im made at run time depending from the object calling it and not at compile time depending on the input parameters). Declaring 
 a function virtual and implementing its polymorphism in the subclasses*
 * ex01 > **I don’t want to set the world on fire** - *memory leaks, allocation and free*
+* ex02 > **Abstract class** - *same as ex01, but the base class is abstract (one function is set = 0). Abstrac means objects of the base class can't be instantiated*
+* ex03 > **Interface & recap** - *general recap with different classes, subclasses and interfaces*
