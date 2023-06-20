@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 10:54:18 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/06/20 11:40:52 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:16:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "Colors.h"
 
 # ifndef VERBOSE
-#  define VERBOSE 1
+#  define VERBOSE 0
 # endif
 
 class ICharacter;
