@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:02:17 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 17:04:17 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:10:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include "Form.hpp"
 
 Form::Form( const std::string& name, int gradeToSign ) : _name( name ), _gradeToSign( gradeToSign ), _gradeToExecute( 0 ) {
-	// if ( gradeToSign < 1 )
-	// 	throw Form::GradeTooHighException();
-	// if ( gradeToSign > 150 )
-	// 	throw Form::GradeTooLowException();
 	gradeRangeCheck();
 }
 
