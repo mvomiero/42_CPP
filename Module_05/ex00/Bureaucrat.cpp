@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:29 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 13:58:13 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:01:05 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	Bureaucrat::gradeRangeCheck() {
 	if (_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
-
 
 void    Bureaucrat::incrementGrade() {
 	_grade--;
