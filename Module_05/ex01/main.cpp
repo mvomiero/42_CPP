@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 17:33:14 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:36:19 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 	improving the exercise before with a class Form that at initialization is 
 	not "signed", that checks if the bureaucrat's grade is high enough to be signed.
 	If it is, the form will be signed.
+
+	PS: gradeToExecute is just for the next exercises
 */
 
 #include "Bureaucrat.hpp"
