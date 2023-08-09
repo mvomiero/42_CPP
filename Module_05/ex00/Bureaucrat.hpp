@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:41 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 12:38:02 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:55:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ public:
 
 	void		gradeRangeCheck();
 
-	/* EXCEPTIONS subclasses */
+	/* EXCEPTIONS subclasses 
+		they are all derived from std::exception
+	*/
 	class GradeTooHighException : public std::exception {
 		public:
-			virtual const char* what() const throw() { return "Grade too high"; }
+			virtual const char* what() const throw(); // throw() is actually just for older versions of cpp
+				// declared virtual in case you need to overwrite if you ever make subclasses
 	};
 	class GradeTooLowException : public std::exception {
 		public:
-			virtual const char* what() const throw() { return "Grade too low"; }
+			virtual const char* what() const throw();
 	};
 
 };

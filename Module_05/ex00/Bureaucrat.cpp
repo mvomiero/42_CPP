@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:29 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 13:04:16 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:58:13 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ Bureaucrat::Bureaucrat( const std::string& name, int grade ) : _name(name), _gra
 	gradeRangeCheck();
 }
 
+/* can't use the copy assignment operator since name is a const and has therfore
+	to be initializes when the object is instantiated */
 Bureaucrat::Bureaucrat( const Bureaucrat& src ) : _name(src._name), _grade(src._grade) {}
 
 Bureaucrat::~Bureaucrat() {}
@@ -57,3 +59,8 @@ std::ostream& operator<<( std::ostream& o, const Bureaucrat& rhs ) {
 	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
 	return o;
 }
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() { return "Grade too high"; }
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() { return "Grade too high"; }
+
