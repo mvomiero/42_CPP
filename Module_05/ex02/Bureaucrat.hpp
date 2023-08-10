@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:41 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 12:10:40 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/10 13:48:13 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ public:
 
 	void		gradeRangeCheck();
 
-	void		signAForm( AForm& AForm );
+	void		signForm( AForm& AForm );
+
+	void		executeForm( const AForm& form ) const;  
+
 
 	/* EXCEPTIONS subclasses 
 		they are all derived from std::exception
