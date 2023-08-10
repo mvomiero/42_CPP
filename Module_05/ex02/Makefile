@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/08/10 12:12:18 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/08/10 13:07:28 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC_PATH = ./
 #SRC_PATH = ./sources/
 SRC		=	main.cpp \
 			Bureaucrat.cpp \
-			AForm.cpp
+			AForm.cpp \
+			ShrubberyCreationForm.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects

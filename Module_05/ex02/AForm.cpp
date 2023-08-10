@@ -13,7 +13,7 @@
 
 #include "AForm.hpp"
 
-AForm::AForm( const std::string& name, int gradeToSign ) : _name( name ), _gradeToSign( gradeToSign ), _gradeToExecute( 0 ) {
+AForm::AForm( const std::string& name, int gradeToSign, int gradeToExecute ) : _name( name ), _gradeToSign( gradeToSign ), _gradeToExecute( gradeToExecute ) {
 	gradeRangeCheck();
 }
 
