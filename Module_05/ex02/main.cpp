@@ -6,16 +6,16 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 14:42:12 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:00:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* ABSTRACT:
-	improving the exercise before with a class ShrubberyCreationForm that at initialization is 
-	not "signed", that checks if the bureaucrat's grade is high enough to be signed.
-	If it is, the ShrubberyCreationForm will be signed.
-
-	PS: gradeToExecute is just for the next exercises
+	a more complicated form system: Bureaucrat is the one that signs the Forms 
+	and executes their own properties (the execute function). 
+	Since the three derived classes have different values for gradeToSign and 
+	gradeToExecute, if you change the grade of the bureaucrat, you'll be able
+	to perform some operations on some forms, but not on all of them. 
 */
 
 #include "Bureaucrat.hpp"
@@ -25,40 +25,14 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-
-
-/* int main( void )
-{
-
-	try {
-		// the grade is too low, the ShrubberyCreationForm won't be signed
-		const Bureaucrat bureaucrat("Bureaucrat",11);
-		ShrubberyCreationForm shrubbery("Targetzzz");
-		shrubbery.execute(bureaucrat);
-		std::cout << CYAN BOLD "\n1️⃣ First try\n" RESET << std::endl;
-		std::cout << shrubbery  << std::endl;
-		std::cout << BLUE << bureaucrat << RESET << std::endl;
-
-		//bureaucrat.incrementGrade(bureaucrat);
-
-		
-		// the bureaucrat's grade is incremented, will be enough to sign the shrubbery
-		std::cout << CYAN BOLD "\n2️⃣ Second try\n" RESET << std::endl;
-		std::cout << shrubbery << std::endl;
-		std::cout << BLUE << bureaucrat << RESET << std::endl;
-
-
-	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	return EXIT_SUCCESS;
-} */
-
 int main( void )
 {
 
 	try {
-		Bureaucrat bureaucrat("Giorgio", 2); // error with 200
+		Bureaucrat bureaucrat("Giorgio", 5);
+		// you can try differen values like 160, 120, 55 etc, 
+		// you'll see that some operations are not enabled and that exceptions are
+		// thrown
 		ShrubberyCreationForm form1("Shrubby 🌳");
 		RobotomyRequestForm form2("Robooty 🍑🤖");
 		PresidentialPardonForm form3("President 👁️");
@@ -67,7 +41,7 @@ int main( void )
 		bureaucrat.signForm(form1);
 		bureaucrat.executeForm(form1);
 		std::cout << CYAN BOLD "\n-----FORM 2 (Robooty 🍑🤖)-----\n" RESET << std::endl;
-		//bureaucrat.signForm(form2);
+		bureaucrat.signForm(form2);
 		bureaucrat.executeForm(form2);
 		bureaucrat.executeForm(form2);
 		bureaucrat.executeForm(form2);
