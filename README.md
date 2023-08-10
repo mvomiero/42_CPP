@@ -41,9 +41,14 @@ Inheritance
 ## Module 04
 Subtype polymorphism, abstract classes, interfaces
 
-* ex00 > **Polymorphism** - *Run-time Polymorphism (Dynamic Polymorphism, the choice
-of which overloaded function to choose im made at run time depending from the object calling it and not at compile time depending on the input parameters). Declaring 
-a function virtual and implementing its polymorphism in the subclasses*
+* ex00 > **Polymorphism** - *Run-time Polymorphism (Dynamic Polymorphism, the choice of which overloaded function to choose im made at run time depending from the object calling it and not at compile time depending on the input parameters). Declaring a function virtual and implementing its polymorphism in the subclasses*
 * ex01 > **I don’t want to set the world on fire** - *memory leaks, allocation and free*
 * ex02 > **Abstract class** - *same as ex01, but the base class is abstract (one function is set = 0). Abstrac means objects of the base class can't be instantiated*
 * ex03 > **Interface & recap** - *general recap with different classes, subclasses and interfaces*
+
+## Module 05
+Repetition and Exceptions
+
+* ex00 > **Mommy, when I grow up, I want to be a bureaucrat!** - *Exceptions: using try and catch, declaring subclasses of std::exception, etc.*
+* ex01 > **Form up, maggots!** - *like the exercise before, just more complex*
+* ex02 > **No, you need form 28B, not 28C...** - *like the exercise before, just more complex, different exceptions thrown depending the properties of the objects*
