@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 13:49:06 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:42:12 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,25 @@
 int main( void )
 {
 
-    try {
-        Bureaucrat bureaucrat("ash", 2); // error with 200
-        ShrubberyCreationForm form1("Shrubbery");
-        RobotomyRequestForm form2("Robotomy");
-        PresidentialPardonForm form3("President");
+	try {
+		Bureaucrat bureaucrat("Giorgio", 2); // error with 200
+		ShrubberyCreationForm form1("Shrubby 🌳");
+		RobotomyRequestForm form2("Robooty 🍑🤖");
+		PresidentialPardonForm form3("President 👁️");
 
-        std::cout << "\n--------------- Form 1 ( Shrubbery ) ---------------" << std::endl;
-        bureaucrat.signForm(form1);
-        bureaucrat.executeForm(form1);
-        std::cout << "\n--------------- Form 2 ( Robotomy ) ---------------" << std::endl;
-        bureaucrat.signForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
-        bureaucrat.signForm(form3);
-        bureaucrat.executeForm(form3);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-    return EXIT_SUCCESS;
+		std::cout << CYAN BOLD "\n-----FORM 1 (Shrubby 🌳)-----\n" RESET << std::endl;
+		bureaucrat.signForm(form1);
+		bureaucrat.executeForm(form1);
+		std::cout << CYAN BOLD "\n-----FORM 2 (Robooty 🍑🤖)-----\n" RESET << std::endl;
+		//bureaucrat.signForm(form2);
+		bureaucrat.executeForm(form2);
+		bureaucrat.executeForm(form2);
+		bureaucrat.executeForm(form2);
+		std::cout << CYAN BOLD "\n-----FORM 2 (President 👁️)-----\n" RESET << std::endl;
+		bureaucrat.signForm(form3);
+		bureaucrat.executeForm(form3);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	return EXIT_SUCCESS;
 }

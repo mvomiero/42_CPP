@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:29 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 13:48:00 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:23:29 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat( const std::string& name, int grade ) : _name(name), _gra
 }
 
 /* can't use the copy assignment operator since name is a const and has therfore
-	to be initializes when the object is instantiated */
+	to be initialized when the object is instantiated */
 Bureaucrat::Bureaucrat( const Bureaucrat& src ) : _name(src._name), _grade(src._grade) {}
 
 Bureaucrat::~Bureaucrat() {}
