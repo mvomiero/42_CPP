@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:02:07 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 16:21:56 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/10 12:06:39 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ public:
 	/* ---------------- Exception Classes ---------------- */
 	class GradeTooHighException : public std::exception {
 		public:
-			virtual const char* what() const throw() { return "Grade too high"; }
+			virtual const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception {
 		public:
-			virtual const char* what() const throw() { return "Grade too low"; }
+			virtual const char* what() const throw();
 	};
 };
 

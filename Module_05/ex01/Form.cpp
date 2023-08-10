@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:02:17 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 17:10:00 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/10 12:06:26 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ void	Form::gradeRangeCheck() {
 	if (_gradeToSign > 150)
 		throw Form::GradeTooLowException();
 }
+
+const char* Form::GradeTooHighException::what() const throw() { return "Grade too high"; }
+
+const char* Form::GradeTooLowException::what() const throw() { return "Grade too low"; }
 
 std::ostream&   operator<<( std::ostream& o, const Form& rhs ) {
 	o << "\nFORM INFO" << std::endl
