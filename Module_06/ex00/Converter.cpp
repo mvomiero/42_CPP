@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/12 16:55:58 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:56:50 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Converter& Converter::operator=( const Converter& rhs ) {
 	return *this;
 }
 
-bool    Converter::isLiterals( void ) const {
+/* bool    Converter::isLiterals( void ) const {
 	if ( ( _impossible ) || ( _str.compare( "nan" ) == 0 ) || ( _str.compare( "nanf" ) == 0 )
 		|| ( _str.compare( "+inf" ) == 0 ) || ( _str.compare( "+inff" ) == 0 ) 
 		|| ( _str.compare( "-inf" ) == 0 ) || ( _str.compare( "-inff" ) == 0 ) 
@@ -46,7 +46,7 @@ bool    Converter::isLiterals( void ) const {
 			return true;
 	} 
 	return false;
-}
+} */
 
 void    Converter::printChar( void ) const {
 	if ( /* this->isLiterals() || */ ( !std::isprint( _int ) && ( _int >= 127 ) ) ) {
