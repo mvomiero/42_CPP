@@ -6,12 +6,14 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/12 16:36:22 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:55:58 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Converter.hpp"
+#include <cmath>
+
 
 Converter::Converter( void ) {
 	this->_char = '\0';
@@ -47,7 +49,7 @@ bool    Converter::isLiterals( void ) const {
 }
 
 void    Converter::printChar( void ) const {
-	if ( this->isLiterals() || ( !std::isprint( _int ) && ( _int >= 127 ) ) ) {
+	if ( /* this->isLiterals() || */ ( !std::isprint( _int ) && ( _int >= 127 ) ) ) {
 		std::cout << "Impossible";
 	} else if ( !std::isprint( this->_int ) ) {
 		std::cout << "Non displayable";
@@ -59,7 +61,7 @@ void    Converter::printChar( void ) const {
 
 void    Converter::printInt( void ) const {
 	//if ( this->isLiterals() || ( !std::isprint( _n ) && ( _n >= 127 ) ) ) {
-	if ( this->isLiterals()  ) {
+	if ( _impossible  ) {
 		std::cout << "Impossible";
 	} else {
 		std::cout << _int;
@@ -143,9 +145,9 @@ void    Converter::printFloat( void ) const {
 		std::cout << "+inff";
 	} else if ( _str.compare( "-inff" ) == 0 || _str.compare( "-inf" ) == 0 ) {
 		std::cout << "-inff";
-	} else if ( _impossible ) {
+	} else */ if ( _impossible ) {
 		std::cout << "Impossible";
-	} else */ {
+	} else  {
 		if ( _float - static_cast< int > ( _float ) == 0 ) {
 			std::cout << _float << ".0f";
 		} else {
@@ -162,9 +164,9 @@ void    Converter::printDouble( void ) const {
 		std::cout << "+inf";
 	} else if ( _str.compare( "-inff" ) == 0 || _str.compare( "-inf" ) == 0 ) {
 		std::cout << "-inf";
-	} else if ( _impossible ) {
+	} else */ if ( _impossible ) {
 		std::cout << "Impossible";
-	} else  */{
+	} else  {
 		if ( _double - static_cast< int > ( _double ) == 0 ) {
 			std::cout << _double << ".0";
 		} else {
@@ -174,6 +176,7 @@ void    Converter::printDouble( void ) const {
 	}
 	std::cout << std::endl;
 	std::cout << "type: " << _type << std::endl;
+	std::cout << "impossible: " << _impossible << std::endl;
 
 }
 
@@ -186,14 +189,14 @@ void    Converter::setType( void ) {
 		_type = FLOAT;
 	} else if ( isDouble() ) {
 		_type = DOUBLE;
-	} else if ( isLiterals() ) {
-		_type = LITERALS;
+	/*}  else if ( isLiterals() ) {
+		_type = LITERALS; */
 	} else {
 		_type = NONE;
 	}
 }
 
-bool    Converter::isImpossible( void ) {
+/* bool    Converter::isImpossible( void ) {
 	try
 	{
 		if ( _type == INT ) {
@@ -210,7 +213,41 @@ bool    Converter::isImpossible( void ) {
 		return true;
 	}
 	return false;
+} */
+
+bool Converter::isImpossible() {
+    try {
+        if (_type == INT) {
+            try {
+                _int = std::stoi(_str);
+            } catch (const std::out_of_range&) {
+                _impossible = true;
+                return true;
+            }
+        } else if (_type == FLOAT) {
+            try {
+                _float = std::stof(_str);
+            } catch (const std::out_of_range&) {
+                _impossible = true;
+                return true;
+            }
+        } else if (_type == DOUBLE) {
+            try {
+                _double = std::stod(_str);
+            } catch (const std::out_of_range&) {
+                _impossible = true;
+                return true;
+            }
+        }
+    } catch (std::exception& e) {
+        _impossible = true;
+        return true;
+    }
+    
+    _impossible = false;
+    return false;
 }
+
 
 void    Converter::convert( void ) {
 	if ( isImpossible() )
