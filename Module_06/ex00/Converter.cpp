@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/12 16:31:06 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:36:22 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ bool    Converter::isInt( void ) const {
 }
 
 bool Converter::isDouble( void ) const {
-
+	if ( _str == "nan" || _str == "+inf" || _str == "-inf" )
+		return true;
 	if ( _str.find( '.' ) == std::string::npos || _str.find( '.' ) == 0 
 		|| _str.find( '.' ) == _str.length() - 1 )
 		return false;
@@ -116,7 +117,7 @@ bool Converter::isDouble( void ) const {
 }
 
 bool    Converter::isFloat ( void ) const {
-	if (_str == "nanf")
+	if ( _str == "nanf" || _str == "+inff" || _str == "-inff" )
 		return true;
 	if ( _str.find( '.' ) == std::string::npos || _str.back() != 'f' 
 		|| _str.find( '.' ) == 0 || _str.find( '.' ) == _str.length() - 2 )
@@ -155,7 +156,7 @@ void    Converter::printFloat( void ) const {
 }
 
 void    Converter::printDouble( void ) const {
-	if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
+	/* if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
 		std::cout << "nan";
 	} else if ( _str.compare( "+inff" ) == 0 || _str.compare( "+inf" ) == 0 ) {
 		std::cout << "+inf";
@@ -163,11 +164,12 @@ void    Converter::printDouble( void ) const {
 		std::cout << "-inf";
 	} else if ( _impossible ) {
 		std::cout << "Impossible";
-	} else {
+	} else  */{
 		if ( _double - static_cast< int > ( _double ) == 0 ) {
 			std::cout << _double << ".0";
 		} else {
-			std::cout << _double << "f";
+			//std::cout << _double << "f";
+			std::cout << _double ;
 		}
 	}
 	std::cout << std::endl;
