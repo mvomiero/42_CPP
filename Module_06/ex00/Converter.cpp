@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/12 16:56:50 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/13 12:52:24 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,23 @@ Converter& Converter::operator=( const Converter& rhs ) {
 	} 
 	return false;
 } */
+static bool isSpecialValue(const std::string& _str) {
+	if ( _str == "nan" || _str == "+inf" || _str == "-inf" )
+		return true;
+	if ( _str == "nanf" || _str == "+inff" || _str == "-inff" )
+		return true;
+	return false;
+}
 
 void    Converter::printChar( void ) const {
-	if ( /* this->isLiterals() || */ ( !std::isprint( _int ) && ( _int >= 127 ) ) ) {
+	if ( isSpecialValue(_str) || ( !std::isprint( _int ) && ( _int >= 127 || _int < 0 ) ) 
+			|| _impossible ) {
 		std::cout << "Impossible";
 	} else if ( !std::isprint( this->_int ) ) {
 		std::cout << "Non displayable";
 	} else {
 		std::cout << "'" << _char << "'";
 	}
-	std::cout << std::endl;
-}
-
-void    Converter::printInt( void ) const {
-	//if ( this->isLiterals() || ( !std::isprint( _n ) && ( _n >= 127 ) ) ) {
-	if ( _impossible  ) {
-		std::cout << "Impossible";
-	} else {
-		std::cout << _int;
-	}
-	
 	std::cout << std::endl;
 }
 
@@ -138,6 +135,19 @@ bool    Converter::isFloat ( void ) const {
 	return true;
 }
 
+
+
+void    Converter::printInt( void ) const {
+	//if ( this->isLiterals() || ( !std::isprint( _n ) && ( _n >= 127 ) ) ) {
+	if ( _impossible || isSpecialValue(_str) ) {
+		std::cout << "Impossible";
+	} else {
+		std::cout << _int;
+	}
+	
+	std::cout << std::endl;
+}
+
 void    Converter::printFloat( void ) const {
 	/* if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
 		std::cout << "nanf";
@@ -177,6 +187,7 @@ void    Converter::printDouble( void ) const {
 	std::cout << std::endl;
 	std::cout << "type: " << _type << std::endl;
 	std::cout << "impossible: " << _impossible << std::endl;
+	std::cout << "int: " << _int << std::endl;
 
 }
 

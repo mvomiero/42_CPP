@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/08/12 15:14:39 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/08/13 12:28:31 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ fclean: clean
 
 re: fclean all
 
-verbose:
-	@make re INC="-DVERBOSE=1" 
+test:
+	./test_converter.sh
+
 
 .PHONY: all re clean fclean
