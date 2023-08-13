@@ -32,6 +32,10 @@ test_conversion "0.0"
 test_conversion "-4.2"
 test_conversion "123.456"
 
+# Int max and greather then int max
+test_conversion "2147483647"
+test_conversion "2147483649"
+
 # Test special cases
 test_conversion "nan"
 test_conversion "nanf"
