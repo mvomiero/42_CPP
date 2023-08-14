@@ -6,10 +6,9 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 14:46:34 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:57:39 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "Converter.hpp"
 #include <cmath>
@@ -34,11 +33,12 @@ Converter& Converter::operator=( const Converter& rhs ) {
 		_int = rhs._int;
 		_float = rhs._float;
 		_char = rhs._char;
+		_double = rhs._double;
 	}
 	return *this;
 }
 
-/* SET INPUT */
+/* SET STRING INPUT */
 
 void Converter::setStr( std::string str ) {
 	_str = str;
@@ -48,17 +48,14 @@ void Converter::setStr( std::string str ) {
 	}
 }
 
-
-
 /* CHECK */
 
-bool    Converter::isChar( void ) const {
-	//return _str.length() == 1 && std::isalpha( _str[0] ) && std::isprint( _str[0] );
+bool	Converter::isChar( void ) const {
 	return _str.length() == 1 && std::isprint( _str[0] );
 }
 
-bool    Converter::isInt( void ) const {
-	int    j = 0;
+bool	Converter::isInt( void ) const {
+	int	j = 0;
 	if ( _str[j] == '-' || _str[j] == '+' )
 		j++;
 	for ( int i( j ); i < ( int ) _str.length(); i++ ) {
@@ -88,7 +85,7 @@ bool Converter::isDouble( void ) const {
 	return true;
 }
 
-bool    Converter::isFloat ( void ) const {
+bool	Converter::isFloat ( void ) const {
 	if ( _str == "nanf" || _str == "+inff" || _str == "-inff" )
 		return true;
 	if ( _str.find( '.' ) == std::string::npos || _str.back() != 'f' 
@@ -118,7 +115,7 @@ static bool isSpecialValue(const std::string& _str) {
 
 /* PRINT */
 
-void    Converter::printChar( void ) const {
+void	Converter::printChar( void ) const {
 	if ( isSpecialValue(_str) || ( !std::isprint( _int ) && ( _int >= 127 || _int < 0 ) ) 
 			|| _impossible ) {
 		std::cout << "Impossible";
@@ -131,25 +128,17 @@ void    Converter::printChar( void ) const {
 }
 
 
-void    Converter::printInt( void ) const {
-	//if ( this->isLiterals() || ( !std::isprint( _n ) && ( _n >= 127 ) ) ) {
+void	Converter::printInt( void ) const {
 	if ( _impossible || isSpecialValue(_str) ) {
 		std::cout << "Impossible";
 	} else {
 		std::cout << _int;
 	}
-	
 	std::cout << std::endl;
 }
 
-void    Converter::printFloat( void ) const {
-	/* if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
-		std::cout << "nanf";
-	} else if ( _str.compare( "+inff" ) == 0 || _str.compare( "+inf" ) == 0 ) {
-		std::cout << "+inff";
-	} else if ( _str.compare( "-inff" ) == 0 || _str.compare( "-inf" ) == 0 ) {
-		std::cout << "-inff";
-	} else */ if ( _impossible ) {
+void	Converter::printFloat( void ) const {
+	if ( _impossible ) {
 		std::cout << "Impossible";
 	} else  {
 		if ( _float - static_cast< int > ( _float ) == 0 ) {
@@ -161,33 +150,24 @@ void    Converter::printFloat( void ) const {
 	std::cout << std::endl;
 }
 
-void    Converter::printDouble( void ) const {
-	/* if ( _str.compare( "nan" ) == 0 || _str.compare( "nanf" ) == 0 ) {
-		std::cout << "nan";
-	} else if ( _str.compare( "+inff" ) == 0 || _str.compare( "+inf" ) == 0 ) {
-		std::cout << "+inf";
-	} else if ( _str.compare( "-inff" ) == 0 || _str.compare( "-inf" ) == 0 ) {
-		std::cout << "-inf";
-	} else */ if ( _impossible ) {
+void	Converter::printDouble( void ) const {
+	if ( _impossible ) {
 		std::cout << "Impossible";
 	} else  {
 		if ( _double - static_cast< int > ( _double ) == 0 ) {
 			std::cout << _double << ".0";
 		} else {
-			//std::cout << _double << "f";
 			std::cout << _double ;
 		}
 	}
 	std::cout << std::endl;
-	std::cout << "type: " << _type << std::endl;
-	std::cout << "impossible: " << _impossible << std::endl;
-	std::cout << "int: " << _int << std::endl;
-
 }
 
 /* CONVERSION */
 
-void    Converter::setType( void ) {
+/* 1: checking the type of the input string
+ */
+void	Converter::setType( void ) {
 	 if ( isInt() ) {
 		_type = INT;
 	} else if ( isChar() ) {
@@ -196,67 +176,47 @@ void    Converter::setType( void ) {
 		_type = FLOAT;
 	} else if ( isDouble() ) {
 		_type = DOUBLE;
-	/*}  else if ( isLiterals() ) {
-		_type = LITERALS; */
 	} else {
 		_type = NONE;
 	}
 }
 
-/* bool    Converter::isImpossible( void ) {
-	try
-	{
-		if ( _type == INT ) {
-			_int = std::stoi( _str );
-		} else if ( _type == FLOAT ) {
-			_float = std::stof( _str );
-		} else if ( _type == DOUBLE ) {
-			_double = std::stod( _str );
+/* 2: checking if the conversion to the designated datatype is possible or if it fails.
+	For example in case of overflow, a std::out_of_range& exception is thrown.
+	without the try and catch blocks the program would crash but in this way it can just
+	go on to the execution.
+ */
+bool Converter::isImpossible() {
+	if (_type == INT) {
+		try {
+			_int = std::stoi(_str);
+		} catch (const std::exception&) {
+			_impossible = true;
+			return true;
+		}
+	} else if (_type == FLOAT) {
+		try {
+			_float = std::stof(_str);
+		} catch (const std::exception&) {
+			_impossible = true;
+			return true;
+		}
+	} else if (_type == DOUBLE) {
+		try {
+			_double = std::stod(_str);
+		} catch (const std::exception&) {
+			_impossible = true;
+			return true;
 		}
 	}
-	catch ( std::exception& e )
-	{
-		_impossible = true;
-		return true;
-	}
-	return false;
-} */
 
-bool Converter::isImpossible() {
-    try {
-        if (_type == INT) {
-            try {
-                _int = std::stoi(_str);
-            } catch (const std::out_of_range&) {
-                _impossible = true;
-                return true;
-            }
-        } else if (_type == FLOAT) {
-            try {
-                _float = std::stof(_str);
-            } catch (const std::out_of_range&) {
-                _impossible = true;
-                return true;
-            }
-        } else if (_type == DOUBLE) {
-            try {
-                _double = std::stod(_str);
-            } catch (const std::out_of_range&) {
-                _impossible = true;
-                return true;
-            }
-        }
-    } catch (std::exception& e) {
-        _impossible = true;
-        return true;
-    }
-    
-    _impossible = false;
-    return false;
+	_impossible = false;
+	return false;
 }
 
-
-void    Converter::convert( void ) {
+/* 3: conversion, using static_cast, depending the datatype.
+ */
+void	Converter::convert( void ) {
 	if ( isImpossible() )
 		return;
 	switch ( _type ) {
@@ -291,7 +251,7 @@ void    Converter::convert( void ) {
 
 /* OPERATOR OVERLOAD */
 
-std::ostream&    operator<<( std::ostream& out, const Converter& rhs ) {
+std::ostream&	operator<<( std::ostream& out, const Converter& rhs ) {
 	out << "char: "; rhs.printChar();
 	out << "int: "; rhs.printInt();
 	out << "float: "; rhs.printFloat();
