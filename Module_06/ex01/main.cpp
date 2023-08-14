@@ -1,8 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/14 16:56:36 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/08/14 17:12:15 by mvomiero         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-//#include <cstdint>
 #include "colors.h"
 
+/* ABSTRACT:
+	Creating the Serializer static class with the methods serialize() and deserialize()
+	to reinterpret a pointer value to int and vice versa using reinterpret_cast.
 
+	-- serialize() -> from pointer to int
+	-- deserialize() -> from int to pointer
+ */
+
+/* REINTERPRET CAST:
+	most powerful but most dangerous as well cast type in c++, it does a bitwise
+	reinterpretation of the data. To use wit caution!
+	some cases are for example to convert two pointers that are not realted or, like
+	in this case, to convert a pointer to its numeric value or vice versa.
+		E.g. int intValue = reinterpret_cast<int>(somePointer);
+ */
+
+/* uniptr_t:
+	a datatype (unsigned int) that can store any valid pointer value (something like size_t)
+ */
+
+/* Data:
+	Just the non-empty data structure where the functions of Serializer are applied
+ */
 class Data {
 public:
 	~Data( void ) {};
@@ -20,13 +53,9 @@ private:
 	Data& operator=( const Data& rhs );
 };
 
-
-/* Static functions:
-	using the static keyword before a member function in a C++ class changes its
-	behavior to be associated with the class itself rather than with instances.
-	(like you don't have to instanciate an object to use them, you don't have the 
-	this pointer, ecc.) So they have a more general purpose.
-*/
+/* Serializer:
+	the two static functions required from the assignment
+ */
 class Serializer {
 public:
 
