@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/08/13 12:28:31 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/08/14 13:44:38 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ INC			= -I $(INC_PATH)
 SRC_PATH = ./
 #SRC_PATH = ./sources/
 SRC		=	main.cpp \
-			Converter.cpp
+			Converter.cpp \
+			ScalarConverter.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
