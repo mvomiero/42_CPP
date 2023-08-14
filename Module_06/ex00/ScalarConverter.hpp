@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 13:28:58 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 13:52:03 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:04:13 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include "Converter.hpp"
 
+/*	static class so all except the needed function is private in order to avoid instantiation
+ */
 class ScalarConverter {
 private:
 	ScalarConverter();
@@ -22,5 +24,5 @@ private:
 	ScalarConverter& operator=(const ScalarConverter& other);
 
 public:
-	static void convertAndPrint(const std::string& str);
+	static void convert(const std::string& str);
 };

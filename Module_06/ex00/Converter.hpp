@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:15 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 14:40:48 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:59:16 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ private:
 	bool	_impossible;
 
 	std::string	_str;	// input string
-	e_type		_type;	// input type
+	e_type		_type;	// input type - result of setType()
 
 public:
 	Converter( void );
@@ -48,7 +48,7 @@ public:
 
 	void	convert( void ); // function to convert
 
-	void	setStr( std::string str );
+	void	setStr( std::string str ); // input string
 
 	void	setType( void ); // to determine the type
 
@@ -71,6 +71,8 @@ public:
 		virtual const char* what() const throw() { return "Unknown type"; }
 	};
 };
+
+/* Operator overload */
 
 std::ostream& operator<<( std::ostream& out, const Converter& rhs );
 

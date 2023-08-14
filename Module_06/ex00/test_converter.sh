@@ -6,11 +6,10 @@ RESET='\033[0m'
 PROGRAM="./converter"
 
 test_conversion() {
-    echo -e "${YELLOW}Testing input: $1 ${RESET}"
-    $PROGRAM "$1"
-    echo -e "${YELLOW}---------------------${RESET}"
+	echo -e "${YELLOW}Testing input: $1 ${RESET}"
+	$PROGRAM "$1"
+	echo -e "${YELLOW}---------------------${RESET}"
 }
-
 
 # Test char values
 test_conversion "a"
