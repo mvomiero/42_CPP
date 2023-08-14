@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/13 12:52:24 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/14 12:40:38 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ Converter& Converter::operator=( const Converter& rhs ) {
 	return *this;
 }
 
-/* bool    Converter::isLiterals( void ) const {
-	if ( ( _impossible ) || ( _str.compare( "nan" ) == 0 ) || ( _str.compare( "nanf" ) == 0 )
-		|| ( _str.compare( "+inf" ) == 0 ) || ( _str.compare( "+inff" ) == 0 ) 
-		|| ( _str.compare( "-inf" ) == 0 ) || ( _str.compare( "-inff" ) == 0 ) 
-		|| ( _str.compare( "-inff" ) == 0 ) || ( _str.compare( "-inff" ) == 0 )  
-		|| ( _str.compare( "+inff" ) == 0 ) || ( _str.compare( "+inff" ) == 0 ) ) {
-			return true;
-	} 
-	return false;
-} */
 static bool isSpecialValue(const std::string& _str) {
 	if ( _str == "nan" || _str == "+inf" || _str == "-inf" )
 		return true;
@@ -70,14 +60,11 @@ void    Converter::printChar( void ) const {
 void Converter::setStr( std::string str ) {
 	this->_str = str;
 	this->setType();
-	if ( getType() == NONE ) {
+	if ( _type == NONE ) {
 		throw Converter::ConverterException();
 	}
 }
 
-e_type  Converter::getType( void ) const {
-	return this->_type;
-}
 
 bool    Converter::isChar( void ) const {
 	//return _str.length() == 1 && std::isalpha( _str[0] ) && std::isprint( _str[0] );
