@@ -52,3 +52,10 @@ Repetition and Exceptions
 * ex00 > **Mommy, when I grow up, I want to be a bureaucrat!** - *Exceptions: using try and catch, declaring subclasses of std::exception, etc.*
 * ex01 > **Form up, maggots!** - *like the exercise before, just more complex*
 * ex02 > **No, you need form 28B, not 28C...** - *like the exercise before, just more complex, different exceptions thrown depending the properties of the objects*
+
+## Module 06
+C++ casts
+
+* ex00 > **Conversion of scalar types** - *A converter from a string input to char, int, float, double using static casting. (too much parsing and sting manipulation in my opinion)*
+* ex01 > **Serialization** - *Creating the Serializer static class with the methods serialize() and deserialize() to reinterpret a pointer value to int and vice versa using reinterpret_cast.*
+* ex02 > **Identify real type** - *two functions to generate and identify an object: generate() --> just returns a pointer to a new element of the derived class; identify() -> static polymorphism depending the input, which is either a pointer of a reference. With this two functions we see how dynamic_casting can be useful to identify the class of a given element.*
