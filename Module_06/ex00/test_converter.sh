@@ -47,6 +47,9 @@ test_conversion "-inff"
 # Test very large numbers
 test_conversion "78658768798776587587987"
 
+# Unknown input
+test_conversion "sdlfksdkf"
+
 # Add more test cases as needed
 
 echo "Tests completed"

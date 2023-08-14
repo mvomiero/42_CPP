@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:15 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 13:23:06 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:40:48 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ private:
 
 	bool	_impossible;
 
-	std::string	_str;
-	e_type		_type;
+	std::string	_str;	// input string
+	e_type		_type;	// input type
 
 public:
 	Converter( void );
@@ -46,12 +46,13 @@ public:
 
 	Converter& operator=( const Converter& rhs );
 
-	void	convert( void );
+	void	convert( void ); // function to convert
 
 	void	setStr( std::string str );
 
-	void	setType( void );
+	void	setType( void ); // to determine the type
 
+	/* CHECK */
 	bool	isChar( void ) const;
 	bool	isInt( void ) const;
 	bool	isFloat( void ) const;
@@ -59,11 +60,13 @@ public:
 
 	bool	isImpossible( void );
 
+	/* PRINT */
 	void	printChar( void ) const ;
 	void	printInt( void ) const ;
 	void	printFloat( void ) const ;
 	void	printDouble( void ) const ;
 
+	/* EXCEPTIONS */
 	class ConverterException : public std::exception {
 		virtual const char* what() const throw() { return "Unknown type"; }
 	};

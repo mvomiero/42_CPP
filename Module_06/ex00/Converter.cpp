@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 12:40:38 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:46:34 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include "Converter.hpp"
 #include <cmath>
 
+/* ORTHODOX CANONICAL FORM */
 
 Converter::Converter( void ) {
-	this->_char = '\0';
-	this->_int = 0;
-	this->_float = 0.0f;
-	this->_double = 0.0;
+	_char = '\0';
+	_int = 0;
+	_float = 0.0f;
+	_double = 0.0;
 }
 
 Converter::Converter( const Converter& src ) {
@@ -30,41 +31,26 @@ Converter::~Converter( void ) {}
 
 Converter& Converter::operator=( const Converter& rhs ) {
 	if ( this != &rhs ) {
-		this->_int = rhs._int;
-		this->_float = rhs._float;
-		this->_char = rhs._char;
+		_int = rhs._int;
+		_float = rhs._float;
+		_char = rhs._char;
 	}
 	return *this;
 }
 
-static bool isSpecialValue(const std::string& _str) {
-	if ( _str == "nan" || _str == "+inf" || _str == "-inf" )
-		return true;
-	if ( _str == "nanf" || _str == "+inff" || _str == "-inff" )
-		return true;
-	return false;
-}
-
-void    Converter::printChar( void ) const {
-	if ( isSpecialValue(_str) || ( !std::isprint( _int ) && ( _int >= 127 || _int < 0 ) ) 
-			|| _impossible ) {
-		std::cout << "Impossible";
-	} else if ( !std::isprint( this->_int ) ) {
-		std::cout << "Non displayable";
-	} else {
-		std::cout << "'" << _char << "'";
-	}
-	std::cout << std::endl;
-}
+/* SET INPUT */
 
 void Converter::setStr( std::string str ) {
-	this->_str = str;
+	_str = str;
 	this->setType();
 	if ( _type == NONE ) {
 		throw Converter::ConverterException();
 	}
 }
 
+
+
+/* CHECK */
 
 bool    Converter::isChar( void ) const {
 	//return _str.length() == 1 && std::isalpha( _str[0] ) && std::isprint( _str[0] );
@@ -122,6 +108,27 @@ bool    Converter::isFloat ( void ) const {
 	return true;
 }
 
+static bool isSpecialValue(const std::string& _str) {
+	if ( _str == "nan" || _str == "+inf" || _str == "-inf" )
+		return true;
+	if ( _str == "nanf" || _str == "+inff" || _str == "-inff" )
+		return true;
+	return false;
+}
+
+/* PRINT */
+
+void    Converter::printChar( void ) const {
+	if ( isSpecialValue(_str) || ( !std::isprint( _int ) && ( _int >= 127 || _int < 0 ) ) 
+			|| _impossible ) {
+		std::cout << "Impossible";
+	} else if ( !std::isprint( _int ) ) {
+		std::cout << "Non displayable";
+	} else {
+		std::cout << "'" << _char << "'";
+	}
+	std::cout << std::endl;
+}
 
 
 void    Converter::printInt( void ) const {
@@ -177,6 +184,8 @@ void    Converter::printDouble( void ) const {
 	std::cout << "int: " << _int << std::endl;
 
 }
+
+/* CONVERSION */
 
 void    Converter::setType( void ) {
 	 if ( isInt() ) {
@@ -279,6 +288,8 @@ void    Converter::convert( void ) {
 		break;
 	}
 }
+
+/* OPERATOR OVERLOAD */
 
 std::ostream&    operator<<( std::ostream& out, const Converter& rhs ) {
 	out << "char: "; rhs.printChar();
