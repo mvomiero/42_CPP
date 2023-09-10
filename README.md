@@ -59,3 +59,10 @@ C++ casts
 * ex00 > **Conversion of scalar types** - *A converter from a string input to char, int, float, double using static casting. (too much parsing and sting manipulation in my opinion)*
 * ex01 > **Serialization** - *Creating the Serializer static class with the methods serialize() and deserialize() to reinterpret a pointer value to int and vice versa using reinterpret_cast.*
 * ex02 > **Identify real type** - *two functions to generate and identify an object: generate() --> just returns a pointer to a new element of the derived class; identify() -> static polymorphism depending the input, which is either a pointer of a reference. With this two functions we see how dynamic_casting can be useful to identify the class of a given element.*
+
+## Module 07
+C++ templates
+
+* ex00 > **Start with a few functions** - *function templates to implement min, max and swap functions*
+* ex01 > **Iter** - *using function templates to apply the same function to all the elements of an array*
+* ex02 > **Array** - *devoloping template for a Class that stores an dynamically allocated array of elements of type T, with a constructor that accepts the size and a overload of the [] operator (if the index is out of the bounds, an exception is thrown)*
