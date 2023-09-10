@@ -65,4 +65,4 @@ C++ templates
 
 * ex00 > **Start with a few functions** - *function templates to implement min, max and swap functions*
 * ex01 > **Iter** - *using function templates to apply the same function to all the elements of an array*
-* ex02 > **Array** - *devoloping template for a Class that stores an dynamically allocated array of elements of type T, with a constructor that accepts the size and a overload of the [] operator (if the index is out of the bounds, an exception is thrown)*
+* ex02 > **Array** - *devoloping a template for a Class that stores a dynamically allocated array of elements of type T. The constructor accepts as parameter the size of the array.The [] operator is overloadedto throw an exception, if the index is out of the bounds.*
