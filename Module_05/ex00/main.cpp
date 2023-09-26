@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 13:35:56 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:13:42 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int main( void )
 		std::cout << high << std::endl;
 		std::cout << low << std::endl;
 
+	std::cout << std::endl << "Incrementing and decrementing grades:" << std::endl;
+
 	try {
 		high.incrementGrade();
 		std::cout << high << std::endl;
@@ -57,6 +59,14 @@ int main( void )
 
 	try {
 		low.decrementGrade();
+	} catch (Bureaucrat::GradeTooLowException &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "Trying to create a bureaucrat with a grade too high:" << std::endl;
+	
+	try {
+		Bureaucrat not_working("Low", 151);
 	} catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << e.what() << std::endl;
 	}
