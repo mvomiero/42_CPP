@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/09 17:36:19 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:38:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int main( void )
 		// the grade is too low, the form won't be signed
 		Bureaucrat bureaucrat("Bureaucrat",11);
 		Form form("Form", 10);
-		std::cout << CYAN BOLD "\n1️⃣ First try\n" RESET << std::endl;
+		std::cout << CYAN BOLD "\n1️⃣  First try\n" RESET << std::endl;
+		std::cout << "Initial value of the _signed variable: " << form.getSigned() << std::endl;
 		bureaucrat.signForm(form);
 		std::cout << form  << std::endl;
 		std::cout << BLUE << bureaucrat << RESET << std::endl;
@@ -37,7 +38,7 @@ int main( void )
 		bureaucrat.incrementGrade();
 
 		// the bureaucrat's grade is incremented, will be enough to sign the form
-		std::cout << CYAN BOLD "\n2️⃣ Second try\n" RESET << std::endl;
+		std::cout << CYAN BOLD "\n2️⃣  Second try\n" RESET << std::endl;
 		bureaucrat.signForm(form);
 		std::cout << form << std::endl;
 		std::cout << BLUE << bureaucrat << RESET << std::endl;

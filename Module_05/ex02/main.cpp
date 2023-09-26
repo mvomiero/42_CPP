@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 16:00:30 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/09/26 18:23:52 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 	to perform some operations on some forms, but not on all of them. 
 */
 
+#include <cstdlib>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "colors.h"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <cstdlib>
 
 int main( void )
 {

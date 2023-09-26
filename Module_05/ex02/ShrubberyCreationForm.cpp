@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:32:54 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 13:05:40 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:55:18 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    ShrubberyCreationForm::execute( const Bureaucrat& executor ) const {
 		throw AForm::GradeTooLowException();
 	}
 
-	std::ofstream file( this->getName() + "_shrubbery" );
+	std::ofstream file((this->getName() + "_shrubbery").c_str());
 	file << "                            '.,\n" <<
 "                              'b      *\n" <<
 "                               '$    #.\n" <<

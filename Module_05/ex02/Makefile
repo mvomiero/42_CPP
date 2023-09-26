@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvomiero <mvomiero@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/09/26 17:07:31 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/09/26 18:28:51 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ clean:
 fclean: clean
 	@echo "removing executable"
 	rm -f $(NAME)
+	rm -f ShrubberyCreationForm_shrubbery
 
 re: fclean all
 

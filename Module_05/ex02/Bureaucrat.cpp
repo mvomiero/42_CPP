@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:13:29 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 14:23:29 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/09/26 18:13:11 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	Bureaucrat::signForm( AForm& AForm ) {
 void    Bureaucrat::executeForm( const AForm& form ) const {
     try {
         form.execute( *this );
+		std::cout << BG_WHITE << _name << " executed " << form.getName() << RESET << std::endl;
     } catch ( std::exception& e ) {
         std::cout << _name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
     }
