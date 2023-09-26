@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mvomiero <mvomiero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/08/13 15:46:14 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/09/26 17:07:31 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Colors
-YELLOW		=	\x1b[33m
-RESET		=	\x1b[0m
+YELLOW		=	\e[33;1m
+RESET		=	\e[0m
 
 # Program file name
 NAME	= serializer

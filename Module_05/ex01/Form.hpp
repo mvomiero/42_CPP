@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mvomiero <mvomiero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:02:07 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/10 12:13:27 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:06:27 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define FORM_HPP
 
 #include "Bureaucrat.hpp"
+#include <cstdlib>
 
 class Bureaucrat;
 
