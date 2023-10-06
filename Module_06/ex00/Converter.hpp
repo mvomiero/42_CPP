@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:15 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 15:59:16 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:33:54 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 # define CONVERTER_HPP
 
 #include <iostream>
-#include <fstream>
-#include <limits>
+#include <cstdlib>
+//#include <fstream>
+//#include <limits>
 
 enum e_type {
 	NONE,

@@ -6,11 +6,12 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:08:06 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 17:38:56 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:32:31 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include "colors.h"
 
 /* ABSTRACT:

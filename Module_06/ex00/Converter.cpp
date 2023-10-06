@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 15:57:39 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:46:49 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool Converter::isDouble( void ) const {
 bool	Converter::isFloat ( void ) const {
 	if ( _str == "nanf" || _str == "+inff" || _str == "-inff" )
 		return true;
-	if ( _str.find( '.' ) == std::string::npos || _str.back() != 'f' 
+	if ( _str.find( '.' ) == std::string::npos || _str[_str.size() - 1] != 'f' 
 		|| _str.find( '.' ) == 0 || _str.find( '.' ) == _str.length() - 2 )
 		return false;
 	int found = 0;
@@ -189,21 +189,21 @@ void	Converter::setType( void ) {
 bool Converter::isImpossible() {
 	if (_type == INT) {
 		try {
-			_int = std::stoi(_str);
+			_int = atoi(_str.c_str());
 		} catch (const std::exception&) {
 			_impossible = true;
 			return true;
 		}
 	} else if (_type == FLOAT) {
 		try {
-			_float = std::stof(_str);
+			_float = static_cast<float>(atof(_str.c_str()));
 		} catch (const std::exception&) {
 			_impossible = true;
 			return true;
 		}
 	} else if (_type == DOUBLE) {
 		try {
-			_double = std::stod(_str);
+			_double = atof(_str.c_str());
 		} catch (const std::exception&) {
 			_impossible = true;
 			return true;
@@ -227,19 +227,19 @@ void	Converter::convert( void ) {
 		_double = static_cast< double >( _char );
 		break;
 	case INT:
-		_int = std::stoi( _str );
+		_int = atoi(_str.c_str());
 		_float = static_cast< float >( _int );
 		_double = static_cast< double >( _int );
 		_char = static_cast< char >( _int );
 		break;
 	case FLOAT:
-		_float = std::stof( _str );
+		_float = static_cast<float>(atof(_str.c_str()));
 		_int = static_cast< int >( _float );
 		_double = static_cast< double >( _float );
 		_char = static_cast< char >( _float );
 		break;
 	case DOUBLE:
-		_double = std::stod( _str );
+		_double = atof(_str.c_str());
 		_int = static_cast< int >( _double );
 		_float = static_cast< float >( _double );
 		_char = static_cast< char >( _double );

@@ -6,11 +6,12 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:56:36 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 17:13:24 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:41:46 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include "colors.h"
 
 /* ABSTRACT:
@@ -58,11 +59,11 @@ private:
 class Serializer {
 public:
 
-	static uintptr_t serialize(Data* ptr) {
-		return reinterpret_cast<uintptr_t>(ptr);
+	static __intptr_t serialize(Data* ptr) {
+		return reinterpret_cast<__intptr_t>(ptr);
 	}
 
-	static Data* deserialize(uintptr_t raw) {
+	static Data* deserialize(__intptr_t raw) {
 		return reinterpret_cast<Data*>(raw);
 	}
 private:
@@ -80,7 +81,7 @@ int main() {
 	Data dataObj(42);
 
 	// Serialize the pointer to the Data object
-	uintptr_t serializedPtr = Serializer::serialize(&dataObj);
+	__intptr_t serializedPtr = Serializer::serialize(&dataObj);
 
 	// Deserialize the serialized pointer
 	Data* deserializedPtr = Serializer::deserialize(serializedPtr);
