@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/09 16:45:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:47:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,9 +310,6 @@ void Converter::convert(void)
 	case INT:
 		_float = static_cast<float>(_int);
 		_double = static_cast<double>(_int);
-		/*if (_int >= CHAR_MIN && _int <= CHAR_MAX)
-			_char = static_cast<char>(_int);
-		else*/
 		_char = static_cast<char>(_int);
 		break;
 	case FLOAT:
