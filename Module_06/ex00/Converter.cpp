@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/09 15:04:18 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:45:41 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,11 @@ static bool isSpecialValue(const std::string &_str)
 
 void Converter::printChar(void) const
 {
-	if (isSpecialValue(_str) || (!std::isprint(_int) && (_int >= 127 || _int < 0)) || _impossible)
+	if (isSpecialValue(_str) || (!std::isprint(static_cast<char>(_int)) && (_int >= 127 || _int < 0)) || _impossible)
 	{
 		std::cout << "Impossible";
 	}
-	else if (!std::isprint(_int))
+	else if (!std::isprint(static_cast<char>(_int)))
 	{
 		std::cout << "Non displayable";
 	}
@@ -310,11 +310,10 @@ void Converter::convert(void)
 	case INT:
 		_float = static_cast<float>(_int);
 		_double = static_cast<double>(_int);
-		if (_int >= CHAR_MIN && _int <= CHAR_MAX)
+		/*if (_int >= CHAR_MIN && _int <= CHAR_MAX)
 			_char = static_cast<char>(_int);
-		else
-			_char = static_cast<char>(0);
-		std::cout << _char << std::endl;
+		else*/
+		_char = static_cast<char>(_int);
 		break;
 	case FLOAT:
 		_float = static_cast<float>(atof(_str.c_str()));
