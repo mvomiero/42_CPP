@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:15 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/06 18:33:54 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:37:03 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cerrno>
+#include <climits>
+
 //#include <fstream>
 //#include <limits>
 

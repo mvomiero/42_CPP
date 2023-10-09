@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 13:28:58 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/08/14 16:04:13 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:14:23 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ private:
 	ScalarConverter& operator=(const ScalarConverter& other);
 
 public:
-	static void convert(const std::string& str);
+	static void convert(const std::string& str); // function to convert, static so no need to instantiate an object
 };
