@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:08:06 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/06 18:32:31 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:25:39 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ Base *	generate( void )
 }
 
 /* to identify a Base* pointer, so to check if it's A, B, or C
+	!!! DOWNCASTING SO NO PROBLEMS
  */
 void	identify( Base * p )
 {
@@ -89,24 +90,25 @@ void	identify( Base * p )
 /* to identify an object, so a reference.
 	NB Exceptions:	if you dont use the try and catch the program would stop with
 	 a std::bad_cast exception! This way, the execution goes on
+	!!! UPCASTING so problems if the casting fails
  */
 void	identify( Base& p ) {
-	std::cout << "Identified as reference: ";
+	std::cout << "\n\t\tIdentified as reference: \n";
 	try {
 		A& a = dynamic_cast< A& >( p );
-		std::cout << CYAN "A" RESET << std::endl;
+		std::cout << CYAN "\t\tA" RESET << std::endl;
 		(void)a;
-	} catch(const std::exception& e) {}
+	} catch(const std::exception& e) { std::cout << CYAN "\t\tnot A" RESET << std::endl; }
 	try {
 		B& b = dynamic_cast< B& >( p );
-		std::cout << GREEN "B" RESET << std::endl;
+		std::cout << GREEN "\t\tB" RESET << std::endl;
 		(void)b;
-	} catch( const std::exception& e ) {}
+	} catch( const std::exception& e ) { std::cout << GREEN "\t\tnot B" RESET << std::endl;}
 	try {
 		C& c = dynamic_cast< C& >( p );
-		std::cout << PURPLE "C" RESET << std::endl;
+		std::cout << PURPLE "\t\tC" RESET << std::endl;
 		(void)c;
-	} catch( const std::exception& e ) {}
+	} catch( const std::exception& e ) { std::cout << PURPLE "\t\tnot C" RESET << std::endl;}
 }
 
 /* just creates random objects and then identifies them by pointer or by reference

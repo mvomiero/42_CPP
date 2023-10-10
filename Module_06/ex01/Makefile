@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvomiero <mvomiero@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/09/26 17:07:31 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/10/09 17:09:57 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ INC			= -I $(INC_PATH)
 # Sources
 SRC_PATH = ./
 #SRC_PATH = ./sources/
-SRC		=	main.cpp 
+SRC		=	main.cpp \
+			Serializer.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects

@@ -6,12 +6,11 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:56:36 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/06 18:41:46 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:11:42 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstdlib>
+#include "Serializer.hpp"
 #include "colors.h"
 
 /* ABSTRACT:
@@ -34,38 +33,17 @@
  */
 
 /* Data:
-	Just the non-empty data structure where the functions of Serializer are applied
+	Just the non-empty data structure where the functions of Serializer are applied, a class for what i implemented
  */
-class Data {
-public:
-	~Data( void ) {};
-	Data(int value) : value(value) {}
-
-	int getValue() const {
-		return value;
-	}
-
-private:
-	int value;
-	Data( void );
-	Data( const Data& src );
-
-	Data& operator=( const Data& rhs );
-};
 
 /* Serializer:
 	the two static functions required from the assignment
  */
-class Serializer {
+/*class Serializer {
 public:
 
-	static __intptr_t serialize(Data* ptr) {
-		return reinterpret_cast<__intptr_t>(ptr);
-	}
-
-	static Data* deserialize(__intptr_t raw) {
-		return reinterpret_cast<Data*>(raw);
-	}
+	    static uintptr_t serialize(Data* ptr);
+    static Data* deserialize(uintptr_t raw);
 private:
 	~Serializer( void );
 	Serializer( void );
@@ -74,6 +52,16 @@ private:
 	Serializer& operator=( const Serializer& rhs );
 };
 
+uintptr_t Serializer::serialize(Data* ptr)
+{
+    return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+    return (reinterpret_cast<Data*>(raw));
+}*/
+
 
 
 int main() {
@@ -81,7 +69,7 @@ int main() {
 	Data dataObj(42);
 
 	// Serialize the pointer to the Data object
-	__intptr_t serializedPtr = Serializer::serialize(&dataObj);
+	uintptr_t serializedPtr = Serializer::serialize(&dataObj);
 
 	// Deserialize the serialized pointer
 	Data* deserializedPtr = Serializer::deserialize(serializedPtr);

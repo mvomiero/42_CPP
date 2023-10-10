@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:31:05 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/09 16:47:00 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:40:44 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,6 +311,7 @@ void Converter::convert(void)
 		_float = static_cast<float>(_int);
 		_double = static_cast<double>(_int);
 		_char = static_cast<char>(_int);
+		std::cout << "char is "<< _char << "and int is" << _int << std::endl;
 		break;
 	case FLOAT:
 		_float = static_cast<float>(atof(_str.c_str()));
