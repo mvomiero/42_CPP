@@ -6,13 +6,13 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:05:10 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/09/10 16:38:06 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:21:21 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+/*#include "Array.hpp"
 #include "colors.h"
-#define SIZE 10
+#define SIZE 10*/
 
 /* ABSTRACT:
 	devoloping a template for a Class that stores an array of elements of type T.
@@ -22,12 +22,13 @@
 	bounds.
  */
 
-int	main( void ) {
+/*int	main( void ) {
 	// these two lines are from the assignment: the result is 0. That means that
 	// to have an empty array in the default constructor you can just initiate T()
 	std::cout << "-------------------------------------------------------------" << std::endl;
 	std::cout << PURPLE "test instantiation empty array " << RESET ;
 	int * a = new int();
+	delete a;
 	std::cout << " a = " << *a << std::endl;
 
 	std::cout << "-------------------------------------------------------------" << std::endl;
@@ -67,4 +68,61 @@ int	main( void ) {
 	std::cout << "-------------------------------------------------------------" << std::endl;
 
 	return ( 0 );
+}*/
+
+#include <iostream>
+#include <cstdlib>
+#include <Array.hpp>
+
+#define MAX_VAL 750
+int main(int, char**)
+{
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE --> to test with valgrind, copy constructor and assignment operator works fine and everything is freed 
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+		else if (i == MAX_VAL - 1 && mirror[i] == numbers[i])
+			std::cout << "All values are the same!" << std::endl;
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+    return 0;
 }
