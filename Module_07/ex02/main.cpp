@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:05:10 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/10 19:21:21 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/11 22:27:38 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@
 #define MAX_VAL 750
 int main(int, char**)
 {
+    /* The case for const ---> accessible but not readable
+    Array< const int*> numbers(2);
+    std::cout << numbers[0];
+    *(numbers[0]) = 2; */
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
