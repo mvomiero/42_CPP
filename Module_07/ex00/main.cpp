@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:19:03 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/09/10 12:31:11 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:52:50 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int main( void )
 	swap( a, b );
 	std::cout << "a = " << a << ", b = " << b << std::endl;
 
-	std::cout << "min( a, b ) = " << min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << max( a, b ) << std::endl;
+	std::cout << "min( a, b ) = " << min( a, b ) << std::endl;	// Implicit instantiation
+	std::cout << "max( a, b ) = " << max<int&>( a, b ) << std::endl; // Explicit instantiation
 
 	std::string c = "chaine1";
 	std::string d = "chaine2";
