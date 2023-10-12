@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 12:59:57 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/12 15:28:40 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:20:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator
 unsigned int Span::longestSpan(void) const
 {
 	if (_vect.size() < 2)
-		throw std::out_of_range("Span::longestSpan: list is empty");
+		throw std::out_of_range("Not enough numbers in the vector");
 	return (*std::max_element(_vect.begin(), _vect.end()) - *std::min_element(_vect.begin(), _vect.end()));
 }
 
@@ -65,7 +65,7 @@ unsigned int Span::longestSpan(void) const
 unsigned int Span::shortestSpan(void) const
 {
 	if (_vect.size() < 2)
-		throw std::out_of_range("Span::shortestSpan: list is empty");
+		throw std::out_of_range("Not enough numbers in the vector");
 	std::vector<int> tmp = _vect;
 	std::sort(tmp.begin(), tmp.end());
 	unsigned int shortest = UINT_MAX;
