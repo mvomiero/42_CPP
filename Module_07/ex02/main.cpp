@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:05:10 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/12 16:06:52 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:07:18 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@
     /*// The case for const ---> accessible but not readable
     Array< const int*> numbers_const(2);
     std::cout << numbers_const[0];
-    //*(numbers_const[0]) = 2; */
+    // *(numbers_const[0]) = 2; */
 
 #define MAX_VAL 750
 int main(int, char**)
