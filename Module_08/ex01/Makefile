@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/10/12 12:57:18 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/10/12 15:24:03 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ INC			= -I $(INC_PATH)
 # Sources
 SRC_PATH = ./
 #SRC_PATH = ./sources/
-SRC		=	main.cpp 
+SRC		=	main.cpp \
+			Span.cpp
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects

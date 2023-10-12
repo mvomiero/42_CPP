@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 12:59:57 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/12 13:36:37 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:28:40 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ Span::Span(const Span &src) { *this = src; }
 Span::~Span(void) {}
 
 // assignation operator
-Span &Span::operator=(const Span &rhs) {
-	if (this != &rhs) {
+Span &Span::operator=(const Span &rhs)
+{
+	if (this != &rhs)
+	{
 		this->_maxSize = rhs._maxSize;
 		this->_vect = rhs._vect;
 	}
@@ -34,7 +36,8 @@ Span &Span::operator=(const Span &rhs) {
 }
 
 // add a number to the vector
-void Span::addNumber(int number) {
+void Span::addNumber(int number)
+{
 	if (this->_vect.size() < this->_maxSize)
 		this->_vect.push_back(number);
 	else
@@ -42,25 +45,35 @@ void Span::addNumber(int number) {
 }
 
 // add a range of numbers to the vector
-void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
 	if (this->_vect.size() + std::distance(begin, end) <= this->_maxSize)
 		this->_vect.insert(this->_vect.end(), begin, end);
 	else
 		throw std::out_of_range("Vector is full");
 }
 
-// find the shortest span using the algorithm library
-unsigned int Span::longestSpan( void ) const {
-    if ( _vect.size() < 2 )
-        throw std::out_of_range("Span::longestSpan: list is empty");
-    return ( *std::max_element( _vect.begin(), _vect.end() ) - *std::min_element( _vect.begin(), _vect.end() ) );
+// find the longest span using the algorithm library
+unsigned int Span::longestSpan(void) const
+{
+	if (_vect.size() < 2)
+		throw std::out_of_range("Span::longestSpan: list is empty");
+	return (*std::max_element(_vect.begin(), _vect.end()) - *std::min_element(_vect.begin(), _vect.end()));
 }
 
-// find the longest span
-unsigned int Span::longestSpan(void) const {
-	if (this->_vect.size() < 2)
-		throw std::runtime_error("Not enough elements in vector");
-	std::vector<int> tmp = this->_vect;
+// find the shortest span using the algorithm library
+unsigned int Span::shortestSpan(void) const
+{
+	if (_vect.size() < 2)
+		throw std::out_of_range("Span::shortestSpan: list is empty");
+	std::vector<int> tmp = _vect;
 	std::sort(tmp.begin(), tmp.end());
-	return static_cast<unsigned int>(tmp.back() - tmp.front());
+	unsigned int shortest = UINT_MAX;
+	for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end() - 1; it++)
+	{
+		unsigned int diff = static_cast<unsigned int>(*(it + 1) - *it);
+		if (diff < shortest)
+			shortest = *(it + 1) - *it;
+	}
+	return shortest;
 }

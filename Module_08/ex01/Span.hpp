@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 12:59:35 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/12 13:32:43 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:24:27 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ public:
 	Span(void);
 	Span(unsigned int N);
 	Span(const Span &src);
+
+	~Span(void);
 	
 	Span& operator=(const Span &rhs);
 	
