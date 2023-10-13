@@ -66,3 +66,10 @@ C++ templates
 * ex00 > **Start with a few functions** - *function templates to implement min, max and swap functions*
 * ex01 > **Iter** - *using function templates to apply the same function to all the elements of an array*
 * ex02 > **Array** - *devoloping a template for a Class that stores a dynamically allocated array of elements of type T. The constructor accepts as parameter the size of the array.The [] operator is overloadedto throw an exception, if the index is out of the bounds.*
+
+## Module 08
+Templated containers, iterators, algorithms
+
+* ex00 > **Easy find** - *function template that takes as parameter a container and a value and returns through functions of the alorithm header the first instance of the element found in the container*
+* ex01 > **Span** - *Implementing a class that stores a container of integers, with methods to: add a number, add a range of numbers, and find the shortest and longest span*
+* ex02 > **Mutated abomination** - *Implementing a stack container that has the same properties as the std::stack container, but with iterators*
