@@ -6,12 +6,13 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:17:31 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/13 11:17:48 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:36:22 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include "colors.h"
+#include <vector>
 
 
 template <typename Iterator>
@@ -119,6 +120,19 @@ int main()
 		
 		
 		//return 0;
+	}
+	{
+		std::cout << BG_BRIGHT_PURPLE << "------------------- TEST 4 -------------------" << RESET << std::endl;
+		std::cout << PURPLE << "\nInstantiating a Mutantstack from a std::stack casted from a vector container (instead of the default deque)\n" << RESET << std::endl;
+		MutantStack<int, std::vector<int> > mstack;
+
+		std::cout << PURPLE << "\nCreating a vector derived stack with three elements\n" << RESET << std::endl;
+		mstack.push(5);
+		mstack.push(17);
+		mstack.push(3);
+		std::cout << ITAL << "\tstack top is: " << mstack.top() << " and stack size is: " << mstack.size() << RESET << std::endl;
+		MutantStack<int, std::vector<int> >::iterator it = mstack.begin(), ite = mstack.end();
+		printContainer(it, ite);
 	}
 	return 0;
 }
