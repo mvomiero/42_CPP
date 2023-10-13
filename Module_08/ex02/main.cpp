@@ -6,13 +6,25 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:17:31 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/10/13 11:37:44 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:06:51 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include "colors.h"
 #include <vector>
+
+/* ABSTRACT: 
+	Implement a stack container that has the same properties as the std::stack container, but with iterators.
+	The iterators are retrived from the c variable that contains the base class: a stack is a container adapter.
+	Normally, adapts a deque (double-ended queue) - insertion on both ends, but we can change it to adapt a vector as well.
+ */
+
+/* ADAPTERS:
+	Container adaptors provide a different interface for sequential containers, like to make them behave like a stack (LIFO) or a queue (FIFO).
+	LIFO: last in first out
+	FIFO: first in first out
+ */
 
 template <typename Iterator>
 void printContainer(Iterator begin, Iterator end)
@@ -116,7 +128,7 @@ int main()
 		std::cout << PURPLE << "\tcan't print the content since a stack type has no iterators" << RESET << std::endl;
 
 		std::cout << BG_BRIGHT_PURPLE << "\n------------------- TEST 3 -------------------" << RESET << std::endl;
-		std::cout << PURPLE << "\nInstantiating a Mutantstack with the copy constructor\n"
+		std::cout << PURPLE << "\nInstantiating a Mutantstack with the copy assignment operator\n"
 				  << RESET << std::endl;
 		MutantStack<int> c = mstack;
 
@@ -130,7 +142,7 @@ int main()
 		std::cout << BG_BRIGHT_PURPLE << "------------------- TEST 4 -------------------" << RESET << std::endl;
 		std::cout << PURPLE << "\nInstantiating a Mutantstack from a std::stack casted from a vector container (instead of the default deque)\n"
 				  << RESET << std::endl;
-		MutantStack<int, std::vector<int>> mstack;
+		MutantStack<int, std::vector<int> > mstack;
 
 		std::cout << PURPLE << "\nCreating a vector derived stack with three elements\n"
 				  << RESET << std::endl;
@@ -138,7 +150,7 @@ int main()
 		mstack.push(17);
 		mstack.push(3);
 		std::cout << ITAL << "\tstack top is: " << mstack.top() << " and stack size is: " << mstack.size() << RESET << std::endl;
-		MutantStack<int, std::vector<int>>::iterator it = mstack.begin(), ite = mstack.end();
+		MutantStack<int, std::vector<int> >::iterator it = mstack.begin(), ite = mstack.end();
 		printContainer(it, ite);
 	}
 	return 0;
