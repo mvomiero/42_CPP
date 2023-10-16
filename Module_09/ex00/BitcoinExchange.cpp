@@ -25,6 +25,7 @@ void BitcoinExchange::readCsv()
 	std::ifstream file("./data.csv");
 	if (file.is_open())
 	{
+		getline(file, line);
 		while (getline(file, line))
 		{
 			std::string date = line.substr(0, line.find(','));
@@ -34,6 +35,7 @@ void BitcoinExchange::readCsv()
 			/*if (price_float == 0.0)
 				std::cout << date << " " << price << std::endl;*/
 		}
+		//this->csv["invalid"] = 0.0;
 		file.close();
 	}
 	else
@@ -98,13 +100,15 @@ void BitcoinExchange::readInput(std::string inputFile)
 					{
 						// If the date doesn't exist in the CSV, find the closest lower date
 						std::map<std::string, float>::iterator it = csv.lower_bound(date);
-						if (it != csv.begin())
+						if (it != csv.begin() && it != csv.end())
 						{
 							it--; // Move to the lower date
 							float csv_value = it->second;
 							float result = csv_value * value_float;
 							std::cout << "Date: " << date << " | Closest Lower CSV Date: " << it->first << " | CSV Value: " << csv_value << " | Result: " << result << std::endl;
 						}
+						else
+							std::cout << "Error: no data" << std::endl;
 					}
 				}
 			}
