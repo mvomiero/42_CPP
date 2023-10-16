@@ -15,7 +15,6 @@ class RPN
 private:
 	std::stack<double> numbers;
 
-
 public:
 	RPN();
 	RPN(std::stack<double> number);
