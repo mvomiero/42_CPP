@@ -53,8 +53,6 @@ static bool dateCheck(std::string date)
 	if (date.empty())
 		return (false);
 	return (true);
-	// check if string is empty
-	// check if atof of string is > 1000 or the result is 0.0 (just if the string is not == 0.0)
 }
 
 static bool valueCheck(std::string valueStr)
@@ -67,8 +65,6 @@ static bool valueCheck(std::string valueStr)
 	if (value == 0.0 && valueStr != "0.0" && valueStr != "0")
 		return (false);
 	return (true);
-	// check if string is empty
-	// check if atof of string is > 1000 or the result is 0.0 (just if the string is not == 0.0)
 }
 
 void BitcoinExchange::readInput(std::string inputFile)
@@ -78,10 +74,12 @@ void BitcoinExchange::readInput(std::string inputFile)
 	std::ifstream file(inputFile.c_str());
 	if (file.is_open())
 	{
-		getline(file, line);
-		while (getline(file, line))
+		getline(file, line); // skip the first line
+
+		while (getline(file, line)) // read the file line by line
 		{
 			std::cout << "\n" << line << std::endl;
+
 			size_t delimiterPos = line.find(" | ");
 			if (delimiterPos != std::string::npos)
 			{
@@ -95,8 +93,8 @@ void BitcoinExchange::readInput(std::string inputFile)
 				}
 				else
 				{
-					float value_float = atof(value.c_str()); // Check if the date exists in the csv map
-					if (csv.find(date) != csv.end())
+					float value_float = atof(value.c_str());
+					if (csv.find(date) != csv.end())  // Check if the date exists in the csv map
 					{
 						float csv_value = csv[date];
 						float result = csv_value * value_float;
@@ -106,7 +104,7 @@ void BitcoinExchange::readInput(std::string inputFile)
 					{
 						// If the date doesn't exist in the CSV, find the closest lower date
 						std::map<std::string, float>::iterator it = csv.lower_bound(date);
-						if (it != csv.begin() && it != csv.end())
+						if (it != csv.begin() && it != csv.end()) // Check if the iterator is not at the beginning or at the end of the map (if it is, it means that the date is out of range)
 						{
 							it--; // Move to the lower date
 							float csv_value = it->second;
