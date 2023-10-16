@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        std::cout << "Usage: rpn_calculator <expression>" << std::endl;
+        std::cout << "Usage: ./RPN [expression]" << std::endl;
         return 1;
     }
 

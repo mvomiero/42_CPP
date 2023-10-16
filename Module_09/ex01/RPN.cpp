@@ -13,9 +13,9 @@ RPN::RPN(std::stack<double> number)
 	this->numbers = number;
 }
 
-RPN::RPN(const RPN &var)
+RPN::RPN(const RPN &other)
 {
-	*this = var;
+	*this = other;
 }
 
 RPN &RPN::operator=(const RPN &rhs)
@@ -36,7 +36,7 @@ void RPN::calculate(const std::string &input)
 		}
 		else if (isdigit(c))
 		{
-			int number = c - '0';
+			int number = c - '0'; // Convert char to int
 			numbers.push(number);
 		}
 		else if (c == '+' || c == '-' || c == '*' || c == '/')
@@ -53,9 +53,9 @@ void RPN::calculate(const std::string &input)
 		}
 		if (VERBOSE)
 			printStack(c);
-		// function to print the content of the stack
 	}
 
+	// check for the result
 	if (numbers.size() == 1)
 	{
 		double result = numbers.top();
@@ -88,10 +88,12 @@ bool RPN::performOperation(char op)
 {
 	if (numbers.size() >= 2)
 	{
-		double b = numbers.top();
+		double b = numbers.top(); // Top element is right operand
 		numbers.pop();
-		double a = numbers.top();
+		double a = numbers.top(); // Next element is left operand
 		numbers.pop();
+
+		// Perform operation
 		switch (op)
 		{
 		case '+':
@@ -115,5 +117,4 @@ bool RPN::performOperation(char op)
 		std::cout << RED "Error - insufficient operands" RESET << std::endl;
 		return false;
 	}
-
 }
