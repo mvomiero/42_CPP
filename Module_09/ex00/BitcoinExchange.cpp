@@ -40,7 +40,7 @@ void BitcoinExchange::readCsv()
 
 void BitcoinExchange::printInstructions()
 {
-	std::cout << PURPLE BOLD "Welcome to the Bitcoin Exchange" RESET << std::endl;
+	std::cout << PURPLE BOLD "Welcome to the Bitcoin Exchanger calculator" RESET << std::endl;
 	std::cout << "Database ranges forom date: " << csv.begin()->first << " to date " << (--csv.end())->first << std::endl;
 	std::cout << "everything out of this date range will be considered as a bad input error" << std::endl;
 	std::cout << "Values accepted for 0 are just 0 or 0.0" << std::endl;

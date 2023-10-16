@@ -14,7 +14,7 @@ class BitcoinExchange
 {
 private:
 	std::map <std::string, float> csv;
-	std::map <std::string, float> input;
+
 public:
 	BitcoinExchange();
 	~BitcoinExchange();
