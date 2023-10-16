@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/10/16 16:53:44 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/10/16 17:53:03 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,26 @@ fclean: clean
 re: fclean all
 
 test:
+
+	@echo "-----------------------------"
 	./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
+	@echo "$(YELLOW)\nExpected: 42$(RESET)"
+	@echo "-----------------------------"
+	./RPN "7 7 * 7 -"
+	@echo "$(YELLOW)\nExpected: 42$(RESET)"
+	@echo "-----------------------------"
+	./RPN "1 2 * 2 / 2 * 2 4 - +"
+	@echo "$(YELLOW)\nExpected: 0$(RESET)"
+	@echo "-----------------------------"
+	./RPN "(1 + 1)"
+	@echo "$(YELLOW)\nExpected: Error$(RESET)"
+	@echo "-----------------------------"
+	./RPN "1 2 * 2 / 2 **** 2 4 - +"
+	@echo "$(YELLOW)\nExpected: 0$(RESET)"
+	@echo "-----------------------------"
+	./RPN "1 2 *5465465"
+	@echo "$(YELLOW)\nExpected: 0$(RESET)"
+	@echo "-----------------------------"
 
 
 .PHONY: all re clean fclean

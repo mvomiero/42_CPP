@@ -42,15 +42,17 @@ void RPN::calculate(const std::string &input)
 		else if (c == '+' || c == '-' || c == '*' || c == '/')
 		{
 			// Handle operators
-			performOperation(c);
+			if (!performOperation(c))
+				return;
 		}
 		else
 		{
 			// Invalid character
-			std::cout << "Invalid input." << std::endl;
+			std::cout << RED "Error - invalid character" RESET << std::endl;
 			return;
 		}
-		printStack(c);
+		if (VERBOSE)
+			printStack(c);
 		// function to print the content of the stack
 	}
 
@@ -58,23 +60,22 @@ void RPN::calculate(const std::string &input)
 	{
 		double result = numbers.top();
 		numbers.pop();
-		std::cout << "Result: " << result << std::endl;
+		std::cout << BG_GREEN "Result: " << result << RESET << std::endl;
 	}
 	else
 	{
 		// Insufficient operands
-		std::cout << "Invalid input." << std::endl;
+		std::cout << RED "Error - insufficient operators" RESET << std::endl;
 	}
 }
 
 void RPN::printStack(char c)
 {
 	if (isdigit(c))
-		std::cout << BLUE "operand: " << c << " pushed to stack --> " << std::endl;
+		std::cout << BLUE "operand: " << c << " pushed to stack --> " RESET << std::endl;
 	else if (c == '+' || c == '-' || c == '*' || c == '/')
-		std::cout << GREEN "operator: " << c << " executes the operation --> " << std::endl;
-	else
-		std::cout << RED "Invalid input." << std::endl;
+		std::cout << PURPLE "operator: " << c << " executes the operation --> " RESET << std::endl;
+
 	std::cout << "\tstack: [";
 	for (std::stack<double> dump = numbers; !dump.empty(); dump.pop())
 	{
@@ -83,7 +84,7 @@ void RPN::printStack(char c)
 	std::cout << "]" << std::endl;
 }
 
-void RPN::performOperation(char op)
+bool RPN::performOperation(char op)
 {
 	if (numbers.size() >= 2)
 	{
@@ -106,10 +107,13 @@ void RPN::performOperation(char op)
 			numbers.push(a / b);
 			break;
 		}
+		return true;
 	}
 	else
 	{
 		// Insufficient operands
-		std::cout << "Invalid input." << std::endl;
+		std::cout << RED "Error - insufficient operands" RESET << std::endl;
+		return false;
 	}
+
 }

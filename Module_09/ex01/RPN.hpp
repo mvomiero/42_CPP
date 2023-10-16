@@ -8,6 +8,8 @@
 #include <cctype>
 #include "colors.h"
 
+#define VERBOSE false
+
 class RPN
 {
 private:
@@ -21,6 +23,6 @@ public:
 	~RPN();
 	RPN &operator=(const RPN &rhs);
 	void calculate(const std::string &input);
-	void performOperation(char operation);
+	bool performOperation(char operation);
 	void printStack(char c);
 };
