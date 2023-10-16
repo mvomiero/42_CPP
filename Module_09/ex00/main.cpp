@@ -11,6 +11,7 @@ int main(int argc, char **argv)
 	}
 	BitcoinExchange exchange;
 	exchange.readCsv();
+	exchange.printInstructions();
 	exchange.readInput(argv[1]);
 	return (0);
 }

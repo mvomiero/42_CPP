@@ -30,16 +30,21 @@ void BitcoinExchange::readCsv()
 		{
 			std::string date = line.substr(0, line.find(','));
 			std::string price = line.substr(line.find(',') + 1, line.length());
-			// float price_float = atof(price.c_str());
 			this->csv[date] = atof(price.c_str());
-			/*if (price_float == 0.0)
-				std::cout << date << " " << price << std::endl;*/
 		}
-		//this->csv["invalid"] = 0.0;
 		file.close();
 	}
 	else
 		std::cout << "Unable to open file" << std::endl;
+}
+
+void BitcoinExchange::printInstructions()
+{
+	std::cout << PURPLE BOLD "Welcome to the Bitcoin Exchange" RESET << std::endl;
+	std::cout << "Database ranges forom date: " << csv.begin()->first << " to date " << (--csv.end())->first << std::endl;
+	std::cout << "everything out of this date range will be considered as a bad input error" << std::endl;
+	std::cout << "Values accepted for 0 are just 0 or 0.0" << std::endl;
+	std::cout << "everything else will be considered as a bad input error\n" << std::endl;
 }
 
 static bool dateCheck(std::string date)
@@ -75,7 +80,7 @@ void BitcoinExchange::readInput(std::string inputFile)
 		getline(file, line);
 		while (getline(file, line))
 		{
-			std::cout << line << std::endl;
+			std::cout << "\n" << line << std::endl;
 			size_t delimiterPos = line.find(" | ");
 			if (delimiterPos != std::string::npos)
 			{
@@ -84,7 +89,7 @@ void BitcoinExchange::readInput(std::string inputFile)
 				std::string value = line.substr(delimiterPos + 3);
 				if (!dateCheck(date) || !valueCheck(value))
 				{
-					std::cout << "Error: bad input => " << line << std::endl;
+					std::cout << RED << "Error: bad input => " << line << RESET << std::endl;
 					continue;
 				}
 				else
@@ -94,7 +99,7 @@ void BitcoinExchange::readInput(std::string inputFile)
 					{
 						float csv_value = csv[date];
 						float result = csv_value * value_float;
-						std::cout << "Date: " << date << " | CSV Value: " << csv_value << " | Result: " << result << std::endl;
+						std::cout << GREEN << "Date: " << date << " | CSV Value: " << csv_value << " | Result: " << result << RESET << std::endl;
 					}
 					else
 					{
@@ -105,13 +110,15 @@ void BitcoinExchange::readInput(std::string inputFile)
 							it--; // Move to the lower date
 							float csv_value = it->second;
 							float result = csv_value * value_float;
-							std::cout << "Date: " << date << " | Closest Lower CSV Date: " << it->first << " | CSV Value: " << csv_value << " | Result: " << result << std::endl;
+							std::cout << GREEN << "Date: " << date << " | Closest Lower CSV Date: " << it->first << " | CSV Value: " << csv_value << " | Result: " << result << RESET << std::endl;
 						}
 						else
-							std::cout << "Error: no data" << std::endl;
+							std::cout << RED << "Error: bad input => " << line << RESET << std::endl;
 					}
 				}
 			}
+			else
+				std::cout << RED << "Error: bad input => " << line << RESET << std::endl;
 		}
 			file.close();
 	}

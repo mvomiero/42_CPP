@@ -22,5 +22,6 @@ public:
 	BitcoinExchange(BitcoinExchange const &other);
 
 	void readCsv();
+	void printInstructions();
 	void readInput(std::string inputFile);
 };
