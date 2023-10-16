@@ -1,0 +1,27 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch",
+			"type": "cppdbg",
+			"program": "${workspaceFolder}/Module_09/ex00/btc",
+			"args": ["${workspaceFolder}/Module_09/ex00/input.txt"],
+			"cwd": "${workspaceFolder}",
+			"request": "launch",
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			],
+			"stopAtEntry": false,  // Option 1: Disable stopping at program entry
+			"externalConsole": false,  // Option 2: Disable external console
+			"internalConsoleOptions": "neverOpen"  // Option 3: Specify internal console behavior
+		}
+	]
+}
