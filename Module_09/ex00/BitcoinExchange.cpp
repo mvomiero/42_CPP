@@ -87,10 +87,28 @@ void BitcoinExchange::readInput(std::string inputFile)
 				}
 				else
 				{
-					this->csv[date] = atof(value.c_str());
+					float value_float = atof(value.c_str()); // Check if the date exists in the csv map
+					if (csv.find(date) != csv.end())
+					{
+						float csv_value = csv[date];
+						float result = csv_value * value_float;
+						std::cout << "Date: " << date << " | CSV Value: " << csv_value << " | Result: " << result << std::endl;
+					}
+					else
+					{
+						// If the date doesn't exist in the CSV, find the closest lower date
+						std::map<std::string, float>::iterator it = csv.lower_bound(date);
+						if (it != csv.begin())
+						{
+							it--; // Move to the lower date
+							float csv_value = it->second;
+							float result = csv_value * value_float;
+							std::cout << "Date: " << date << " | Closest Lower CSV Date: " << it->first << " | CSV Value: " << csv_value << " | Result: " << result << std::endl;
+						}
+					}
 				}
 			}
 		}
-		file.close();
+			file.close();
 	}
 }
