@@ -1,6 +1,7 @@
 #pragma once	
 
 #define VERBOSE 1
+#define VERBOSE_RECURSION 1
 
 #include "colors.h"
 #include <algorithm>
@@ -83,5 +84,6 @@ class PmergeMe
 		void _sortVector( void );
 
 		void printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color);
+		void printPairsRecursion(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color, int n);
 		void insertIntoSortedVector(std::vector<int> &vector, int element);
 };

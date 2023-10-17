@@ -85,6 +85,8 @@ void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::s
     std::cout << "]  -> " << str << RESET << std::endl;
 }
 
+
+
 std::vector<std::pair<int, int> > PmergeMe::_splitIntoPairs(std::vector<int> &unsortedVector)
 {
     std::vector<std::pair<int, int> > splitVector;
@@ -125,8 +127,23 @@ void PmergeMe::_insertionSortPairs( std::vector< std::pair<int, int> > &
 	{
 		_insertionSortPairs( splitVector, n - 1 );
 		_insertElement( splitVector, splitVector[n], n - 1 );
-		printPairs( splitVector, "insertion sort pairs recursive", CYAN );
+		std::cout << CYAN << "n = " << n << " element is: " <<splitVector[n].second << RESET << std::endl;
+		printPairsRecursion( splitVector, "insertion sort pairs recursive", CYAN , n);
 	}
+}
+
+void PmergeMe::printPairsRecursion(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color, int n)
+{
+    std::cout << color << "[ ";
+    for (size_t i = 0; i < pairs.size(); ++i)
+    {
+        const std::pair<int, int> &pair = pairs[i];
+		if ( static_cast<int>(i) == n )
+			std::cout << RED "[" << pair.first << "-" << pair.second << "] " RESET;
+		else
+        std::cout << "[" << pair.first << "-" << pair.second << "] ";
+    }
+    std::cout << "]  -> " << str << RESET << std::endl;
 }
 
 void PmergeMe::_insertElement( std::vector< std::pair<int, int> > & splitVector,
@@ -134,6 +151,7 @@ void PmergeMe::_insertElement( std::vector< std::pair<int, int> > & splitVector,
 {
 	if ( n < 0 )
 	{
+		if (VERBOSE_RECURSION) {std::cout << RED << "Element 0 set" << RESET << std::endl;}
 		splitVector[0] = element;
 	}
 	else if ( element.second >= splitVector[n].second )
@@ -142,10 +160,12 @@ void PmergeMe::_insertElement( std::vector< std::pair<int, int> > & splitVector,
 		if ( n == size - 1 )
 		{
 			splitVector.push_back( element );
+			if (VERBOSE_RECURSION) {std::cout << RED << "moving element [" << element.first << " " << element.second << "] to the END" << RESET << std::endl;}
 		}
 		else
 		{
 			splitVector[n + 1] = element;
+			if (VERBOSE_RECURSION) {std::cout << RED << "moving element [" << element.first << " " << element.second << "] to position" << n+1 << RESET << std::endl;}
 		}
 	}
 	else
@@ -154,10 +174,12 @@ void PmergeMe::_insertElement( std::vector< std::pair<int, int> > & splitVector,
 		if ( n == size - 1 )
 		{
 			splitVector.push_back( splitVector[n] );
+			if (VERBOSE_RECURSION) {std::cout << RED << "element sent to the back" << RESET << std::endl;}
 		}
 		else
 		{
 			splitVector[n + 1] = splitVector[n];
+			if (VERBOSE_RECURSION) {std::cout << RED << "n + 1 = n " << n+1 << RESET << std::endl;}
 			_insertElement( splitVector, element, n - 1 );
 		}
 	}

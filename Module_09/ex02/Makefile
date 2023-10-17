@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/10/17 18:45:32 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/10/17 19:25:49 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ fclean: clean
 	rm -f $(NAME)
 
 test:
-	 ./PmergeMe `shuf -i 1-100 -n 31 | tr "\n" " "`
+	 ./PmergeMe `shuf -i 1-100 -n 17 | tr "\n" " "`
 
 re: fclean all
 
