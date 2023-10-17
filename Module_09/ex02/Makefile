@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/07 12:31:25 by mvomiero          #+#    #+#              #
-#    Updated: 2023/10/17 12:01:06 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/10/17 18:45:32 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,29 +65,10 @@ fclean: clean
 	@echo "removing executable"
 	rm -f $(NAME)
 
-re: fclean all
-
 test:
+	 ./PmergeMe `shuf -i 1-100 -n 31 | tr "\n" " "`
 
-	@echo "-----------------------------"
-	./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
-	@echo "$(YELLOW)\nExpected: 42$(RESET)"
-	@echo "-----------------------------"
-	./RPN "7 7 * 7 -"
-	@echo "$(YELLOW)\nExpected: 42$(RESET)"
-	@echo "-----------------------------"
-	./RPN "1 2 * 2 / 2 * 2 4 - +"
-	@echo "$(YELLOW)\nExpected: 0$(RESET)"
-	@echo "-----------------------------"
-	./RPN "(1 + 1)"
-	@echo "$(YELLOW)\nExpected: Error$(RESET)"
-	@echo "-----------------------------"
-	./RPN "1 2 * 2 / 2 **** 2 4 - +"
-	@echo "$(YELLOW)\nExpected: 0$(RESET)"
-	@echo "-----------------------------"
-	./RPN "1 2 *5465465"
-	@echo "$(YELLOW)\nExpected: 0$(RESET)"
-	@echo "-----------------------------"
+re: fclean all
 
 
 .PHONY: all re clean fclean

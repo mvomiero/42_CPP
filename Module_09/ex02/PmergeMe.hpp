@@ -77,8 +77,11 @@ class PmergeMe
 
 		template <typename T>
 		void printContainer(const T& container);
+		template <typename T>
+		void printContainerInfo(const T& container, std::string str, std::string color);
 
 		void _sortVector( void );
 
 		void printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color);
+		void insertIntoSortedVector(std::vector<int> &vector, int element);
 };

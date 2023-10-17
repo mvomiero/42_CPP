@@ -3,11 +3,13 @@
 PmergeMe::PmergeMe(void)
 {
 	_unsortedVector = new std::vector<int>();
+	_sortedVector = new std::vector<int>();
 }
 
 PmergeMe::~PmergeMe(void)
 {
 	delete _unsortedVector;
+	delete _sortedVector;
 }
 
 
@@ -19,6 +21,16 @@ void PmergeMe::printContainer(const T& container)
 		std::cout << *it << " ";
 	std::cout << std::endl;
 }
+
+    template <typename T>
+    void PmergeMe::_printVector(std::vector<T> &vector, std::string name, std::string color) {
+        std::cout << color << "[ ";
+        for (typename std::vector<T>::const_iterator it = vector.begin(); it != vector.end(); it++) {
+            std::cout << *it << " ";
+        }
+        std::cout << "]  -> " << name << "\x1B[0m" << std::endl;  // Reset color
+        std::cout << std::endl;
+    }
 
 void PmergeMe::fillContainers(int ac, char **av)
 {
@@ -54,11 +66,12 @@ void PmergeMe::_sortVector( void )
 	printPairs( splitVector, "sorted array of pairs", GREEN );
 
 
-	//_createSortedSequence( splitVector );
-	/*if ( _straggler != 0 )
+	_createSortedSequence( splitVector );
+	if ( _straggler != 0 )
 	{
-		_insertStraggler( *_sortedVector );
-	}*/
+		insertIntoSortedVector( *_sortedVector , _straggler );
+	}
+	printContainer( *_sortedVector );
 }
 
 void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color)
@@ -149,3 +162,120 @@ void PmergeMe::_insertElement( std::vector< std::pair<int, int> > & splitVector,
 		}
 	}
 }
+
+void PmergeMe::_createSortedSequence( std::vector< std::pair<int, int> > &
+                                      splitVector )
+{
+	std::vector<int> pending;
+
+	std::vector< std::pair<int, int> >::iterator it = splitVector.begin();
+	for ( ; it != splitVector.end(); it++ )
+	{
+		_sortedVector->push_back( it->second );
+		pending.push_back( it->first );
+	}
+	_printVector( *_sortedVector, "Sorted", GREEN );
+	_printVector( pending, "Pending", CYAN );
+
+	std::vector<int> indexSequence = _createIndexInsertSequence( pending );
+
+	_printVector( indexSequence, "Index Seq", PURPLE );
+
+	//if (VERBOSE)
+	//{
+	//	std::cout << CYAN << std::setw( 35 ) << std::left << "Inserting...";
+	//}
+
+	
+	for (std::vector<int>::iterator isit = indexSequence.begin(); isit != indexSequence.end(); isit++)
+	{
+		int numberToInsert = pending[*isit - 1];
+		insertIntoSortedVector( *_sortedVector, numberToInsert );
+	}
+
+	//if (VERBOSE)
+	//{
+	//	std::cout << RESET << std::endl;
+	//	_printVector( *_sortedVector, "Sorted", GREEN );
+	//}
+}
+
+int PmergeMe::_getJacobstahlNumber( int n )
+{
+	if ( n == 0 )
+		return ( 0 );
+	else if ( n == 1 )
+		return ( 1 );
+	else
+		return ( _getJacobstahlNumber( n - 1 ) + 2 * _getJacobstahlNumber( n - 2 ) );
+}
+
+std::vector<int> PmergeMe::_buildJacobstahlInsertionSequence( int size )
+{
+	std::vector<int> jacobSequence;
+	int jacobIndex = 3;
+	while ( _getJacobstahlNumber( jacobIndex ) < size - 1 )
+	{
+		jacobSequence.push_back( _getJacobstahlNumber( jacobIndex ) );
+		jacobIndex++;
+	}
+	return ( jacobSequence );
+}
+
+std::vector<int> PmergeMe::_createIndexInsertSequence( std::vector<int> pending )
+{
+	bool lastWasJacobNumber = false;
+	int pendingSize = pending.size();
+	std::vector<int> jacobSequence = _buildJacobstahlInsertionSequence(pendingSize);
+
+	_printVector( jacobSequence, "Jacobstahl", PURPLE );
+
+	std::vector<int> indexSequence;
+
+	indexSequence.push_back( 1 );
+	int i = 1;
+	while ( i <= pendingSize )
+	{
+		if ( jacobSequence.size() != 0 && lastWasJacobNumber == false )
+		{
+			indexSequence.push_back( jacobSequence[0] );
+			jacobSequence.erase( jacobSequence.begin() );
+			lastWasJacobNumber = true;
+			continue;
+		}
+		std::vector<int>::iterator iit = indexSequence.begin();
+		for ( ; iit != indexSequence.end(); iit++ )
+		{
+			if ( *iit == i )
+			{
+				i++;
+			}
+		}
+		indexSequence.push_back( i );
+		lastWasJacobNumber = false;
+		i++;
+	}
+	return (indexSequence);
+}
+
+    void PmergeMe::insertIntoSortedVector(std::vector<int> &vector, int element) {
+        if (VERBOSE) {
+            std::cout << BLUE "[" << element << "]" RESET;
+        }
+
+        int lo = 0;
+        int hi = vector.size();
+
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (element < vector[mid]) {
+                hi = mid;
+            } else {
+                lo = mid + 1;
+            }
+        }
+
+        vector.insert(vector.begin() + lo, element);
+    }
+
+
