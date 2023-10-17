@@ -79,4 +79,6 @@ class PmergeMe
 		void printContainer(const T& container);
 
 		void _sortVector( void );
+
+		void printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color);
 };
