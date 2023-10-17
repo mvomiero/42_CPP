@@ -70,8 +70,10 @@ void PmergeMe::_sortVector( void )
 	if ( _straggler != 0 )
 	{
 		insertIntoSortedVector( *_sortedVector , _straggler );
+		if (VERBOSE) {std::cout << BLUE "straggler number " << _straggler << " inserted in sorted vector" RESET << std::endl;}
+
 	}
-	printContainer( *_sortedVector );
+	_printVector( *_sortedVector, "SORTED!", BG_PURPLE );
 }
 
 void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color)
@@ -214,13 +216,15 @@ void PmergeMe::_createSortedSequence( std::vector< std::pair<int, int> > &
 	{
 		int numberToInsert = pending[*isit - 1];
 		insertIntoSortedVector( *_sortedVector, numberToInsert );
+		if (VERBOSE) {std::cout << BLUE " number " << numberToInsert << " inserted in sorted vector. sequence index is: " << *isit << "" RESET << std::endl;}
+		
 	}
 
-	//if (VERBOSE)
-	//{
-	//	std::cout << RESET << std::endl;
-	//	_printVector( *_sortedVector, "Sorted", GREEN );
-	//}
+	if (VERBOSE)
+	{
+		std::cout << RESET << std::endl;
+		_printVector( *_sortedVector, "Sorted", GREEN );
+	}
 }
 
 int PmergeMe::_getJacobstahlNumber( int n )
@@ -281,24 +285,28 @@ std::vector<int> PmergeMe::_createIndexInsertSequence( std::vector<int> pending 
 	return (indexSequence);
 }
 
-    void PmergeMe::insertIntoSortedVector(std::vector<int> &vector, int element) {
-        if (VERBOSE) {
-            std::cout << BLUE "[" << element << "]" RESET;
-        }
-
-        int lo = 0;
-        int hi = vector.size();
-
-        while (lo < hi) {
-            int mid = (lo + hi) / 2;
-            if (element < vector[mid]) {
-                hi = mid;
-            } else {
-                lo = mid + 1;
-            }
-        }
-
-        vector.insert(vector.begin() + lo, element);
+void PmergeMe::insertIntoSortedVector(std::vector<int> &vector, int element) {
+    if (VERBOSE) {
+        std::cout << BLUE "[" << element << "]" RESET;
     }
+    
+    // Initialize the low and high indices for binary search.
+    int lo = 0;
+    int hi = vector.size();
+
+    // Perform binary search to find the correct position for the element.
+    while (lo < hi) {
+        int mid = (lo + hi) / 2;
+        if (element < vector[mid]) {
+            hi = mid;
+        } else {
+            lo = mid + 1;
+        }
+    }
+
+    // Insert the element into the vector at the determined position.
+    vector.insert(vector.begin() + lo, element);
+}
+
 
 
