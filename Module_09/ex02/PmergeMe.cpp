@@ -35,7 +35,20 @@ void PmergeMe::fillContainers(int ac, char **av)
 	if (VERBOSE) {printVector(_unsortedVector, "unsorted vector read", RED);}
 }
 
-void PmergeMe::sortVector(void)
+void PmergeMe::sort()
+{
+	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "SORTING\n" << RESET << std::endl;}
+	clock_t start = clock();
+	sortVector();
+	clock_t end = clock();
+	// Calculate the time difference in microseconds
+    double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+
+    // Print the time in the desired format
+    std::cout << "Time to process a range of " << _sortedVector.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
+}
+
+void PmergeMe::sortVector()
 {
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting vector..." << RESET << std::endl;}
 
