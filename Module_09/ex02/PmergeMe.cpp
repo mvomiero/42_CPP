@@ -19,6 +19,12 @@ void PmergeMe::printVector(std::vector<T> &vector, std::string name, std::string
 	std::cout << "]  -> " << name << RESET << std::endl;
 }
 
+template <typename T>
+void PmergeMe::removeDuplicates(std::vector<T>& vec) {
+    typename std::vector<T>::iterator it = std::unique(vec.begin(), vec.end());
+    vec.erase(it, vec.end());
+}
+
 void PmergeMe::fillContainers(int ac, char **av)
 {
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "filling containers..." << RESET << std::endl;}
@@ -32,6 +38,7 @@ void PmergeMe::fillContainers(int ac, char **av)
 		}
 		unsortedVector.push_back(num);
 	}
+	//removeDuplicates(unsortedVector);
 	if (VERBOSE) {printVector(unsortedVector, "unsorted vector read", RED);}
 }
 
@@ -45,7 +52,11 @@ void PmergeMe::sort()
     double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 
     // Print the time in the desired format
-    std::cout << "Time to process a range of " << sortedVector.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
+	std::cout << RED "Before: ";
+	printVector(unsortedVector, "before", RED);
+	std::cout << GREEN "After: ";
+	printVector(sortedVector, "after", GREEN);
+    std::cout << RESET "Time to process a range of " << sortedVector.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
 }
 
 void PmergeMe::sortVector()
@@ -60,6 +71,8 @@ void PmergeMe::sortVector()
 		unsortedVector.pop_back();
 		if (VERBOSE) { std::cout << PURPLE "\todd number " << oddNumber << " extracted from unsorted container" RESET << std::endl;}
 	}
+	else
+		oddNumber = 0;
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "splitting vector into pairs..." << RESET << std::endl;}
 	std::vector<std::pair<int, int> > splitVector = splitIntoPairs();
@@ -69,7 +82,7 @@ void PmergeMe::sortVector()
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting pairs by largest value..." << RESET << std::endl;}
 	insertionSortPairs(splitVector, splitVector.size() - 1);
-	printPairs(splitVector, "sorted array of pairs", GREEN);
+	if (VERBOSE) { printPairs(splitVector, "sorted array of pairs", GREEN); }
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "creating sorted sequence..." << RESET << std::endl;}
 	splitIntoSortedandPending(splitVector);
@@ -86,7 +99,7 @@ void PmergeMe::sortVector()
 	}
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorted vector is ready!" << RESET << std::endl;}
-	printVector(sortedVector, "SORTED!", BG_PURPLE);
+	if (VERBOSE) { printVector(sortedVector, "SORTED!", BG_PURPLE); }
 }
 
 void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color)
@@ -157,8 +170,7 @@ void PmergeMe::printPairsRecursion(const std::vector<std::pair<int, int> > &pair
 	std::cout << "]  -> " << str << RESET << std::endl;
 }
 
-void PmergeMe::insertPair(std::vector<std::pair<int, int> > &splitVector,
-							  std::pair<int, int> element, int n)
+void PmergeMe::insertPair(std::vector<std::pair<int, int> > &splitVector, std::pair<int, int> element, int n)
 {
 	if (n < 0)
 	{
@@ -221,8 +233,8 @@ void PmergeMe::splitIntoSortedandPending(std::vector<std::pair<int, int> > &
 		sortedVector.push_back(it->second);
 		pending.push_back(it->first);
 	}
-	printVector(sortedVector, "Sorted", GREEN);
-	printVector(pending, "Pending", CYAN);
+	if (VERBOSE) { printVector(sortedVector, "Sorted", GREEN); }
+	if (VERBOSE) { printVector(pending, "Pending", CYAN); }
 
 }
 
@@ -233,7 +245,7 @@ void PmergeMe::createSortedSequence()
 
 	std::vector<int> indexSequence = createIndexInsertSequence();
 
-	printVector(indexSequence, "Index Seq", PURPLE);
+	if (VERBOSE) { printVector(indexSequence, "Index Seq", PURPLE); }
 
 
 	for (std::vector<int>::iterator isit = indexSequence.begin(); isit != indexSequence.end(); isit++)
@@ -281,7 +293,7 @@ std::vector<int> PmergeMe::createIndexInsertSequence()
 	int pendingSize = pending.size();
 	std::vector<int> jacobSequence = buildJacobstahlInsertionSequence(pendingSize);
 
-	printVector(jacobSequence, "Jacobstahl", PURPLE);
+	if (VERBOSE) { printVector(jacobSequence, "Jacobstahl", PURPLE); }
 
 	std::vector<int> indexSequence;
 

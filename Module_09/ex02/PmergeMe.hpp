@@ -1,7 +1,7 @@
 #pragma once
 
 #define VERBOSE 1
-#define VERBOSE_RECURSION 1
+#define VERBOSE_RECURSION 0
 
 #include "colors.h"
 #include <algorithm>
@@ -33,9 +33,9 @@ private:
 	std::vector<int> pending;
 
 
-	int getJacobstahlNumber(int n);
 
-
+	template <typename T>
+	void removeDuplicates(std::vector<T>& vec);
 	std::vector<std::pair<int, int> > splitIntoPairs();
 	void sortPairs(std::vector<std::pair<int, int> > & splitVector);
 	void sortPairsContainer(std::vector<std::pair<int, int> > & splitVector);
@@ -46,6 +46,7 @@ private:
 	void splitIntoSortedandPending(std::vector<std::pair<int, int> > &splitVector);
 	void createSortedSequence();
 	std::vector<int> createIndexInsertSequence();
+	int getJacobstahlNumber(int n);
 	std::vector<int> buildJacobstahlInsertionSequence(int size);
 	void insertIntoSortedVector(int element);
 
