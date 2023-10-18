@@ -30,9 +30,9 @@ void PmergeMe::fillContainers(int ac, char **av)
 			std::cerr << RED << "Error: invalid input -> " << av[i] << RESET << std::endl;
 			exit(1);
 		}
-		_unsortedVector.push_back(num);
+		unsortedVector.push_back(num);
 	}
-	if (VERBOSE) {printVector(_unsortedVector, "unsorted vector read", RED);}
+	if (VERBOSE) {printVector(unsortedVector, "unsorted vector read", RED);}
 }
 
 void PmergeMe::sort()
@@ -45,7 +45,7 @@ void PmergeMe::sort()
     double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 
     // Print the time in the desired format
-    std::cout << "Time to process a range of " << _sortedVector.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
+    std::cout << "Time to process a range of " << sortedVector.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
 }
 
 void PmergeMe::sortVector()
@@ -54,15 +54,15 @@ void PmergeMe::sortVector()
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "extracting odd number, if size is odd..." << RESET << std::endl;}
 
-	if (_unsortedVector.size() % 2 != 0)
+	if (unsortedVector.size() % 2 != 0)
 	{
-		oddNumber = _unsortedVector.back();
-		_unsortedVector.pop_back();
+		oddNumber = unsortedVector.back();
+		unsortedVector.pop_back();
 		if (VERBOSE) { std::cout << PURPLE "\todd number " << oddNumber << " extracted from unsorted container" RESET << std::endl;}
 	}
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "splitting vector into pairs..." << RESET << std::endl;}
-	std::vector<std::pair<int, int> > splitVector = splitIntoPairs(_unsortedVector);
+	std::vector<std::pair<int, int> > splitVector = splitIntoPairs();
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting each pair..." << RESET << std::endl;}
 	sortPairs(splitVector);
@@ -78,7 +78,7 @@ void PmergeMe::sortVector()
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
 	if (oddNumber != 0)
 	{
-		insertIntoSortedVector(_sortedVector, oddNumber);
+		insertIntoSortedVector(sortedVector, oddNumber);
 		if (VERBOSE)
 		{
 			std::cout << BLUE "straggler number " << oddNumber << " inserted in sorted vector" RESET << std::endl;
@@ -86,7 +86,7 @@ void PmergeMe::sortVector()
 	}
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorted vector is ready!" << RESET << std::endl;}
-	printVector(_sortedVector, "SORTED!", BG_PURPLE);
+	printVector(sortedVector, "SORTED!", BG_PURPLE);
 }
 
 void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color)
@@ -100,7 +100,7 @@ void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::s
 	std::cout << "]  -> " << str << RESET << std::endl;
 }
 
-std::vector<std::pair<int, int> > PmergeMe::splitIntoPairs(std::vector<int> &unsortedVector)
+std::vector<std::pair<int, int> > PmergeMe::splitIntoPairs()
 {
 	std::vector<std::pair<int, int> > splitVector;
 
@@ -218,10 +218,10 @@ void PmergeMe::splitIntoSortedandPending(std::vector<std::pair<int, int> > &
 	std::vector<std::pair<int, int> >::iterator it = splitVector.begin();
 	for (; it != splitVector.end(); it++)
 	{
-		_sortedVector.push_back(it->second);
+		sortedVector.push_back(it->second);
 		pending.push_back(it->first);
 	}
-	printVector(_sortedVector, "Sorted", GREEN);
+	printVector(sortedVector, "Sorted", GREEN);
 	printVector(pending, "Pending", CYAN);
 
 }
@@ -231,7 +231,7 @@ void PmergeMe::createSortedSequence()
 	//std::vector<int> pending;
 
 
-	std::vector<int> indexSequence = createIndexInsertSequence(pending);
+	std::vector<int> indexSequence = createIndexInsertSequence();
 
 	printVector(indexSequence, "Index Seq", PURPLE);
 
@@ -239,7 +239,7 @@ void PmergeMe::createSortedSequence()
 	for (std::vector<int>::iterator isit = indexSequence.begin(); isit != indexSequence.end(); isit++)
 	{
 		int numberToInsert = pending[*isit - 1];
-		insertIntoSortedVector(_sortedVector, numberToInsert);
+		insertIntoSortedVector(sortedVector, numberToInsert);
 		if (VERBOSE)
 		{
 			std::cout << BLUE " number " << numberToInsert << " inserted in sorted vector. sequence index is: " << *isit << "" RESET << std::endl;
@@ -249,7 +249,7 @@ void PmergeMe::createSortedSequence()
 	if (VERBOSE)
 	{
 		std::cout << RESET << std::endl;
-		printVector(_sortedVector, "Sorted", GREEN);
+		printVector(sortedVector, "Sorted", GREEN);
 	}
 }
 
@@ -275,7 +275,7 @@ std::vector<int> PmergeMe::buildJacobstahlInsertionSequence(int size)
 	return (jacobSequence);
 }
 
-std::vector<int> PmergeMe::createIndexInsertSequence(std::vector<int> pending)
+std::vector<int> PmergeMe::createIndexInsertSequence()
 {
 	bool lastWasJacobNumber = false;
 	int pendingSize = pending.size();

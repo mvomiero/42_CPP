@@ -28,16 +28,16 @@ class PmergeMe
 private:
 	int oddNumber;
 
-	std::vector<int> _unsortedVector;
-	std::vector<int> _sortedVector;
+	std::vector<int> unsortedVector;
+	std::vector<int> sortedVector;
 	std::vector<int> pending;
 
 
 	int getJacobstahlNumber(int n);
 
 
-	std::vector<std::pair<int, int> > splitIntoPairs(std::vector<int> & unsortedVector);
-	void sortPairs(std::vector<std::pair<int, int> > &splitVector);
+	std::vector<std::pair<int, int> > splitIntoPairs();
+	void sortPairs(std::vector<std::pair<int, int> > & splitVector);
 	void sortPairsContainer(std::vector<std::pair<int, int> > & splitVector);
 
 	void insertionSortPairs(std::vector<std::pair<int, int> > & splitVector, int n);
@@ -45,7 +45,7 @@ private:
 
 	void splitIntoSortedandPending(std::vector<std::pair<int, int> > &splitVector);
 	void createSortedSequence();
-	std::vector<int> createIndexInsertSequence(std::vector<int> pending);
+	std::vector<int> createIndexInsertSequence();
 	std::vector<int> buildJacobstahlInsertionSequence(int size);
 	void insertIntoSortedVector(std::vector<int> &vector, int element);
 
