@@ -26,24 +26,20 @@
 class PmergeMe
 {
 private:
-	int _straggler;
-
-	int _getJacobstahlNumber(int n);
+	int oddNumber;
 
 	std::vector<int> _unsortedVector;
 	std::vector<int> _sortedVector;
 
-	void _fillVectorFromArray(int *array);
 
-	std::vector<std::pair<int, int> > _splitIntoPairs(std::vector<int> &unsortedVector);
-	void _sortEachPair(std::vector<std::pair<int, int> > &splitVector);
-	void _sortPairsByLargestValue(std::vector<std::pair<int, int> > &
-									  splitVector);
-	void _insertionSortPairs(std::vector<std::pair<int, int> > &
-								 splitVector,
-							 int n);
-	void _insertElement(std::vector<std::pair<int, int> > &splitVector,
-						std::pair<int, int> element, int n);
+	int getJacobstahlNumber(int n);
+
+
+	std::vector<std::pair<int, int> > splitIntoPairs(std::vector<int> & unsortedVector);
+	void sortPairs(std::vector<std::pair<int, int> > &splitVector);
+	void sortPairsContainer(std::vector<std::pair<int, int> > & splitVector);
+	void insertionSortPairs(std::vector<std::pair<int, int> > & splitVector, int n);
+	void insertPair(std::vector<std::pair<int, int> > &splitVector, std::pair<int, int> element, int n);
 	void _createSortedSequence(std::vector<std::pair<int, int> > &splitVector);
 	std::vector<int> _createIndexInsertSequence(std::vector<int> pending);
 	std::vector<int> _buildJacobstahlInsertionSequence(int size);

@@ -52,31 +52,31 @@ void PmergeMe::_sortVector(void)
 
 	if (_unsortedVector.size() % 2 != 0)
 	{
-		_straggler = _unsortedVector.back();
+		oddNumber = _unsortedVector.back();
 		_unsortedVector.pop_back();
-		if (VERBOSE) { std::cout << PURPLE "\todd number " << _straggler << " extracted from unsorted container" RESET << std::endl;}
+		if (VERBOSE) { std::cout << PURPLE "\todd number " << oddNumber << " extracted from unsorted container" RESET << std::endl;}
 	}
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "splitting vector into pairs..." << RESET << std::endl;}
-	std::vector<std::pair<int, int> > splitVector = _splitIntoPairs(_unsortedVector);
+	std::vector<std::pair<int, int> > splitVector = splitIntoPairs(_unsortedVector);
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting each pair..." << RESET << std::endl;}
-	_sortEachPair(splitVector);
+	sortPairs(splitVector);
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting pairs by largest value..." << RESET << std::endl;}
-	_insertionSortPairs(splitVector, splitVector.size() - 1);
+	insertionSortPairs(splitVector, splitVector.size() - 1);
 	printPairs(splitVector, "sorted array of pairs", GREEN);
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "creating sorted sequence..." << RESET << std::endl;}
 	_createSortedSequence(splitVector);
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
-	if (_straggler != 0)
+	if (oddNumber != 0)
 	{
-		insertIntoSortedVector(_sortedVector, _straggler);
+		insertIntoSortedVector(_sortedVector, oddNumber);
 		if (VERBOSE)
 		{
-			std::cout << BLUE "straggler number " << _straggler << " inserted in sorted vector" RESET << std::endl;
+			std::cout << BLUE "straggler number " << oddNumber << " inserted in sorted vector" RESET << std::endl;
 		}
 	}
 
@@ -95,7 +95,7 @@ void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::s
 	std::cout << "]  -> " << str << RESET << std::endl;
 }
 
-std::vector<std::pair<int, int> > PmergeMe::_splitIntoPairs(std::vector<int> &unsortedVector)
+std::vector<std::pair<int, int> > PmergeMe::splitIntoPairs(std::vector<int> &unsortedVector)
 {
 	std::vector<std::pair<int, int> > splitVector;
 
@@ -109,7 +109,7 @@ std::vector<std::pair<int, int> > PmergeMe::_splitIntoPairs(std::vector<int> &un
 	return splitVector;
 }
 
-void PmergeMe::_sortEachPair(std::vector<std::pair<int, int> > &splitVector)
+void PmergeMe::sortPairs(std::vector<std::pair<int, int> > &splitVector)
 {
 
 	for (std::vector<std::pair<int, int> >::iterator it = splitVector.begin(); it != splitVector.end(); it++)
@@ -124,7 +124,7 @@ void PmergeMe::_sortEachPair(std::vector<std::pair<int, int> > &splitVector)
 	printPairs(splitVector, "sorted single pairs", PURPLE);
 }
 
-void PmergeMe::_insertionSortPairs(std::vector<std::pair<int, int> > &
+void PmergeMe::insertionSortPairs(std::vector<std::pair<int, int> > &
 									   splitVector,
 								   int n)
 {
@@ -134,9 +134,9 @@ void PmergeMe::_insertionSortPairs(std::vector<std::pair<int, int> > &
 	}
 	else
 	{
-		_insertionSortPairs(splitVector, n - 1);
+		insertionSortPairs(splitVector, n - 1);
 		printPairsRecursion(splitVector, "insertion sort pairs recursive", CYAN, n);
-		_insertElement(splitVector, splitVector[n], n - 1);
+		insertPair(splitVector, splitVector[n], n - 1);
 		// std::cout << CYAN << "n = " << n << " element is: " <<splitVector[n].second << RESET << std::endl;
 	}
 }
@@ -155,7 +155,7 @@ void PmergeMe::printPairsRecursion(const std::vector<std::pair<int, int> > &pair
 	std::cout << "]  -> " << str << RESET << std::endl;
 }
 
-void PmergeMe::_insertElement(std::vector<std::pair<int, int> > &splitVector,
+void PmergeMe::insertPair(std::vector<std::pair<int, int> > &splitVector,
 							  std::pair<int, int> element, int n)
 {
 	if (n < 0)
@@ -205,7 +205,7 @@ void PmergeMe::_insertElement(std::vector<std::pair<int, int> > &splitVector,
 				std::cout << RED << "moving element [" << element.first << " " << element.second << "] to position " << n << " from position " << n + 1 << RESET << std::endl;
 			}
 
-			_insertElement(splitVector, element, n - 1);
+			insertPair(splitVector, element, n - 1);
 		}
 	}
 }
@@ -250,23 +250,23 @@ void PmergeMe::_createSortedSequence(std::vector<std::pair<int, int> > &
 	}
 }
 
-int PmergeMe::_getJacobstahlNumber(int n)
+int PmergeMe::getJacobstahlNumber(int n)
 {
 	if (n == 0)
 		return (0);
 	else if (n == 1)
 		return (1);
 	else
-		return (_getJacobstahlNumber(n - 1) + 2 * _getJacobstahlNumber(n - 2));
+		return (getJacobstahlNumber(n - 1) + 2 * getJacobstahlNumber(n - 2));
 }
 
 std::vector<int> PmergeMe::_buildJacobstahlInsertionSequence(int size)
 {
 	std::vector<int> jacobSequence;
 	int jacobIndex = 3;
-	while (_getJacobstahlNumber(jacobIndex) < size - 1)
+	while (getJacobstahlNumber(jacobIndex) < size - 1)
 	{
-		jacobSequence.push_back(_getJacobstahlNumber(jacobIndex));
+		jacobSequence.push_back(getJacobstahlNumber(jacobIndex));
 		jacobIndex++;
 	}
 	return (jacobSequence);
