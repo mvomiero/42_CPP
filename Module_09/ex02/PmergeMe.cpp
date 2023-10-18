@@ -78,7 +78,7 @@ void PmergeMe::sortVector()
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
 	if (oddNumber != 0)
 	{
-		insertIntoSortedVector(sortedVector, oddNumber);
+		insertIntoSortedVector(oddNumber);
 		if (VERBOSE)
 		{
 			std::cout << BLUE "straggler number " << oddNumber << " inserted in sorted vector" RESET << std::endl;
@@ -239,7 +239,7 @@ void PmergeMe::createSortedSequence()
 	for (std::vector<int>::iterator isit = indexSequence.begin(); isit != indexSequence.end(); isit++)
 	{
 		int numberToInsert = pending[*isit - 1];
-		insertIntoSortedVector(sortedVector, numberToInsert);
+		insertIntoSortedVector(numberToInsert);
 		if (VERBOSE)
 		{
 			std::cout << BLUE " number " << numberToInsert << " inserted in sorted vector. sequence index is: " << *isit << "" RESET << std::endl;
@@ -311,7 +311,7 @@ std::vector<int> PmergeMe::createIndexInsertSequence()
 	return (indexSequence);
 }
 
-void PmergeMe::insertIntoSortedVector(std::vector<int> &vector, int element)
+void PmergeMe::insertIntoSortedVector(int element)
 {
 	if (VERBOSE)
 	{
@@ -320,13 +320,13 @@ void PmergeMe::insertIntoSortedVector(std::vector<int> &vector, int element)
 
 	// Initialize the low and high indices for binary search.
 	int lo = 0;
-	int hi = vector.size();
+	int hi = sortedVector.size();
 
 	// Perform binary search to find the correct position for the element.
 	while (lo < hi)
 	{
 		int mid = (lo + hi) / 2;
-		if (element < vector[mid])
+		if (element < sortedVector[mid])
 		{
 			hi = mid;
 		}
@@ -336,6 +336,6 @@ void PmergeMe::insertIntoSortedVector(std::vector<int> &vector, int element)
 		}
 	}
 
-	// Insert the element into the vector at the determined position.
-	vector.insert(vector.begin() + lo, element);
+	// Insert the element into the sortedVector at the determined position.
+	sortedVector.insert(sortedVector.begin() + lo, element);
 }

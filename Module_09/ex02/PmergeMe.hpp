@@ -47,7 +47,7 @@ private:
 	void createSortedSequence();
 	std::vector<int> createIndexInsertSequence();
 	std::vector<int> buildJacobstahlInsertionSequence(int size);
-	void insertIntoSortedVector(std::vector<int> &vector, int element);
+	void insertIntoSortedVector(int element);
 
 	void extractOddNumber(std::vector<int> &unsortedVector);
 	void insertOddNumber(std::vector<int> &sortedVector);
