@@ -320,6 +320,8 @@ std::vector<int> PmergeMe::createIndexInsertSequence()
 
 	indexSequence.push_back(1);
 	int i = 1;
+	if (pendingSize == 1)
+		return (indexSequence);
 	while (i <= pendingSize)
 	{
 		if (jacobSequence.size() != 0 && lastWasJacobNumber == false)
@@ -456,14 +458,14 @@ std::list<std::pair<int, int> > PmergeMe::splitIntoPairsList()
 
     while (it != unsortedList.end())
     {
-        if (++it != unsortedList.end())
+        int first = *it;
+        ++it;
+        
+        if (it != unsortedList.end())
         {
-            int first = *it;
-            if (++it != unsortedList.end())
-            {
-                int second = *it;
-                splitList.push_back(std::make_pair(first, second));
-            }
+            int second = *it;
+            splitList.push_back(std::make_pair(first, second));
+            ++it; // Move to the next pair
         }
     }
 
@@ -471,6 +473,7 @@ std::list<std::pair<int, int> > PmergeMe::splitIntoPairsList()
 
     return splitList;
 }
+
 
 
 
@@ -650,6 +653,8 @@ std::list<int> PmergeMe::createIndexInsertSequenceList()
 
     indexSequence.push_back(1);
     int i = 1;
+	if (pendingSize == 1)
+		return (indexSequence);
 
     std::list<int>::iterator jacobIt = jacobSequence.begin();
 
