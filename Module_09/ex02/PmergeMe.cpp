@@ -109,7 +109,7 @@ std::vector<std::pair<int, int> > PmergeMe::splitIntoPairs(std::vector<int> &uns
 		splitVector.push_back(std::make_pair(unsortedVector[i], unsortedVector[i + 1]));
 	}
 
-	printPairs(splitVector, "split pairs", YELLOW);
+	if (VERBOSE) {printPairs(splitVector, "split pairs", YELLOW);}
 
 	return splitVector;
 }
@@ -126,12 +126,10 @@ void PmergeMe::sortPairs(std::vector<std::pair<int, int> > &splitVector)
 			it->second = tmp;
 		}
 	}
-	printPairs(splitVector, "sorted single pairs", PURPLE);
+	if (VERBOSE) {printPairs(splitVector, "sorted single pairs", PURPLE);}
 }
 
-void PmergeMe::insertionSortPairs(std::vector<std::pair<int, int> > &
-									   splitVector,
-								   int n)
+void PmergeMe::insertionSortPairs(std::vector<std::pair<int, int> > & splitVector, int n)
 {
 	if (n == 0)
 	{
@@ -140,9 +138,8 @@ void PmergeMe::insertionSortPairs(std::vector<std::pair<int, int> > &
 	else
 	{
 		insertionSortPairs(splitVector, n - 1);
-		printPairsRecursion(splitVector, "insertion sort pairs recursive", CYAN, n);
+		if (VERBOSE) {printPairsRecursion(splitVector, "insertion sort pairs recursive", CYAN, n);}
 		insertPair(splitVector, splitVector[n], n - 1);
-		// std::cout << CYAN << "n = " << n << " element is: " <<splitVector[n].second << RESET << std::endl;
 	}
 }
 
