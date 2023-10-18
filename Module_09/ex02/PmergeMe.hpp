@@ -49,9 +49,6 @@ private:
 	std::vector<int> buildJacobstahlInsertionSequence(int size);
 	void insertIntoSortedVector(int element);
 
-	void extractOddNumber(std::vector<int> &unsortedVector);
-	void insertOddNumber(std::vector<int> &sortedVector);
-
 	template <typename T>
 	void printVector(std::vector<T> &vector, std::string name, std::string color);
 
