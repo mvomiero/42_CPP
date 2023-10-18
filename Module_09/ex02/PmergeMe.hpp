@@ -1,6 +1,6 @@
 #pragma once
 
-#define VERBOSE 1
+#define VERBOSE 0
 #define VERBOSE_RECURSION 0
 
 #include "colors.h"

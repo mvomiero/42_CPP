@@ -48,14 +48,14 @@ void PmergeMe::sort()
 	{
 		if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "SORTING\n" << RESET << std::endl;}
 		clock_t start = clock();
+		std::cout << RED "Before: ";
+		printVector(unsortedVector, "before", RED);
 		sortVector();
 		clock_t end = clock();
 		// Calculate the time difference in microseconds
 		double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 
 		// Print the time in the desired format
-		std::cout << RED "Before: ";
-		printVector(unsortedVector, "before", RED);
 		std::cout << GREEN "After: ";
 		printVector(sortedVector, "after", GREEN);
 		std::cout << RESET "Time to process a range of " << sortedVector.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
@@ -64,14 +64,14 @@ void PmergeMe::sort()
 	{
 		if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "SORTING\n" << RESET << std::endl;}
 		clock_t start = clock();
+		std::cout << RED "Before: ";
+		printList(unsortedList, "before", RED);
 		sortList();
 		clock_t end = clock();
 		// Calculate the time difference in microseconds
 		double elapsed_time = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 
 		// Print the time in the desired format
-		std::cout << RED "Before: ";
-		printList(unsortedList, "before", RED);
 		std::cout << GREEN "After: ";
 		printList(sortedList, "after", GREEN);
 		std::cout << RESET "Time to process a range of " << sortedList.size() << " elements with std::list : "<< elapsed_time << " us" << std::endl;
@@ -111,7 +111,7 @@ void PmergeMe::sortVector()
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
 	if (oddNumber != 0)
 	{
-		std::cout << BLUE "odd number " << oddNumber << " extracted from unsorted container" RESET << std::endl;
+		if (VERBOSE) {std::cout << BLUE "odd number " << oddNumber << " extracted from unsorted container" RESET << std::endl;}
 		insertIntoSortedVector(oddNumber);
 		if (VERBOSE)
 		{
