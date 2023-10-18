@@ -87,8 +87,8 @@ static bool valueCheck(std::string valueStr)
 	float value = atof(valueStr.c_str());
 	if (value > 1000 || value < 0)
 		return (false);
-	if (value == 0.0 && valueStr != "0.0" && valueStr != "0")
-		return (false);
+	//if (value == 0.0 && valueStr != "0.0" && valueStr != "0")
+	//	return (false);
 	return (true);
 }
 
@@ -134,6 +134,11 @@ void BitcoinExchange::readInput(std::string inputFile)
 
 		while (getline(file, line)) // read the file line by line
 		{
+			if (line[0] == '#')
+			{
+				std::cout << CYAN << "\nCase: " << line << RESET << std::endl;
+				continue;
+			}
 			std::cout << "\n"
 					  << line << std::endl;
 
@@ -178,7 +183,21 @@ void BitcoinExchange::readInput(std::string inputFile)
 						std::cout << RED "Error: Invalid date format => " RESET << dateStr << std::endl;
 						continue;
 					}
-					float value_float = atof(valueStr.c_str());
+
+					const char* str = valueStr.c_str();
+					char* endptr;
+
+					double value_double = strtod(str, &endptr);
+					float value_float;
+
+					// Check if the conversion was successful and if we've reached the end of the string
+					if (endptr == str || *endptr != '\0') {
+						std::cout << RED << "Error: Invalid value string => " << dateStr << RESET << std::endl;
+						continue; 
+					} else {
+						value_float = value_double;
+					}
+					
 
 					if (csv.find(time_val) != csv.end()) // Check if the date exists in the csv map
 					{
