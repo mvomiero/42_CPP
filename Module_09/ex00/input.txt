@@ -4,21 +4,24 @@ date | value
 2011-01-03 | 1
 2011-01-03 | 1.2
 2011-01-09 | 1
+# negative value
 2012-01-11 | -1
+# not existing
 2001-50-42
+# not existing
+2001-04-31
 #new line
 
-2002-04-30 | 1
+# invalid
 2012-01-11 | 1 2 | sdfas asdfa asdf
+# too big number
 2012-01-11 | 2147483648
-
+#invalid format
 zlabla | 3
-2022-03-29 | 0.25
 # in range
 2022-03-29 | 0.0000
 # out of range
 2022-03-30 | 1
-2022-03-10 | 1
 # valid leap year
 2020-02-29 | 1
 # unvalid leap year

@@ -11,6 +11,8 @@
 #include "colors.h"
 #include <cstring>
 
+#define VERBOSE 0
+
 class BitcoinExchange
 {
 private:

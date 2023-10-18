@@ -47,7 +47,7 @@ void BitcoinExchange::readCsv()
 					time_t time = mktime(&date);
 
 					// You now have a time_t representing the date with a precision of one day
-					std::cout << "Date: " << asctime(&date);
+					//std::cout << "Date: " << asctime(&date);
 					this->csv[time] = atof(priceStr.c_str());
 				}
 				else
@@ -64,12 +64,7 @@ void BitcoinExchange::readCsv()
 void BitcoinExchange::printInstructions()
 {
 	std::cout << PURPLE BOLD "Welcome to the Bitcoin Exchanger calculator" RESET << std::endl;
-	std::cout << "Database ranges forom date: " << csv.begin()->first << " to date " << (--csv.end())->first << std::endl;
-	std::cout << "everything out of this date range will be considered as a bad input error" << std::endl;
-	std::cout << "Values accepted for 0 are just 0 or 0.0" << std::endl;
-	std::cout << "everything else will be considered as a bad input error\n"
-			  << std::endl;
-	std::cout << "Atoi-style conversion of the input values, so just the digits of this field will be considered" << std::endl;
+	std::cout << "everything out of the date range will be considered as a bad input error" << std::endl;
 }
 
 static bool dateCheck(std::string date)
@@ -136,7 +131,7 @@ void BitcoinExchange::readInput(std::string inputFile)
 		{
 			if (line[0] == '#')
 			{
-				std::cout << CYAN << "\nCase: " << line << RESET << std::endl;
+				if (VERBOSE) { std::cout << CYAN << "\nCase: " << line << RESET << std::endl; }
 				continue;
 			}
 			std::cout << "\n"
@@ -172,7 +167,7 @@ void BitcoinExchange::readInput(std::string inputFile)
 							time_val = mktime(&date);
 
 							// You now have a time_t representing the date with a precision of one day
-							std::cout << "Date: " << asctime(&date);
+							//std::cout << "Date: " << asctime(&date);
 						} else {
 							std::cout << RED << "Error: Invalid date => " << dateStr << RESET << std::endl;
 							continue; // Or throw an exception if needed

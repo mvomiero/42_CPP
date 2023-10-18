@@ -23,28 +23,5 @@ int main(int argc, char **argv)
 	exchange.printInstructions();
 	exchange.readInput(argv[1]);
 
-    // Input date as a string in the format "yyyy-mm-dd"
-    std::string dateString = "2011-01-03";
-
-    struct tm dateStruct;
-    std::memset(&dateStruct, 0, sizeof(dateStruct)); // Initialize the struct to zero
-    if (strptime(dateString.c_str(), "%Y-%m-%d", &dateStruct) != NULL) {
-        time_t yourTimeTValue = mktime(&dateStruct);
-
-        if (yourTimeTValue != -1) {
-            struct tm* timeinfo;
-            char buffer[80];
-
-            timeinfo = localtime(&yourTimeTValue);
-            strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeinfo);
-
-            std::cout << "Formatted Date: " << buffer << std::endl;
-        } else {
-            std::cout << "Invalid date format" << std::endl;
-        }
-    } else {
-        std::cout << "Invalid date format" << std::endl;
-    }
-
 	return (0);
 }
