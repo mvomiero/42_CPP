@@ -75,18 +75,18 @@ void PmergeMe::sortList()
 		oddNumber = 0;
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "splitting list into pairs..." << RESET << std::endl;}
-	std::list<std::pair<int, int> > splitList = splitIntoPairs();
+	std::list<std::pair<int, int> > splitList = splitIntoPairsList();
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting each pair..." << RESET << std::endl;}
-	sortPairs(splitList);
+	sortPairsList(splitList);
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting pairs by largest value..." << RESET << std::endl;}
-	insertionSortPairs(splitList, splitList.size() - 1);
-	if (VERBOSE) { printPairs(splitList, "sorted array of pairs", GREEN); }
+	insertionSortPairsList(splitList, splitList.size() - 1);
+	if (VERBOSE) { printPairsList(splitList, "sorted array of pairs", GREEN); }
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "creating sorted sequence..." << RESET << std::endl;}
-	splitIntoSortedandPending(splitList);
-	createSortedSequence();
+	splitIntoSortedandPendingList(splitList);
+	createSortedSequenceList();
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
 	if (oddNumber != 0)
@@ -102,7 +102,7 @@ void PmergeMe::sortList()
 	if (VERBOSE) { printList(sortedList, "SORTED!", BG_PURPLE); }
 }
 
-void PmergeMe::printPairs(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color)
+void PmergeMe::printPairsList(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color)
 {
     std::cout << color << "[ ";
     for (std::list<std::pair<int, int> >::const_iterator it = pairs.begin(); it != pairs.end(); ++it)
@@ -114,7 +114,7 @@ void PmergeMe::printPairs(const std::list<std::pair<int, int> > &pairs, std::str
 }
 
 
-std::list<std::pair<int, int> > PmergeMe::splitIntoPairs()
+std::list<std::pair<int, int> > PmergeMe::splitIntoPairsList()
 {
     std::list<std::pair<int, int> > splitList;
     std::list<int>::const_iterator it = unsortedList.begin();
@@ -132,14 +132,14 @@ std::list<std::pair<int, int> > PmergeMe::splitIntoPairs()
         }
     }
 
-    if (VERBOSE) { printPairs(splitList, "split pairs", YELLOW); }
+    if (VERBOSE) { printPairsList(splitList, "split pairs", YELLOW); }
 
     return splitList;
 }
 
 
 
-void PmergeMe::sortPairs(std::list<std::pair<int, int> > &splitList)
+void PmergeMe::sortPairsList(std::list<std::pair<int, int> > &splitList)
 {
 
 	for (std::list<std::pair<int, int> >::iterator it = splitList.begin(); it != splitList.end(); it++)
@@ -151,10 +151,10 @@ void PmergeMe::sortPairs(std::list<std::pair<int, int> > &splitList)
 			it->second = tmp;
 		}
 	}
-	if (VERBOSE) {printPairs(splitList, "sorted single pairs", PURPLE);}
+	if (VERBOSE) {printPairsList(splitList, "sorted single pairs", PURPLE);}
 }
 
-void PmergeMe::insertionSortPairs(std::list<std::pair<int, int> > &splitList, int n)
+void PmergeMe::insertionSortPairsList(std::list<std::pair<int, int> > &splitList, int n)
 {
     if (n == 0)
     {
@@ -165,21 +165,21 @@ void PmergeMe::insertionSortPairs(std::list<std::pair<int, int> > &splitList, in
         std::list<std::pair<int, int> >::iterator it = splitList.begin();
         std::advance(it, n);
 
-        insertionSortPairs(splitList, n - 1);
+        insertionSortPairsList(splitList, n - 1);
 
         if (VERBOSE)
         {
-            printPairsRecursion(splitList, "insertion sort pairs recursive", CYAN, n);
+            printPairsRecursionList(splitList, "insertion sort pairs recursive", CYAN, n);
         }
 
         std::pair<int, int> pairToInsert = *it; // Make a copy of the pair
-        insertPair(splitList, pairToInsert, n - 1);
+        insertPairList(splitList, pairToInsert, n - 1);
     }
 }
 
 
 
-void PmergeMe::printPairsRecursion(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color, int n)
+void PmergeMe::printPairsRecursionList(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color, int n)
 {
     std::cout << color << "[ ";
     std::list<std::pair<int, int> >::const_iterator it = pairs.begin();
@@ -198,7 +198,7 @@ void PmergeMe::printPairsRecursion(const std::list<std::pair<int, int> > &pairs,
 }
 
 
-void PmergeMe::insertPair(std::list<std::pair<int, int> > &splitList, std::pair<int, int> element, int n)
+void PmergeMe::insertPairList(std::list<std::pair<int, int> > &splitList, std::pair<int, int> element, int n)
 {
 	std::list< std::pair<int, int> >::iterator it = splitList.begin();
 	std::advance( it, n );
@@ -231,12 +231,12 @@ void PmergeMe::insertPair(std::list<std::pair<int, int> > &splitList, std::pair<
 		else
 		{
 			*next = *it;
-			insertPair( splitList, element, n - 1 );
+			insertPairList( splitList, element, n - 1 );
 		}
 	}
 }
 
-void PmergeMe::splitIntoSortedandPending(std::list<std::pair<int, int> > &
+void PmergeMe::splitIntoSortedandPendingList(std::list<std::pair<int, int> > &
 										 splitList)
 {
 	std::list<std::pair<int, int> >::iterator it = splitList.begin();
@@ -250,12 +250,12 @@ void PmergeMe::splitIntoSortedandPending(std::list<std::pair<int, int> > &
 
 }
 
-void PmergeMe::createSortedSequence()
+void PmergeMe::createSortedSequenceList()
 {
 	//std::list<int> pending;
 
 
-	std::list<int> indexSequence = createIndexInsertSequence();
+	std::list<int> indexSequence = createIndexInsertSequenceList();
 
 	if (VERBOSE) { printList(indexSequence, "Index Seq", PURPLE); }
 
@@ -281,33 +281,33 @@ void PmergeMe::createSortedSequence()
 	}
 }
 
-int PmergeMe::getJacobstahlNumber(int n)
+int PmergeMe::getJacobstahlNumberList(int n)
 {
 	if (n == 0)
 		return (0);
 	else if (n == 1)
 		return (1);
 	else
-		return (getJacobstahlNumber(n - 1) + 2 * getJacobstahlNumber(n - 2));
+		return (getJacobstahlNumberList(n - 1) + 2 * getJacobstahlNumberList(n - 2));
 }
 
-std::list<int> PmergeMe::buildJacobstahlInsertionSequence(int size)
+std::list<int> PmergeMe::buildJacobstahlInsertionSequenceList(int size)
 {
 	std::list<int> jacobSequence;
 	int jacobIndex = 3;
-	while (getJacobstahlNumber(jacobIndex) < size - 1)
+	while (getJacobstahlNumberList(jacobIndex) < size - 1)
 	{
-		jacobSequence.push_back(getJacobstahlNumber(jacobIndex));
+		jacobSequence.push_back(getJacobstahlNumberList(jacobIndex));
 		jacobIndex++;
 	}
 	return (jacobSequence);
 }
 
-std::list<int> PmergeMe::createIndexInsertSequence()
+std::list<int> PmergeMe::createIndexInsertSequenceList()
 {
     bool lastWasJacobNumber = false;
     int pendingSize = pendingList.size();
-    std::list<int> jacobSequence = buildJacobstahlInsertionSequence(pendingSize);
+    std::list<int> jacobSequence = buildJacobstahlInsertionSequenceList(pendingSize);
 
     if (VERBOSE) { printList(jacobSequence, "Jacobstahl", PURPLE); }
 

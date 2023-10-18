@@ -36,25 +36,25 @@ private:
 
 	template <typename T>
 	void removeDuplicatesList(std::list<T>& vec);
-	std::list<std::pair<int, int> > splitIntoPairs();
-	void sortPairs(std::list<std::pair<int, int> > & splitList);
-	void sortPairsContainer(std::list<std::pair<int, int> > & splitList);
+	std::list<std::pair<int, int> > splitIntoPairsList();
+	void sortPairsList(std::list<std::pair<int, int> > & splitList);
+	void sortPairsContainerList(std::list<std::pair<int, int> > & splitList);
 
-	void insertionSortPairs(std::list<std::pair<int, int> > & splitList, int n);
-	void insertPair(std::list<std::pair<int, int> > &splitList, std::pair<int, int> element, int n);
+	void insertionSortPairsList(std::list<std::pair<int, int> > & splitList, int n);
+	void insertPairList(std::list<std::pair<int, int> > &splitList, std::pair<int, int> element, int n);
 
-	void splitIntoSortedandPending(std::list<std::pair<int, int> > &splitList);
-	void createSortedSequence();
-	std::list<int> createIndexInsertSequence();
-	int getJacobstahlNumber(int n);
-	std::list<int> buildJacobstahlInsertionSequence(int size);
+	void splitIntoSortedandPendingList(std::list<std::pair<int, int> > &splitList);
+	void createSortedSequenceList();
+	std::list<int> createIndexInsertSequenceList();
+	int getJacobstahlNumberList(int n);
+	std::list<int> buildJacobstahlInsertionSequenceList(int size);
 	void insertIntoSortedList(int element);
 
 	template <typename T>
 	void printList(std::list<T> &list, std::string name, std::string color);
 
-	void printPairs(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color);
-	void printPairsRecursion(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color, int n);
+	void printPairsList(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color);
+	void printPairsRecursionList(const std::list<std::pair<int, int> > &pairs, std::string str, std::string color, int n);
 
 public:
 	PmergeMe(void);
