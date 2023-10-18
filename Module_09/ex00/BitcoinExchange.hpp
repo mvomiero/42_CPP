@@ -9,19 +9,20 @@
 #include <cctype>
 #include <cstdlib>
 #include "colors.h"
+#include <cstring>
 
 class BitcoinExchange
 {
 private:
-	std::map <std::string, float> csv;
+    std::map <time_t, float> csv; // Change the map's key type to time_t
 
 public:
-	BitcoinExchange();
-	~BitcoinExchange();
-	BitcoinExchange& operator=(BitcoinExchange const &var);
-	BitcoinExchange(BitcoinExchange const &other);
+    BitcoinExchange();
+    ~BitcoinExchange();
+    BitcoinExchange& operator=(BitcoinExchange const &var);
+    BitcoinExchange(BitcoinExchange const &other);
 
-	void readCsv();
-	void printInstructions();
-	void readInput(std::string inputFile);
+    void readCsv();
+    void printInstructions();
+    void readInput(std::string inputFile);
 };
