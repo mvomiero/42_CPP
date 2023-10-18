@@ -9,16 +9,7 @@ PmergeMe::~PmergeMe(void)
 }
 
 template <typename T>
-void PmergeMe::printContainer(const T &container)
-{
-	(void)container;
-	for (typename T::const_iterator it = container.begin(); it != container.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-}
-
-template <typename T>
-void PmergeMe::_printVector(std::vector<T> &vector, std::string name, std::string color)
+void PmergeMe::printVector(std::vector<T> &vector, std::string name, std::string color)
 {
 	std::cout << color << "[ ";
 	for (typename std::vector<T>::const_iterator it = vector.begin(); it != vector.end(); it++)
@@ -41,10 +32,10 @@ void PmergeMe::fillContainers(int ac, char **av)
 		}
 		_unsortedVector.push_back(num);
 	}
-	if (VERBOSE) {_printVector(_unsortedVector, "unsorted vector read", RED);}
+	if (VERBOSE) {printVector(_unsortedVector, "unsorted vector read", RED);}
 }
 
-void PmergeMe::_sortVector(void)
+void PmergeMe::sortVector(void)
 {
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorting vector..." << RESET << std::endl;}
 
@@ -68,7 +59,8 @@ void PmergeMe::_sortVector(void)
 	printPairs(splitVector, "sorted array of pairs", GREEN);
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "creating sorted sequence..." << RESET << std::endl;}
-	_createSortedSequence(splitVector);
+	splitIntoSortedandPending(splitVector);
+	createSortedSequence();
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
 	if (oddNumber != 0)
@@ -81,7 +73,7 @@ void PmergeMe::_sortVector(void)
 	}
 
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "sorted vector is ready!" << RESET << std::endl;}
-	_printVector(_sortedVector, "SORTED!", BG_PURPLE);
+	printVector(_sortedVector, "SORTED!", BG_PURPLE);
 }
 
 void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color)
@@ -210,28 +202,29 @@ void PmergeMe::insertPair(std::vector<std::pair<int, int> > &splitVector,
 	}
 }
 
-void PmergeMe::_createSortedSequence(std::vector<std::pair<int, int> > &
+void PmergeMe::splitIntoSortedandPending(std::vector<std::pair<int, int> > &
 										 splitVector)
 {
-	std::vector<int> pending;
-
 	std::vector<std::pair<int, int> >::iterator it = splitVector.begin();
 	for (; it != splitVector.end(); it++)
 	{
 		_sortedVector.push_back(it->second);
 		pending.push_back(it->first);
 	}
-	_printVector(_sortedVector, "Sorted", GREEN);
-	_printVector(pending, "Pending", CYAN);
+	printVector(_sortedVector, "Sorted", GREEN);
+	printVector(pending, "Pending", CYAN);
 
-	std::vector<int> indexSequence = _createIndexInsertSequence(pending);
+}
 
-	_printVector(indexSequence, "Index Seq", PURPLE);
+void PmergeMe::createSortedSequence()
+{
+	//std::vector<int> pending;
 
-	// if (VERBOSE)
-	//{
-	//	std::cout << CYAN << std::setw( 35 ) << std::left << "Inserting...";
-	// }
+
+	std::vector<int> indexSequence = createIndexInsertSequence(pending);
+
+	printVector(indexSequence, "Index Seq", PURPLE);
+
 
 	for (std::vector<int>::iterator isit = indexSequence.begin(); isit != indexSequence.end(); isit++)
 	{
@@ -246,7 +239,7 @@ void PmergeMe::_createSortedSequence(std::vector<std::pair<int, int> > &
 	if (VERBOSE)
 	{
 		std::cout << RESET << std::endl;
-		_printVector(_sortedVector, "Sorted", GREEN);
+		printVector(_sortedVector, "Sorted", GREEN);
 	}
 }
 
@@ -260,7 +253,7 @@ int PmergeMe::getJacobstahlNumber(int n)
 		return (getJacobstahlNumber(n - 1) + 2 * getJacobstahlNumber(n - 2));
 }
 
-std::vector<int> PmergeMe::_buildJacobstahlInsertionSequence(int size)
+std::vector<int> PmergeMe::buildJacobstahlInsertionSequence(int size)
 {
 	std::vector<int> jacobSequence;
 	int jacobIndex = 3;
@@ -272,13 +265,13 @@ std::vector<int> PmergeMe::_buildJacobstahlInsertionSequence(int size)
 	return (jacobSequence);
 }
 
-std::vector<int> PmergeMe::_createIndexInsertSequence(std::vector<int> pending)
+std::vector<int> PmergeMe::createIndexInsertSequence(std::vector<int> pending)
 {
 	bool lastWasJacobNumber = false;
 	int pendingSize = pending.size();
-	std::vector<int> jacobSequence = _buildJacobstahlInsertionSequence(pendingSize);
+	std::vector<int> jacobSequence = buildJacobstahlInsertionSequence(pendingSize);
 
-	_printVector(jacobSequence, "Jacobstahl", PURPLE);
+	printVector(jacobSequence, "Jacobstahl", PURPLE);
 
 	std::vector<int> indexSequence;
 

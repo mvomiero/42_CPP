@@ -9,5 +9,5 @@ int main(int ac, char* av[])
     }
 	PmergeMe merger;
 	merger.fillContainers(ac, av);
-	merger._sortVector();
+	merger.sortVector();
 }
