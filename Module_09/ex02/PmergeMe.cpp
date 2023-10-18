@@ -111,6 +111,7 @@ void PmergeMe::sortVector()
 	if (VERBOSE) { std::cout << BG_BRIGHT_BLACK << "inserting odd number, if any..." << RESET << std::endl;}
 	if (oddNumber != 0)
 	{
+		std::cout << BLUE "odd number " << oddNumber << " extracted from unsorted container" RESET << std::endl;
 		insertIntoSortedVector(oddNumber);
 		if (VERBOSE)
 		{
