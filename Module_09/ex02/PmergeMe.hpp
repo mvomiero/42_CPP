@@ -1,4 +1,4 @@
-#pragma once	
+#pragma once
 
 #define VERBOSE 1
 #define VERBOSE_RECURSION 1
@@ -23,67 +23,63 @@
 #include <utility>
 #include <vector>
 
-
 class PmergeMe
 {
-	private:
+private:
+	int _straggler;
 
-		int _straggler;
+	int _getJacobstahlNumber(int n);
 
+	std::vector<int> _unsortedVector;
+	std::vector<int> _sortedVector;
 
-		int _getJacobstahlNumber( int n );
+	void _fillVectorFromArray(int *array);
 
+	std::vector<std::pair<int, int> > _splitIntoPairs(std::vector<int> &unsortedVector);
+	void _sortEachPair(std::vector<std::pair<int, int> > &splitVector);
+	void _sortPairsByLargestValue(std::vector<std::pair<int, int> > &
+									  splitVector);
+	void _insertionSortPairs(std::vector<std::pair<int, int> > &
+								 splitVector,
+							 int n);
+	void _insertElement(std::vector<std::pair<int, int> > &splitVector,
+						std::pair<int, int> element, int n);
+	void _createSortedSequence(std::vector<std::pair<int, int> > &splitVector);
+	std::vector<int> _createIndexInsertSequence(std::vector<int> pending);
+	std::vector<int> _buildJacobstahlInsertionSequence(int size);
+	void _insertAtBisectedIndex(std::vector<int> &vector, int element);
+	int _bisect(std::vector<int> vector, int x);
+	void _extractStraggler(std::vector<int> &unsortedVector);
+	void _insertStraggler(std::vector<int> &sortedVector);
 
-		std::vector<int> * _unsortedVector;
-		std::vector<int> * _sortedVector;
+	template <typename T>
+	void _printVector(std::vector<T> &vector, std::string name,
+					  std::string color);
+	std::string _getVectorContentsAsString(std::vector<int> &vector);
+	std::string _getVectorContentsAsString(std::vector<std::pair<int, int> > &
+											   vector);
 
-		void _fillVectorFromArray( int * array );
-		
-		std::vector< std::pair<int, int> > _splitIntoPairs( std::vector<int> & unsortedVector );
-		void _sortEachPair( std::vector< std::pair<int, int> > & splitVector );
-		void _sortPairsByLargestValue( std::vector< std::pair<int, int> > &
-		                               splitVector );
-		void _insertionSortPairs( std::vector< std::pair<int, int> > &
-		                          splitVector, int n );
-		void _insertElement( std::vector< std::pair<int, int> > & splitVector,
-		                     std::pair<int, int> element, int n );
-		void _createSortedSequence( std::vector< std::pair<int, int> > & splitVector );
-		std::vector<int> _createIndexInsertSequence( std::vector<int> pending );
-		std::vector<int> _buildJacobstahlInsertionSequence( int size );
-		void _insertAtBisectedIndex( std::vector<int> & vector, int element );
-		int _bisect( std::vector<int> vector, int x );
-		void _extractStraggler( std::vector<int> & unsortedVector );
-		void _insertStraggler( std::vector<int> & sortedVector );
+public:
+	PmergeMe(void);
+	// PmergeMe( int* array, bool container );
+	PmergeMe(PmergeMe &rhs);
+	~PmergeMe(void);
 
-		template <typename T>
-		void _printVector( std::vector<T> & vector, std::string name,
-		                   std::string color );
-		std::string _getVectorContentsAsString( std::vector<int> & vector );
-		std::string _getVectorContentsAsString( std::vector< std::pair<int, int> > &
-		                                        vector );
+	PmergeMe &operator=(PmergeMe &src);
+	void sort(void);
+	std::vector<int> &getSortedVector(void);
+	std::list<int> &getSortedList(void);
 
+	void fillContainers(int ac, char **av);
 
-	public:
-		PmergeMe( void );
-		//PmergeMe( int* array, bool container );
-		PmergeMe( PmergeMe & rhs );
-		~PmergeMe( void );
+	template <typename T>
+	void printContainer(const T &container);
+	template <typename T>
+	void printContainerInfo(const T &container, std::string str, std::string color);
 
-		PmergeMe & operator=( PmergeMe & src );
-		void sort( void );
-		std::vector<int> & getSortedVector( void );
-		std::list<int> & getSortedList( void );
+	void _sortVector(void);
 
-		void fillContainers(int ac, char **av);
-
-		template <typename T>
-		void printContainer(const T& container);
-		template <typename T>
-		void printContainerInfo(const T& container, std::string str, std::string color);
-
-		void _sortVector( void );
-
-		void printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color);
-		void printPairsRecursion(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color, int n);
-		void insertIntoSortedVector(std::vector<int> &vector, int element);
+	void printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color);
+	void printPairsRecursion(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color, int n);
+	void insertIntoSortedVector(std::vector<int> &vector, int element);
 };

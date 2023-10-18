@@ -2,14 +2,14 @@
 
 PmergeMe::PmergeMe(void)
 {
-	_unsortedVector = new std::vector<int>();
-	_sortedVector = new std::vector<int>();
+	//_unsortedVector = new std::vector<int>();
+	//_sortedVector = new std::vector<int>();
 }
 
 PmergeMe::~PmergeMe(void)
 {
-	delete _unsortedVector;
-	delete _sortedVector;
+	//delete _unsortedVector;
+	//delete _sortedVector;
 }
 
 
@@ -42,22 +42,22 @@ void PmergeMe::fillContainers(int ac, char **av)
 			std::cerr << RED << "Error: invalid input -> " << av[i] << RESET << std::endl;
 			exit(1);
 		}
-		_unsortedVector->push_back(num);
+		_unsortedVector.push_back(num);
 	}
-	printContainer(*_unsortedVector);
+	//_printVector(_unsortedVector);
 }
 
 void PmergeMe::_sortVector( void )
 {
-	printContainer( *_unsortedVector );
+	printContainer( _unsortedVector );
 
-	if ( _unsortedVector->size() % 2 != 0 )
+	if ( _unsortedVector.size() % 2 != 0 )
 	{
-		_straggler = _unsortedVector->back();
-		_unsortedVector->pop_back();
+		_straggler = _unsortedVector.back();
+		_unsortedVector.pop_back();
 	}
 
-	std::vector< std::pair<int, int> > splitVector = _splitIntoPairs( *_unsortedVector );
+	std::vector< std::pair<int, int> > splitVector = _splitIntoPairs( _unsortedVector );
 
 	_sortEachPair( splitVector );
 
@@ -69,11 +69,11 @@ void PmergeMe::_sortVector( void )
 	_createSortedSequence( splitVector );
 	if ( _straggler != 0 )
 	{
-		insertIntoSortedVector( *_sortedVector , _straggler );
+		insertIntoSortedVector( _sortedVector , _straggler );
 		if (VERBOSE) {std::cout << BLUE "straggler number " << _straggler << " inserted in sorted vector" RESET << std::endl;}
 
 	}
-	_printVector( *_sortedVector, "SORTED!", BG_PURPLE );
+	_printVector( _sortedVector, "SORTED!", BG_PURPLE );
 }
 
 void PmergeMe::printPairs(const std::vector<std::pair<int, int> > &pairs, std::string str, std::string color)
@@ -196,10 +196,10 @@ void PmergeMe::_createSortedSequence( std::vector< std::pair<int, int> > &
 	std::vector< std::pair<int, int> >::iterator it = splitVector.begin();
 	for ( ; it != splitVector.end(); it++ )
 	{
-		_sortedVector->push_back( it->second );
+		_sortedVector.push_back( it->second );
 		pending.push_back( it->first );
 	}
-	_printVector( *_sortedVector, "Sorted", GREEN );
+	_printVector( _sortedVector, "Sorted", GREEN );
 	_printVector( pending, "Pending", CYAN );
 
 	std::vector<int> indexSequence = _createIndexInsertSequence( pending );
@@ -215,7 +215,7 @@ void PmergeMe::_createSortedSequence( std::vector< std::pair<int, int> > &
 	for (std::vector<int>::iterator isit = indexSequence.begin(); isit != indexSequence.end(); isit++)
 	{
 		int numberToInsert = pending[*isit - 1];
-		insertIntoSortedVector( *_sortedVector, numberToInsert );
+		insertIntoSortedVector( _sortedVector, numberToInsert );
 		if (VERBOSE) {std::cout << BLUE " number " << numberToInsert << " inserted in sorted vector. sequence index is: " << *isit << "" RESET << std::endl;}
 		
 	}
@@ -223,7 +223,7 @@ void PmergeMe::_createSortedSequence( std::vector< std::pair<int, int> > &
 	if (VERBOSE)
 	{
 		std::cout << RESET << std::endl;
-		_printVector( *_sortedVector, "Sorted", GREEN );
+		_printVector( _sortedVector, "Sorted", GREEN );
 	}
 }
 
