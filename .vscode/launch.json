@@ -5,10 +5,19 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"type": "java",
+			"name": "Main",
+			"request": "launch",
+			"mainClass": "Module_01.ex00.java.Main",
+			"projectName": "CPP_978d5b80"
+		},
+		{
 			"name": "Launch",
 			"type": "cppdbg",
 			"program": "${workspaceFolder}/Module_09/ex02/PmergeMe",
-			"args": ["5 6 8 3 2"],
+			"args": [
+				"5 6 8 3 2"
+			],
 			"cwd": "${workspaceFolder}",
 			"request": "launch",
 			"MIMode": "gdb",
@@ -19,9 +28,9 @@
 					"ignoreFailures": true
 				}
 			],
-			"stopAtEntry": false,  // Option 1: Disable stopping at program entry
-			"externalConsole": false,  // Option 2: Disable external console
-			"internalConsoleOptions": "neverOpen"  // Option 3: Specify internal console behavior
+			"stopAtEntry": false,
+			"externalConsole": false,
+			"internalConsoleOptions": "neverOpen"
 		}
 	]
 }
