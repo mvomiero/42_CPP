@@ -5,9 +5,8 @@ public class Megaphone {
         } else {
             for (String arg : args) {
                 System.out.print(arg.toUpperCase());
-            
-            System.out.println();
+                System.out.println();
+            }
         }
     }
-}
 }
