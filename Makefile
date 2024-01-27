@@ -1,4 +1,4 @@
-MODULE = 01
+MODULE = 03
 EX = 01
 
 mvn:
