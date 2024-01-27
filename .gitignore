@@ -1,5 +1,6 @@
 *.o
 *.class
+*.lst
 Module_00/ex00/megaphone
 .vscode/settings.json
 Module_00/ex01/phonebook
@@ -49,3 +50,4 @@ Module_09/ex00/btc
 Module_09/ex01/RPN
 Module_09/ex02/PmergeMe
 .vscode/launch.json
+target/your-project-name-1.0.0.jar

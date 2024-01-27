@@ -10,5 +10,10 @@ public class ConsoleColors {
     public static void printRed(String message) {
         System.out.println(RED_BOLD + message + RESET);
     }
+    public static void printGreen(String message) {
+        System.out.println(GREEN_BOLD + message + RESET);
+    }
+
+
     
 }

@@ -8,6 +8,13 @@
 			"type": "java",
 			"name": "Main",
 			"request": "launch",
+			"mainClass": "Module_01.ex01.java.Main",
+			"projectName": "your-project-name"
+		},
+		{
+			"type": "java",
+			"name": "Main",
+			"request": "launch",
 			"mainClass": "Module_01.ex00.java.Main",
 			"projectName": "CPP_978d5b80"
 		},

@@ -1,5 +1,5 @@
 MODULE = 01
-EX = 00
+EX = 01
 
 mvn:
 	mvn exec:java -Dexec.mainClass="Module_$(MODULE).ex$(EX).java.Main"
