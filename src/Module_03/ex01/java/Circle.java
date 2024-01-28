@@ -11,4 +11,8 @@ public class Circle extends Shape {
     public float getArea() {
         return (radius* radius * 3.14f);
     }
+
+    public String introduce() {
+        return("I am a rounden Cirle OOOOO");
+    }
 }

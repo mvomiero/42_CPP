@@ -14,4 +14,8 @@ public class Shape {
     public float getArea() {
         return 1;
     }
+
+    public String introduce() {
+        return ("I am a newly created shape");
+    }
 }
