@@ -6,6 +6,13 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "TemperatureConverter",
+			"request": "launch",
+			"mainClass": "Module_05.ex00.java.TemperatureConverter",
+			"projectName": "your-project-name"
+		},
+		{
+			"type": "java",
 			"name": "Main",
 			"request": "launch",
 			"mainClass": "Module_01.ex01.java.Main",

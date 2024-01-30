@@ -1,8 +1,8 @@
-MODULE = 04
+MODULE = 05
 EX = 00
 
 mvn:
-	mvn exec:java -Dexec.mainClass="Module_$(MODULE).ex$(EX).java.Main"
+	mvn -X exec:java -Dexec.mainClass="Module_$(MODULE).ex$(EX).java.Main"
 
 java:
 	java -cp target/classes Module_$(MODULE).ex$(EX).java.Main
